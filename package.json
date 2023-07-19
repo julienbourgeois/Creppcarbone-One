@@ -1,0 +1,12 @@
+{
+    "name": "creppcarbone",
+    "description": "  tableaux de bord  node red  pour creppcarbone ecogeste",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows_YOGA.json",
+            "credentialsFile": "flows_YOGA_cred.json"
+        }
+    }
+}
