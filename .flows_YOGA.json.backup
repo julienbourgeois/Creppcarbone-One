@@ -647,7 +647,7 @@
     {
         "id": "134107bd092c9208",
         "type": "ui_group",
-        "name": "Ecogeste planif",
+        "name": "Saisie Ecogeste ",
         "tab": "988df4f2cc6c55bd",
         "order": 2,
         "disp": true,
