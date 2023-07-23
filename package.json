@@ -2,7 +2,12 @@
     "name": "creppcarbone",
     "description": "  tableaux de bord  node red  pour creppcarbone ecogeste",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "@caitken-com/node-red-contrib-json2mysql": "1.0.5",
+        "node-red-contrib-dashbored": "0.5.4",
+        "node-red-dashboard": "2.27.0",
+        "node-red-node-mysql": "1.0.3"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows_YOGA.json",
