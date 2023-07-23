@@ -4,7 +4,7 @@
         "type": "tab",
         "label": "req eco2mix qui marche",
         "disabled": true,
-        "info": "",
+        "info": "API pour interroger ECO2MIX \r\nva recuperer 5 valeurs de l'API ECO2MIX, \r\nqui envoie toutes les heures \r\nles 4 valeurs par quart d'heure\r\nva les charger dans la base mysql locale",
         "env": []
     },
     {
@@ -12,7 +12,7 @@
         "type": "tab",
         "label": "lecture fichier  KSI csv",
         "disabled": false,
-        "info": "",
+        "info": "lit le fichier de simulation créé par Bernard\r\nle rentre dans mysql (désactivé car 1 fois suffit)\r\njoue la simulation a l'ecran\r\n",
         "env": []
     },
     {
@@ -28,14 +28,14 @@
         "type": "tab",
         "label": "prise NOUS AT1",
         "disabled": false,
-        "info": ""
+        "info": "affiche les statuts de la prise tamotsa\r\npilote le toggle on off de la prise\r\nentre les valeurs dans la bdd"
     },
     {
         "id": "761b5806c43a83e0",
         "type": "tab",
         "label": "liste appareil consommateur",
         "disabled": false,
-        "info": "",
+        "info": "gere le choix de l'appareil consommateur\r\n",
         "env": []
     },
     {
@@ -43,7 +43,7 @@
         "type": "tab",
         "label": "application tradding",
         "disabled": true,
-        "info": "",
+        "info": "tableau de bord coté producteur\r\npas terminé",
         "env": []
     },
     {
@@ -51,7 +51,15 @@
         "type": "tab",
         "label": "ecogeste planif",
         "disabled": false,
-        "info": "",
+        "info": "planification de l'armement de la prise",
+        "env": []
+    },
+    {
+        "id": "c72b4f57ca4915e9",
+        "type": "tab",
+        "label": "ecogeste creppcarbone",
+        "disabled": false,
+        "info": "ecogeste de planification creppcarbone sans ksi\r\nprog 1 - soleil = quand y a du soleil\r\nprog 2 - eolien  = quand y a du vent\r\nprog 3 - nuit eolien= la nuit quand y a du vent\r\n",
         "env": []
     },
     {
@@ -368,17 +376,10 @@
         "sessionExpiry": ""
     },
     {
-        "id": "c4fc4f527af372ad",
-        "type": "ui_tab",
-        "name": "Tab 3",
-        "icon": "dashboard",
-        "order": 3
-    },
-    {
         "id": "80eba6180c20c40d",
         "type": "ui_group",
         "name": "Tracker solaire",
-        "tab": "c4fc4f527af372ad",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -388,7 +389,7 @@
         "id": "29bc257696ad9972",
         "type": "ui_group",
         "name": "Group 2",
-        "tab": "c4fc4f527af372ad",
+        "tab": "",
         "order": 2,
         "disp": true,
         "width": "6",
@@ -410,20 +411,11 @@
         "id": "d4b5416a.9c25f",
         "type": "ui_group",
         "name": "Floorplan test",
-        "tab": "b9052fac.2b0e9",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "14",
         "collapse": false
-    },
-    {
-        "id": "b9052fac.2b0e9",
-        "type": "ui_tab",
-        "name": "SVG",
-        "icon": "dashboard",
-        "order": 5,
-        "disabled": false,
-        "hidden": false
     },
     {
         "id": "43d8c011dfdc997f",
@@ -455,24 +447,17 @@
         "id": "cfbca1bb.7a494",
         "type": "ui_group",
         "name": "Températures du processeur",
-        "tab": "21744230.c4774e",
+        "tab": "",
         "order": 5,
         "disp": true,
         "width": "24",
         "collapse": true
     },
     {
-        "id": "21744230.c4774e",
-        "type": "ui_tab",
-        "name": "BDD",
-        "icon": "dashboard",
-        "order": 6
-    },
-    {
         "id": "2ad30a4638b21d0f",
         "type": "ui_group",
         "name": "Date",
-        "tab": "21744230.c4774e",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -482,7 +467,7 @@
         "id": "ce4e92ea0fb2caa8",
         "type": "ui_group",
         "name": "Filtrer les données",
-        "tab": "21744230.c4774e",
+        "tab": "",
         "order": 4,
         "disp": true,
         "width": "6",
@@ -492,7 +477,7 @@
         "id": "d3303baf3ada03ec",
         "type": "ui_group",
         "name": "Heure",
-        "tab": "21744230.c4774e",
+        "tab": "",
         "order": 2,
         "disp": true,
         "width": "6",
@@ -502,7 +487,7 @@
         "id": "a2bc388f92cd61e6",
         "type": "ui_group",
         "name": "Minute",
-        "tab": "21744230.c4774e",
+        "tab": "",
         "order": 3,
         "disp": true,
         "width": "6",
@@ -595,7 +580,7 @@
         "id": "f30d1ecd.61daa",
         "type": "ui_group",
         "name": "Temperature/ph monitor",
-        "tab": "c2f603e5.e52fe",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -605,7 +590,7 @@
         "id": "ffd8e6f4.96dd38",
         "type": "ui_group",
         "name": "Water filtration",
-        "tab": "c2f603e5.e52fe",
+        "tab": "",
         "order": 2,
         "disp": true,
         "width": "12",
@@ -615,7 +600,7 @@
         "id": "81a6484a.884828",
         "type": "ui_group",
         "name": "Lighting",
-        "tab": "c2f603e5.e52fe",
+        "tab": "",
         "order": 3,
         "disp": true,
         "width": "6",
@@ -625,20 +610,11 @@
         "id": "9b81cf0.836273",
         "type": "ui_group",
         "name": "Food Dispenser",
-        "tab": "c2f603e5.e52fe",
+        "tab": "",
         "order": 4,
         "disp": true,
         "width": "6",
         "collapse": false
-    },
-    {
-        "id": "c2f603e5.e52fe",
-        "type": "ui_tab",
-        "name": "Fish Tank",
-        "icon": "dashboard",
-        "order": 4,
-        "disabled": false,
-        "hidden": false
     },
     {
         "id": "d41b83de71e38c79",
@@ -2753,13 +2729,6 @@
         "height": 1
     },
     {
-        "id": "3c873dd5f5971b0a",
-        "type": "ui_tab",
-        "name": "Table Examples",
-        "icon": "dashboard",
-        "order": 1
-    },
-    {
         "id": "9c6521f62554e6d1",
         "type": "ui_group",
         "name": "tableau bord ecogeste",
@@ -3605,7 +3574,7 @@
         "include_empty_strings": "",
         "include_null_values": "",
         "x": 410,
-        "y": 120,
+        "y": 140,
         "wires": [
             [
                 "b872291c76e7d9f0"
@@ -7839,6 +7808,390 @@
         "topic": "",
         "x": 1200,
         "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8c71e3ac389bd037",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "0-1",
+        "group": "134107bd092c9208",
+        "order": 2,
+        "width": "5",
+        "height": "1",
+        "label": "0-1",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "1",
+        "x": 190,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4969bbb4c9ef48a8",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "1-2",
+        "group": "134107bd092c9208",
+        "order": 5,
+        "width": "5",
+        "height": "1",
+        "label": "1-2",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "2",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e02e0461e3ec9b41",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "2-3",
+        "group": "134107bd092c9208",
+        "order": 8,
+        "width": "5",
+        "height": "1",
+        "label": "2-3",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "3",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7e95973d24ec2d9",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "3-4",
+        "group": "134107bd092c9208",
+        "order": 11,
+        "width": "5",
+        "height": "1",
+        "label": "3-4",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "4",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7feced3b57d3175c",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "4-5",
+        "group": "134107bd092c9208",
+        "order": 14,
+        "width": "5",
+        "height": "1",
+        "label": "4-5",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "5",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "551fefdc173e1391",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "5-6",
+        "group": "134107bd092c9208",
+        "order": 17,
+        "width": "5",
+        "height": "1",
+        "label": "5-6",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "6",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3222094829ff40a1",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "6-7",
+        "group": "134107bd092c9208",
+        "order": 20,
+        "width": "5",
+        "height": "1",
+        "label": "6-7",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "7",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3e6c4a1a9e4a7123",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "7-8",
+        "group": "134107bd092c9208",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "7-8",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "normal",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "off grid",
+                "value": "O",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "Armed",
+                "value": "A",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "8",
+        "x": 190,
+        "y": 380,
         "wires": [
             []
         ]
