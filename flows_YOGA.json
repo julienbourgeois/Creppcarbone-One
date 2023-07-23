@@ -655,47 +655,6 @@
         "collapse": false
     },
     {
-        "id": "36ed94917875ebb9",
-        "type": "dashbored-widget",
-        "name": "Widget",
-        "server": "b4c867ea06f5361b",
-        "widgetType": "horizontalStack",
-        "widthMultiplier": "1",
-        "heightMultiplier": "1",
-        "title": "",
-        "restoreState": true,
-        "setsState": true,
-        "toggleButton-text": "Toggle Button",
-        "toggleButton-onValue": "on",
-        "toggleButton-offValue": "off",
-        "toggleButton-CSS": ".on {\nbackground-color: #32CD32;\ncolor: white;\n}\n.off {\nbackground-color: #f2f2f2;\ncolor: black;\n}\n#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\n}\n#widget {}\n#title {}\n#content {}",
-        "buttonSelector-options": [
-            {
-                "label": "Option 0",
-                "value": "option_0",
-                "onColor": "#32CD32",
-                "offColor": "#ff3333"
-            },
-            {
-                "label": "Option 1",
-                "value": "option_1",
-                "onColor": "#32CD32",
-                "offColor": "#ff3333"
-            }
-        ],
-        "buttonSelector-CSS": ".button {\nwidth: calc(100% - 10px);\nmargin: 5px;\n}\n.on {}\n.off {}",
-        "horizontalStack-widgets": "6f915162f384b722",
-        "verticalStack-widgets": "",
-        "volume-mutedValue": "on",
-        "volume-unmutedValue": "off",
-        "volume-increment": 1,
-        "volume-CSS": "#volumeLevelContainer {\ntransform: rotate(180deg);\noverflow: hidden;\nbackground-color: white;\nwidth: 20%;\nheight: 90%;\nmargin-top: 5%;\nmargin-left: 10%;\nmargin-right: 5%;\nfloat: right;\nborder-radius: 10em;\n}\n#volumeLevelTop {\nbackground-color: #01e301;\nwidth: 100%;\nheight: 100%;\n}\n#buttonContainer {\nfloat: right;\nheight: 100%;\nwidth: 60%;\n}\n.button {\ndisplay: block;\nwidth: 100%;\nheight: calc((100%/3) - (2.5px * 3));\npadding: 0;\nmargin-top: 5px;\ntransition: background-color 0.1s;\n}\n.mutedColor {\nbackground-color: red !important;\n}\n.clickColor {\nbackground-color: white !important;\n}",
-        "actionButton-text": "Action Button",
-        "actionButton-color": "#434343",
-        "actionButton-flashColor": "#f2f2f2",
-        "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
-    },
-    {
         "id": "b4c867ea06f5361b",
         "type": "dashbored-server",
         "name": "",
@@ -2811,6 +2770,47 @@
         "collapse": false
     },
     {
+        "id": "36ed94917875ebb9",
+        "type": "dashbored-widget",
+        "name": "Widget",
+        "server": "b4c867ea06f5361b",
+        "widgetType": "horizontalStack",
+        "widthMultiplier": "1",
+        "heightMultiplier": "1",
+        "title": "",
+        "restoreState": true,
+        "setsState": true,
+        "toggleButton-text": "Toggle Button",
+        "toggleButton-onValue": "on",
+        "toggleButton-offValue": "off",
+        "toggleButton-CSS": ".on {\nbackground-color: #32CD32;\ncolor: white;\n}\n.off {\nbackground-color: #f2f2f2;\ncolor: black;\n}\n#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\n}\n#widget {}\n#title {}\n#content {}",
+        "buttonSelector-options": [
+            {
+                "label": "Option 0",
+                "value": "option_0",
+                "onColor": "#32CD32",
+                "offColor": "#ff3333"
+            },
+            {
+                "label": "Option 1",
+                "value": "option_1",
+                "onColor": "#32CD32",
+                "offColor": "#ff3333"
+            }
+        ],
+        "buttonSelector-CSS": ".button {\nwidth: calc(100% - 10px);\nmargin: 5px;\n}\n.on {}\n.off {}",
+        "horizontalStack-widgets": "6f915162f384b722",
+        "verticalStack-widgets": "",
+        "volume-mutedValue": "on",
+        "volume-unmutedValue": "off",
+        "volume-increment": 1,
+        "volume-CSS": "#volumeLevelContainer {\ntransform: rotate(180deg);\noverflow: hidden;\nbackground-color: white;\nwidth: 20%;\nheight: 90%;\nmargin-top: 5%;\nmargin-left: 10%;\nmargin-right: 5%;\nfloat: right;\nborder-radius: 10em;\n}\n#volumeLevelTop {\nbackground-color: #01e301;\nwidth: 100%;\nheight: 100%;\n}\n#buttonContainer {\nfloat: right;\nheight: 100%;\nwidth: 60%;\n}\n.button {\ndisplay: block;\nwidth: 100%;\nheight: calc((100%/3) - (2.5px * 3));\npadding: 0;\nmargin-top: 5px;\ntransition: background-color 0.1s;\n}\n.mutedColor {\nbackground-color: red !important;\n}\n.clickColor {\nbackground-color: white !important;\n}",
+        "actionButton-text": "Action Button",
+        "actionButton-color": "#434343",
+        "actionButton-flashColor": "#f2f2f2",
+        "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
+    },
+    {
         "id": "a92d03ad9027fe25",
         "type": "ui_text_input",
         "z": "2b544a037b25f120",
@@ -2883,7 +2883,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 630,
-        "y": 60,
+        "y": 80,
         "wires": []
     },
     {
