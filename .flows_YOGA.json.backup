@@ -73,15 +73,6 @@
         "collapse": false
     },
     {
-        "id": "19b0d687890b540a",
-        "type": "ui_tab",
-        "name": "Consommateur appareil",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "6aec93185a5b7c14",
         "type": "ui_base",
         "theme": {
@@ -182,7 +173,7 @@
         "id": "79b0752b232538ad",
         "type": "ui_group",
         "name": "Default",
-        "tab": "19b0d687890b540a",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -234,23 +225,6 @@
         "out": "char",
         "addchar": "",
         "responsetimeout": "10000"
-    },
-    {
-        "id": "36b835852fd700b5",
-        "type": "mui_group",
-        "name": "Default",
-        "tab": "35911c2583f66567",
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "35911c2583f66567",
-        "type": "mui_tab",
-        "name": "Home",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
     },
     {
         "id": "403af71565be25d0",
@@ -2778,6 +2752,16 @@
         "actionButton-color": "#434343",
         "actionButton-flashColor": "#f2f2f2",
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
+    },
+    {
+        "id": "6253387b41db037a",
+        "type": "ui_group",
+        "name": "Saisie CreppCarbone",
+        "tab": "988df4f2cc6c55bd",
+        "order": 6,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
         "id": "a92d03ad9027fe25",
@@ -7817,7 +7801,7 @@
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
         "name": "0-1",
-        "group": "134107bd092c9208",
+        "group": "6253387b41db037a",
         "order": 2,
         "width": "5",
         "height": "1",
@@ -7865,7 +7849,7 @@
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
         "name": "1-2",
-        "group": "134107bd092c9208",
+        "group": "6253387b41db037a",
         "order": 5,
         "width": "5",
         "height": "1",
@@ -7913,7 +7897,7 @@
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
         "name": "2-3",
-        "group": "134107bd092c9208",
+        "group": "6253387b41db037a",
         "order": 8,
         "width": "5",
         "height": "1",
@@ -7961,7 +7945,7 @@
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
         "name": "3-4",
-        "group": "134107bd092c9208",
+        "group": "6253387b41db037a",
         "order": 11,
         "width": "5",
         "height": "1",
@@ -8009,7 +7993,7 @@
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
         "name": "4-5",
-        "group": "134107bd092c9208",
+        "group": "6253387b41db037a",
         "order": 14,
         "width": "5",
         "height": "1",
