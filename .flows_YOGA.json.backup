@@ -5290,7 +5290,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "split resultats  Tamotsa",
-        "func": "//var myPrix = flow.get(\"prixelec\");\nvar myPrix = 22;\nvar msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.ENERGY.ApparentPower;\nmsg2.payload = msg.payload.ENERGY.Current;\nmsg3.payload = msg.payload.ENERGY.Voltage;\nmsg4.payload = msg.payload.ENERGY.Total;\nmsg5.payload = msg.payload.ENERGY.Total*myPrix.payload*1000;\nmsg6.payload = msg.payload.ENERGY.Power * myPrix.payload;\nmsg6.payload =msg6.payload.toFixed(1);\nmsg5.payload = msg5.payload.toFixed(1);\nmsg7.payload = myPrix.payload;\nmsg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3, msg4, msg5,msg6,msg7,msg8];",
+        "func": "//var myPrix = flow.get(\"prixelec\");\nvar myPrix = 22;\nvar msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.ENERGY.ApparentPower;\nmsg2.payload = msg.payload.ENERGY.Current;\nmsg3.payload = msg.payload.ENERGY.Voltage;\nmsg4.payload = msg.payload.ENERGY.Total;\nmsg5.payload = msg.payload.ENERGY.Total*myPrix.payload*1000;\nmsg6.payload = msg.payload.ENERGY.Power * myPrix.payload;\nmsg6.payload =msg6.payload.toFixed(1);\nmsg5.payload = msg5.payload.toFixed(1);\nmsg7.payload = msg.payload.ENERGY.Today;\nmsg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3, msg4, msg5,msg6,msg7,msg8];",
         "outputs": 8,
         "noerr": 0,
         "initialize": "",
@@ -5322,7 +5322,9 @@
                 "7445e567d91337fd",
                 "189d12c95ba7a2d7"
             ],
-            [],
+            [
+                "971107a6ec83aead"
+            ],
             [
                 "82f90504532f7cfb",
                 "1202560d28a86368",
@@ -5517,11 +5519,11 @@
         "order": 4,
         "width": 5,
         "height": 1,
-        "name": "puissance total aujourdhui (KWH)",
-        "label": "<font size={{ 1}} > puissance total aujourdhui </font>",
+        "name": "puissance total  (KWH)",
+        "label": "<font size={{ 1}} > puissance total   </font>",
         "format": "<font size={{ 1}} >{{msg.payload}} {{\"Kwh\"}}</font> ",
         "layout": "row-spread",
-        "x": 1260,
+        "x": 1220,
         "y": 600,
         "wires": []
     },
@@ -5641,7 +5643,7 @@
         "format": "{{msg.payload}} {{\"cts\"}}",
         "layout": "row-spread",
         "x": 1280,
-        "y": 640,
+        "y": 660,
         "wires": []
     },
     {
@@ -5889,7 +5891,7 @@
         "id": "41ae7b7bbb215bf5",
         "type": "ui_chart",
         "z": "13de37cb61fc3ad2",
-        "name": "puissance totale aujourdhui ",
+        "name": "puissance instantanée",
         "group": "af6e9ca4e8ef71ea",
         "order": 6,
         "width": 10,
@@ -5905,7 +5907,7 @@
         "ymax": "",
         "removeOlder": 1,
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "86400",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -5922,11 +5924,27 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1220,
+        "x": 1200,
         "y": 760,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "971107a6ec83aead",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 4,
+        "width": 5,
+        "height": 1,
+        "name": "puissance   aujourdhui (KWH)",
+        "label": "<font size={{ 1}} > puissance aujourdhui </font>",
+        "format": "<font size={{ 1}} >{{msg.payload}} {{\"Kwh\"}}</font> ",
+        "layout": "row-spread",
+        "x": 1260,
+        "y": 900,
+        "wires": []
     },
     {
         "id": "17ce6d249432505f",
