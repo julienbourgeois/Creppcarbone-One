@@ -5326,7 +5326,8 @@
             [
                 "82f90504532f7cfb",
                 "1202560d28a86368",
-                "e37a9137ae70d6fd"
+                "e37a9137ae70d6fd",
+                "41ae7b7bbb215bf5"
             ]
         ]
     },
@@ -5395,8 +5396,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 880,
-        "y": 600,
+        "x": 1180,
+        "y": 580,
         "wires": []
     },
     {
@@ -5883,6 +5884,49 @@
         "x": 720,
         "y": 480,
         "wires": []
+    },
+    {
+        "id": "41ae7b7bbb215bf5",
+        "type": "ui_chart",
+        "z": "13de37cb61fc3ad2",
+        "name": "puissance instantanée",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 6,
+        "width": 10,
+        "height": 4,
+        "label": "<font size={{ 1}} >puissance instantanée KWh </font>",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1200,
+        "y": 760,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "17ce6d249432505f",
