@@ -530,7 +530,7 @@
         "order": 1,
         "disp": true,
         "width": "10",
-        "collapse": false
+        "collapse": true
     },
     {
         "id": "988df4f2cc6c55bd",
@@ -556,8 +556,8 @@
         "tab": "988df4f2cc6c55bd",
         "order": 5,
         "disp": true,
-        "width": 16,
-        "collapse": false
+        "width": "16",
+        "collapse": true
     },
     {
         "id": "f30d1ecd.61daa",
@@ -606,6 +606,7 @@
     {
         "id": "134107bd092c9208",
         "type": "ui_group",
+        "d": true,
         "name": "Saisie Ecogeste ",
         "tab": "988df4f2cc6c55bd",
         "order": 3,
@@ -2790,7 +2791,7 @@
         "order": 8,
         "disp": true,
         "width": "6",
-        "collapse": false
+        "collapse": true
     },
     {
         "id": "a92d03ad9027fe25",
@@ -6386,8 +6387,8 @@
         "name": "Energie Totale",
         "group": "1b256139bc926903",
         "order": 13,
-        "width": 10,
-        "height": 4,
+        "width": "6",
+        "height": "5",
         "label": "<font size={{ 1}} >Energie Totale KWh </font>",
         "chartType": "line",
         "legend": "false",
@@ -6461,7 +6462,7 @@
         "name": "puissance instantanée",
         "group": "1b256139bc926903",
         "order": 11,
-        "width": 10,
+        "width": "6",
         "height": 4,
         "label": "<font size={{ 1}} >puissance instantanée W </font>",
         "chartType": "line",
@@ -6520,7 +6521,7 @@
         "name": "Energie aujourdhui",
         "group": "1b256139bc926903",
         "order": 12,
-        "width": 10,
+        "width": "6",
         "height": 4,
         "label": "<font size={{ 1}} >Energie aujourdhui KWh </font>",
         "chartType": "line",
@@ -6846,7 +6847,7 @@
         "name": "",
         "label": "choix appareil",
         "tooltip": "",
-        "group": "af6e9ca4e8ef71ea",
+        "group": "2606e140c9d98a7a",
         "order": 16,
         "width": 3,
         "height": 1,
@@ -6923,11 +6924,11 @@
         "id": "6437d5d40fe4ee4b",
         "type": "ui_template",
         "z": "761b5806c43a83e0",
-        "group": "af6e9ca4e8ef71ea",
+        "group": "2606e140c9d98a7a",
         "name": "appareil chargé",
         "order": 17,
-        "width": "10",
-        "height": 3,
+        "width": "6",
+        "height": "6",
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
@@ -7025,10 +7026,10 @@
         "type": "ui_chart",
         "z": "4135bfd2a793c16c",
         "name": "prises armées",
-        "group": "",
+        "group": "134107bd092c9208",
         "order": 33,
-        "width": 7,
-        "height": 4,
+        "width": "0",
+        "height": "0",
         "label": "prises armées",
         "chartType": "line",
         "legend": "false",
