@@ -2758,7 +2758,7 @@
     {
         "id": "6253387b41db037a",
         "type": "ui_group",
-        "name": "Saisie CreppCarbone",
+        "name": "Scenario consommateur",
         "tab": "988df4f2cc6c55bd",
         "order": 7,
         "disp": true,
@@ -8308,18 +8308,18 @@
         "id": "8c71e3ac389bd037",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "0-1",
+        "name": "00-01",
         "group": "6253387b41db037a",
         "order": 2,
         "width": "5",
         "height": "1",
-        "label": "0-1",
+        "label": "00h-01h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8327,22 +8327,22 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0080ff"
             }
         ],
         "topic": "1",
@@ -8356,18 +8356,18 @@
         "id": "4969bbb4c9ef48a8",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "1-2",
+        "name": "01-02",
         "group": "6253387b41db037a",
         "order": 5,
         "width": "5",
         "height": "1",
-        "label": "1-2",
+        "label": "01h-02h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8375,22 +8375,22 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "Compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "2",
@@ -8404,18 +8404,18 @@
         "id": "e02e0461e3ec9b41",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "2-3",
+        "name": "02-03",
         "group": "6253387b41db037a",
         "order": 8,
         "width": "5",
         "height": "1",
-        "label": "2-3",
+        "label": "02h-03h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8423,22 +8423,22 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "Compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "3",
@@ -8452,18 +8452,18 @@
         "id": "a7e95973d24ec2d9",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "3-4",
+        "name": "03-04",
         "group": "6253387b41db037a",
         "order": 11,
         "width": "5",
         "height": "1",
-        "label": "3-4",
+        "label": "03h-04h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8471,27 +8471,27 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "Compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "4",
         "x": 190,
-        "y": 200,
+        "y": 220,
         "wires": [
             []
         ]
@@ -8500,18 +8500,18 @@
         "id": "7feced3b57d3175c",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "4-5",
+        "name": "04-05",
         "group": "6253387b41db037a",
         "order": 14,
         "width": "5",
         "height": "1",
-        "label": "4-5",
+        "label": "04h-05h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8519,27 +8519,27 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "Compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "5",
         "x": 190,
-        "y": 240,
+        "y": 280,
         "wires": [
             []
         ]
@@ -8548,18 +8548,18 @@
         "id": "551fefdc173e1391",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "5-6",
-        "group": "134107bd092c9208",
+        "name": "05-06",
+        "group": "6253387b41db037a",
         "order": 17,
         "width": "5",
         "height": "1",
-        "label": "5-6",
+        "label": "05h-06h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8567,27 +8567,27 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "6",
         "x": 190,
-        "y": 280,
+        "y": 340,
         "wires": [
             []
         ]
@@ -8596,18 +8596,18 @@
         "id": "3222094829ff40a1",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "6-7",
-        "group": "134107bd092c9208",
+        "name": "06-07",
+        "group": "6253387b41db037a",
         "order": 20,
         "width": "5",
         "height": "1",
-        "label": "6-7",
+        "label": "06h-07h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8615,27 +8615,27 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "Compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "7",
         "x": 190,
-        "y": 320,
+        "y": 400,
         "wires": [
             []
         ]
@@ -8644,18 +8644,18 @@
         "id": "3e6c4a1a9e4a7123",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
-        "name": "7-8",
-        "group": "134107bd092c9208",
+        "name": "07-08",
+        "group": "6253387b41db037a",
         "order": 23,
         "width": "5",
         "height": "1",
-        "label": "7-8",
+        "label": "07h-08h",
         "stateField": "payload",
         "enableField": "enable",
         "passthroughField": "passthrough",
         "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
+        "rounded": true,
+        "useThemeColors": false,
         "hideSelectedLabel": false,
         "multilineLabel": false,
         "passThrough": "never",
@@ -8663,27 +8663,27 @@
         "userInput": "enabled_show",
         "options": [
             {
-                "label": "normal",
+                "label": "ON",
                 "value": "N",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
-                "label": "off grid",
+                "label": "OFF",
                 "value": "O",
                 "valueType": "str",
-                "color": "#999999"
+                "color": "#ff0000"
             },
             {
-                "label": "Armed",
+                "label": "Compute",
                 "value": "A",
                 "valueType": "str",
-                "color": "#ff6666"
+                "color": "#0000ff"
             }
         ],
         "topic": "8",
         "x": 190,
-        "y": 380,
+        "y": 460,
         "wires": [
             []
         ]
@@ -8692,6 +8692,7 @@
         "id": "16ee4a807801b680",
         "type": "ui_switch",
         "z": "c72b4f57ca4915e9",
+        "d": true,
         "name": "0-1",
         "label": "0-1",
         "tooltip": "",
@@ -8713,6 +8714,774 @@
         "offcolor": "",
         "x": 370,
         "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d22cbaa1c2650cfd",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "08-09",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "08h-09h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "9",
+        "x": 187.75,
+        "y": 524.75,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1784db644e431d3c",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "09-10",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "09h-10h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "9",
+        "x": 190,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "62efe42d01e31651",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "10-11",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "10h-11h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "11",
+        "x": 190,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8bf44c70a348230c",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "11-12",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "11h-12h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "12",
+        "x": 190,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8f95bee877fc98fd",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "12-13",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "12h-13h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "13",
+        "x": 190.75,
+        "y": 757.75,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1bf383c650dd69b3",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "13-14",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "13h-14h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "14",
+        "x": 190,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70ec8010312191ec",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "14-15",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "14h-15h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "15",
+        "x": 190,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34bbb5021a490fc4",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "15-16",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "15h-16h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "16",
+        "x": 190,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a86217de6b1e0ba7",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "16-17",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "16h-17h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "17",
+        "x": 190,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c9b09085c12fe44",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "17-18",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "17h-18h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "18",
+        "x": 190,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7d9014699093cf2",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "18-19",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "18h-19h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "19",
+        "x": 190,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f23a1214f7f19be8",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "19-20",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "19h-20h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "20",
+        "x": 190,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "54c0aa6cd89521eb",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "20-21",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "20h-21h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "21",
+        "x": 190,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "452acc3d2fa2a821",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "21-22",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "21h-22h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "22",
+        "x": 190,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0e6461f8e8efdd2",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "22-23",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "22h-23h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "23",
+        "x": 190,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e049675ece2cb2f",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "23-24",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "23h-24h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "24",
+        "x": 190,
+        "y": 1200,
         "wires": [
             []
         ]
