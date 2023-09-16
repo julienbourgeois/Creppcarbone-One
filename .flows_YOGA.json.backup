@@ -50,16 +50,24 @@
         "id": "f52a234fc0ec8d0e",
         "type": "tab",
         "label": "ecogeste planif",
-        "disabled": false,
+        "disabled": true,
         "info": "planification de l'armement de la prise",
         "env": []
     },
     {
         "id": "c72b4f57ca4915e9",
         "type": "tab",
-        "label": "ecogeste creppcarbone",
+        "label": "scenario consommation",
         "disabled": false,
         "info": "ecogeste de planification creppcarbone sans ksi\r\nprog 1 - soleil = quand y a du soleil\r\nprog 2 - eolien  = quand y a du vent\r\nprog 3 - nuit eolien= la nuit quand y a du vent\r\n",
+        "env": []
+    },
+    {
+        "id": "d931280a91eab542",
+        "type": "tab",
+        "label": "electricity maps",
+        "disabled": false,
+        "info": "recuperer les taux de CO2",
         "env": []
     },
     {
@@ -234,7 +242,7 @@
             "name": "theme-light",
             "lightTheme": {
                 "default": "#0094CE",
-                "baseColor": "#0094CE",
+                "baseColor": "#ff8040",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
                 "edited": true,
                 "reset": false
@@ -254,11 +262,11 @@
             "themeState": {
                 "m-base-color": {
                     "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
+                    "value": "#ff8040",
+                    "edited": true
                 },
                 "m-page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#ff8040",
                     "edited": false
                 },
                 "m-page-backgroundColor": {
@@ -270,7 +278,7 @@
                     "edited": false
                 },
                 "m-group-textColor": {
-                    "value": "#1bbfff",
+                    "value": "#ffb38c",
                     "edited": false
                 },
                 "m-group-borderColor": {
@@ -286,7 +294,7 @@
                     "edited": false
                 },
                 "m-widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#ff8040",
                     "edited": false
                 },
                 "m-widget-borderColor": {
@@ -544,6 +552,7 @@
     {
         "id": "2e95ee0379714654",
         "type": "ui_group",
+        "d": true,
         "name": "eco2mix",
         "tab": "988df4f2cc6c55bd",
         "order": 5,
@@ -2715,6 +2724,36 @@
         "collapse": false
     },
     {
+        "id": "6253387b41db037a",
+        "type": "ui_group",
+        "name": "Scenario consommateur",
+        "tab": "988df4f2cc6c55bd",
+        "order": 7,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "1b256139bc926903",
+        "type": "ui_group",
+        "name": "TASMOTA consommateur",
+        "tab": "988df4f2cc6c55bd",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2606e140c9d98a7a",
+        "type": "ui_group",
+        "name": "saisie appareil consommateur",
+        "tab": "988df4f2cc6c55bd",
+        "order": 8,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
         "id": "36ed94917875ebb9",
         "type": "dashbored-widget",
         "name": "Widget",
@@ -2756,31 +2795,11 @@
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
     },
     {
-        "id": "6253387b41db037a",
+        "id": "016964b9b18bce81",
         "type": "ui_group",
-        "name": "Scenario consommateur",
+        "name": "electric city",
         "tab": "988df4f2cc6c55bd",
-        "order": 7,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "1b256139bc926903",
-        "type": "ui_group",
-        "name": "TASMOTA consommateur",
-        "tab": "988df4f2cc6c55bd",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "2606e140c9d98a7a",
-        "type": "ui_group",
-        "name": "saisie appareil consommateur",
-        "tab": "988df4f2cc6c55bd",
-        "order": 8,
+        "order": 9,
         "disp": true,
         "width": "6",
         "collapse": true
@@ -3031,36 +3050,6 @@
         "wires": []
     },
     {
-        "id": "fbbbc2feaa5bc2b0",
-        "type": "http request",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "method": "use",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 110,
-        "y": 100,
-        "wires": [
-            [
-                "16ad42d1e7a614b8",
-                "79bcb9ff1b1f7b54",
-                "39c240b644513144",
-                "9db846d0a16befd3",
-                "5c274f2f8db44e93",
-                "6b064507054f49d0",
-                "cf8c20fbeae9b796"
-            ]
-        ]
-    },
-    {
         "id": "645946e5797e655e",
         "type": "function",
         "z": "2b544a037b25f120",
@@ -3075,7 +3064,6 @@
         "y": 40,
         "wires": [
             [
-                "fbbbc2feaa5bc2b0",
                 "3087c366221fb1b0"
             ]
         ]
@@ -8689,36 +8677,6 @@
         ]
     },
     {
-        "id": "16ee4a807801b680",
-        "type": "ui_switch",
-        "z": "c72b4f57ca4915e9",
-        "d": true,
-        "name": "0-1",
-        "label": "0-1",
-        "tooltip": "",
-        "group": "6253387b41db037a",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "x": 370,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "d22cbaa1c2650cfd",
         "type": "ui_multistate_switch",
         "z": "c72b4f57ca4915e9",
@@ -9149,5 +9107,611 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "3c9b09085c12fe44",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "17-18",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "17h-18h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "18",
+        "x": 190,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7d9014699093cf2",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "18-19",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "18h-19h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "19",
+        "x": 190,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f23a1214f7f19be8",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "19-20",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "19h-20h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "20",
+        "x": 190,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "54c0aa6cd89521eb",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "20-21",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "20h-21h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "21",
+        "x": 190,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "452acc3d2fa2a821",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "21-22",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "21h-22h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "22",
+        "x": 190,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0e6461f8e8efdd2",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "22-23",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "22h-23h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "23",
+        "x": 190,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e049675ece2cb2f",
+        "type": "ui_multistate_switch",
+        "z": "c72b4f57ca4915e9",
+        "name": "23-24",
+        "group": "6253387b41db037a",
+        "order": 23,
+        "width": "5",
+        "height": "1",
+        "label": "23h-24h",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": true,
+        "useThemeColors": false,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "ON",
+                "value": "N",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "OFF",
+                "value": "O",
+                "valueType": "str",
+                "color": "#ff0000"
+            },
+            {
+                "label": "Compute",
+                "value": "A",
+                "valueType": "str",
+                "color": "#0000ff"
+            }
+        ],
+        "topic": "24",
+        "x": 190,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc8073ae8d857758",
+        "type": "inject",
+        "z": "d931280a91eab542",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "276dcab622bed177"
+            ]
+        ]
+    },
+    {
+        "id": "ad2e622241249cba",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "debug 62",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 600,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "276dcab622bed177",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": " lastest  CO2 FR",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=FR",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 480,
+        "y": 180,
+        "wires": [
+            [
+                "3d6671eccf47240a"
+            ]
+        ]
+    },
+    {
+        "id": "42e955fdb64dd44f",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 920,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "3d6671eccf47240a",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "etat latest carbone",
+        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 180,
+        "wires": [
+            [
+                "42e955fdb64dd44f"
+            ],
+            [
+                "1e36a1a99ffc1a77"
+            ],
+            [
+                "fd13d47a17b90c30"
+            ]
+        ]
+    },
+    {
+        "id": "7bdb45f6e2c9b6b2",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": "history  CO2 FR",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/history?zone=FR",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 360,
+        "y": 420,
+        "wires": [
+            [
+                "ad2e622241249cba",
+                "f23f027a0b8b58e4"
+            ]
+        ]
+    },
+    {
+        "id": "1e36a1a99ffc1a77",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Pays",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 930,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fd13d47a17b90c30",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "heure",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 930,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4acee825ab57f244",
+        "type": "inject",
+        "z": "d931280a91eab542",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 420,
+        "wires": [
+            [
+                "7bdb45f6e2c9b6b2"
+            ]
+        ]
+    },
+    {
+        "id": "f23f027a0b8b58e4",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "etat latest carbone",
+        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.history[0].zone;\nmsg2.payload = msg.payload.history[1].carbonintensity;\nmsg3.payload = msg.payload.history[2].carbonintensity;\n//msg4.payload = msg.payload.[0];\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "a2c508d274e5833d"
+            ],
+            [
+                "dcf20230b2cc22cb"
+            ],
+            [
+                "e2e5b63dccafcadf"
+            ]
+        ]
+    },
+    {
+        "id": "a2c508d274e5833d",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 800,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "dcf20230b2cc22cb",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 820,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e2e5b63dccafcadf",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 820,
+        "y": 420,
+        "wires": []
     }
 ]
