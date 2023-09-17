@@ -164,7 +164,7 @@
             "hideToolbar": "false",
             "allowSwipe": "false",
             "lockMenu": "false",
-            "allowTempTheme": "true",
+            "allowTempTheme": "false",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
                 "sx": 48,
@@ -177,16 +177,6 @@
                 "py": 0
             }
         }
-    },
-    {
-        "id": "79b0752b232538ad",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
     },
     {
         "id": "ec161e1aa15af52f",
@@ -359,26 +349,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "80eba6180c20c40d",
-        "type": "ui_group",
-        "name": "Tracker solaire",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "29bc257696ad9972",
-        "type": "ui_group",
-        "name": "Group 2",
-        "tab": "",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
         "id": "c6bb1eb5.edd3d",
         "type": "websocket-listener",
         "path": "/ws/publish",
@@ -389,16 +359,6 @@
         "type": "websocket-listener",
         "path": "/ws/receive",
         "wholemsg": "true"
-    },
-    {
-        "id": "d4b5416a.9c25f",
-        "type": "ui_group",
-        "name": "Floorplan test",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "14",
-        "collapse": false
     },
     {
         "id": "43d8c011dfdc997f",
@@ -425,76 +385,6 @@
         "port": "3306",
         "db": "GTCEP",
         "tz": ""
-    },
-    {
-        "id": "cfbca1bb.7a494",
-        "type": "ui_group",
-        "name": "Températures du processeur",
-        "tab": "",
-        "order": 5,
-        "disp": true,
-        "width": "24",
-        "collapse": true
-    },
-    {
-        "id": "2ad30a4638b21d0f",
-        "type": "ui_group",
-        "name": "Date",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "ce4e92ea0fb2caa8",
-        "type": "ui_group",
-        "name": "Filtrer les données",
-        "tab": "",
-        "order": 4,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "d3303baf3ada03ec",
-        "type": "ui_group",
-        "name": "Heure",
-        "tab": "",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "a2bc388f92cd61e6",
-        "type": "ui_group",
-        "name": "Minute",
-        "tab": "",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "271a70742962f215",
-        "type": "ui_group",
-        "name": "deltaP",
-        "tab": "bbfb72a5104d29b7",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "fc8b9c5230c3d097",
-        "type": "ui_group",
-        "name": "requete eco2mix",
-        "tab": "bbfb72a5104d29b7",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false
     },
     {
         "id": "c4ad40011fadd485",
@@ -559,46 +449,6 @@
         "disp": true,
         "width": "16",
         "collapse": true
-    },
-    {
-        "id": "f30d1ecd.61daa",
-        "type": "ui_group",
-        "name": "Temperature/ph monitor",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "ffd8e6f4.96dd38",
-        "type": "ui_group",
-        "name": "Water filtration",
-        "tab": "",
-        "order": 2,
-        "disp": true,
-        "width": "12",
-        "collapse": false
-    },
-    {
-        "id": "81a6484a.884828",
-        "type": "ui_group",
-        "name": "Lighting",
-        "tab": "",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "9b81cf0.836273",
-        "type": "ui_group",
-        "name": "Food Dispenser",
-        "tab": "",
-        "order": 4,
-        "disp": true,
-        "width": "6",
-        "collapse": false
     },
     {
         "id": "d41b83de71e38c79",
@@ -4652,9 +4502,7 @@
         "x": 1270,
         "y": 320,
         "wires": [
-            [
-                "4b8470452f4436de"
-            ]
+            []
         ]
     },
     {
@@ -4662,7 +4510,7 @@
         "type": "ui_template",
         "z": "801f4ef8c0c0ca9b",
         "d": true,
-        "group": "271a70742962f215",
+        "group": "",
         "name": "dp",
         "order": 8,
         "width": "16",
@@ -4674,50 +4522,6 @@
         "templateScope": "local",
         "x": 1430,
         "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4b8470452f4436de",
-        "type": "ui_chart",
-        "z": "801f4ef8c0c0ca9b",
-        "d": true,
-        "name": "chart dp",
-        "group": "271a70742962f215",
-        "order": 9,
-        "width": 0,
-        "height": 0,
-        "label": "chart dp2",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "10",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 1440,
-        "y": 320,
         "wires": [
             []
         ]
@@ -4743,7 +4547,7 @@
         "type": "ui_button",
         "z": "801f4ef8c0c0ca9b",
         "name": "",
-        "group": "271a70742962f215",
+        "group": "",
         "order": 7,
         "width": 0,
         "height": 0,
@@ -4776,51 +4580,6 @@
         "finalize": "",
         "libs": [],
         "x": 970,
-        "y": 460,
-        "wires": [
-            [
-                "a149116918812bb6"
-            ]
-        ]
-    },
-    {
-        "id": "a149116918812bb6",
-        "type": "ui_chart",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "chart dp slaow",
-        "group": "271a70742962f215",
-        "order": 9,
-        "width": 0,
-        "height": 0,
-        "label": "chart dp2 slow",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "10",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 1160,
         "y": 460,
         "wires": [
             []
@@ -4856,7 +4615,7 @@
         "type": "ui_chart",
         "z": "801f4ef8c0c0ca9b",
         "name": "time",
-        "group": "271a70742962f215",
+        "group": "",
         "order": 4,
         "width": 0,
         "height": 0,
@@ -4899,7 +4658,7 @@
         "type": "ui_chart",
         "z": "801f4ef8c0c0ca9b",
         "name": "delta p",
-        "group": "271a70742962f215",
+        "group": "",
         "order": 5,
         "width": 0,
         "height": 0,
@@ -4942,7 +4701,7 @@
         "type": "ui_chart",
         "z": "801f4ef8c0c0ca9b",
         "name": "ksi",
-        "group": "271a70742962f215",
+        "group": "",
         "order": 6,
         "width": 0,
         "height": 0,
@@ -4985,7 +4744,7 @@
         "type": "ui_button",
         "z": "801f4ef8c0c0ca9b",
         "name": "go",
-        "group": "271a70742962f215",
+        "group": "",
         "order": 7,
         "width": 0,
         "height": 0,
@@ -5283,7 +5042,7 @@
         "type": "debug",
         "z": "13de37cb61fc3ad2",
         "name": "sensor",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -9458,7 +9217,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "600",
+        "repeat": "1800",
         "crontab": "",
         "once": true,
         "onceDelay": "1",
@@ -9486,7 +9245,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 600,
+        "x": 920,
         "y": 540,
         "wires": []
     },
@@ -9506,8 +9265,8 @@
         "authType": "bearer",
         "senderr": false,
         "headers": [],
-        "x": 480,
-        "y": 180,
+        "x": 420,
+        "y": 200,
         "wires": [
             [
                 "3d6671eccf47240a"
@@ -9524,9 +9283,9 @@
         "height": 0,
         "name": "",
         "label": "carbon intensity",
-        "format": "{{msg.payload}}",
+        "format": "{{msg.payload}} ",
         "layout": "row-spread",
-        "x": 920,
+        "x": 960,
         "y": 140,
         "wires": []
     },
@@ -9541,11 +9300,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
-        "y": 180,
+        "x": 630,
+        "y": 200,
         "wires": [
             [
-                "42e955fdb64dd44f"
+                "42e955fdb64dd44f",
+                "7a818431fcf3f8d8"
             ],
             [
                 "1e36a1a99ffc1a77"
@@ -9575,7 +9335,6 @@
         "y": 420,
         "wires": [
             [
-                "ad2e622241249cba",
                 "f23f027a0b8b58e4"
             ]
         ]
@@ -9584,6 +9343,7 @@
         "id": "1e36a1a99ffc1a77",
         "type": "ui_text",
         "z": "d931280a91eab542",
+        "d": true,
         "group": "016964b9b18bce81",
         "order": 24,
         "width": 0,
@@ -9600,6 +9360,7 @@
         "id": "fd13d47a17b90c30",
         "type": "ui_text",
         "z": "d931280a91eab542",
+        "d": true,
         "group": "016964b9b18bce81",
         "order": 24,
         "width": 0,
@@ -9608,8 +9369,8 @@
         "label": "heure",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 930,
-        "y": 220,
+        "x": 1130,
+        "y": 140,
         "wires": []
     },
     {
@@ -9637,7 +9398,8 @@
         "y": 420,
         "wires": [
             [
-                "7bdb45f6e2c9b6b2"
+                "7bdb45f6e2c9b6b2",
+                "258083fccc953fbb"
             ]
         ]
     },
@@ -9645,7 +9407,7 @@
         "id": "f23f027a0b8b58e4",
         "type": "function",
         "z": "d931280a91eab542",
-        "name": "etat latest carbone",
+        "name": "etat historycarbone",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.history[0].carbonIntensity;\nmsg2.payload = msg.payload.history[1].carbonIntensity;\nmsg3.payload = msg.payload.history[2].carbonIntensity;\n//msg4.payload = msg.payload.[0];\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
         "noerr": 0,
@@ -9653,7 +9415,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 360,
+        "y": 420,
         "wires": [
             [
                 "a2c508d274e5833d"
@@ -9670,6 +9432,7 @@
         "id": "a2c508d274e5833d",
         "type": "ui_text",
         "z": "d931280a91eab542",
+        "d": true,
         "group": "016964b9b18bce81",
         "order": 24,
         "width": 0,
@@ -9678,14 +9441,15 @@
         "label": "carbon intensity",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 800,
-        "y": 300,
+        "x": 820,
+        "y": 340,
         "wires": []
     },
     {
         "id": "dcf20230b2cc22cb",
         "type": "ui_text",
         "z": "d931280a91eab542",
+        "d": true,
         "group": "016964b9b18bce81",
         "order": 24,
         "width": 0,
@@ -9694,12 +9458,82 @@
         "label": "carbon intensity",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 820,
-        "y": 360,
+        "x": 840,
+        "y": 420,
         "wires": []
     },
     {
         "id": "e2e5b63dccafcadf",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "d": true,
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 840,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "258083fccc953fbb",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown FR",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/power-breakdown/latest?zone=FR",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 340,
+        "y": 620,
+        "wires": [
+            [
+                "ad2e622241249cba",
+                "83bc8d9faed2973d"
+            ]
+        ]
+    },
+    {
+        "id": "83bc8d9faed2973d",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown",
+        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.powerProductionBreakdown.wind;\nmsg2.payload = msg.payload.powerProductionBreakdown.solar;\nmsg3.payload = msg.payload.powerProductionBreakdown.gas;\n//msg4.payload = msg.payload.[0];\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "d777d1b6cf51b89f",
+                "4c4e15ccead7a6c5"
+            ],
+            [
+                "0a697afef894fff0",
+                "b0d72ac318e6d5b0"
+            ],
+            [
+                "f48b9eaaeb7e5fb9",
+                "343a629fc33defe8"
+            ]
+        ]
+    },
+    {
+        "id": "d777d1b6cf51b89f",
         "type": "ui_text",
         "z": "d931280a91eab542",
         "group": "016964b9b18bce81",
@@ -9707,11 +9541,215 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "carbon intensity",
+        "label": "eolien",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 820,
-        "y": 420,
+        "x": 830,
+        "y": 600,
         "wires": []
+    },
+    {
+        "id": "0a697afef894fff0",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "solaire",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 830,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f48b9eaaeb7e5fb9",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 24,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "gaz",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 830,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "7a818431fcf3f8d8",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "label": "CO2 FR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 980,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4c4e15ccead7a6c5",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "label": "eolien  FR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1020,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b0d72ac318e6d5b0",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "label": "solaire  FR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1040,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "343a629fc33defe8",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "label": "gaz FR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 990,
+        "y": 680,
+        "wires": [
+            []
+        ]
     }
 ]
