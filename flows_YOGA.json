@@ -5713,8 +5713,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 360,
-        "y": 60,
+        "x": 180,
+        "y": 340,
         "wires": [
             [
                 "7b6bf02f07d13166"
@@ -5735,7 +5735,7 @@
         "correl": "",
         "expiry": "",
         "broker": "c4ad40011fadd485",
-        "x": 610,
+        "x": 1050,
         "y": 160,
         "wires": []
     },
@@ -5752,8 +5752,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 630,
-        "y": 60,
+        "x": 410,
+        "y": 340,
         "wires": []
     },
     {
@@ -5799,7 +5799,7 @@
         "topic": "",
         "payload": "ON",
         "payloadType": "str",
-        "x": 350,
+        "x": 830,
         "y": 120,
         "wires": [
             [
@@ -5828,8 +5828,8 @@
         "topic": "",
         "payload": "OFF",
         "payloadType": "str",
-        "x": 350,
-        "y": 160,
+        "x": 830,
+        "y": 200,
         "wires": [
             [
                 "c53f452e9e77496c"
@@ -5859,7 +5859,7 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 150,
+        "x": 670,
         "y": 160,
         "wires": [
             [
@@ -5917,7 +5917,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 420,
-        "y": 240,
+        "y": 260,
         "wires": []
     },
     {
@@ -5933,8 +5933,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 210,
-        "y": 400,
+        "x": 180,
+        "y": 420,
         "wires": [
             [
                 "52ad1b37b89bdc71"
@@ -5952,8 +5952,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 640,
-        "y": 420,
+        "x": 820,
+        "y": 460,
         "wires": [
             [
                 "cefc9adad453c524"
@@ -6387,8 +6387,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 80,
-        "y": 100,
+        "x": 380,
+        "y": 160,
         "wires": [
             [
                 "b74e0dd024672e91",
@@ -6411,14 +6411,14 @@
             }
         ],
         "repeat": "",
-        "crontab": "0 0-22 * * *",
+        "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 90,
-        "y": 40,
+        "x": 160,
+        "y": 200,
         "wires": [
             [
                 "ff3efd6328b76f9a"
@@ -6437,8 +6437,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 300,
-        "y": 200,
+        "x": 820,
+        "y": 160,
         "wires": []
     },
     {
@@ -6453,9 +6453,41 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 120,
+        "x": 540,
+        "y": 160,
         "wires": []
+    },
+    {
+        "id": "7a196f7232e4c3d5",
+        "type": "cronplus",
+        "z": "a21c4b8426a30f7f",
+        "name": "chaq heure + 2 sec",
+        "outputField": "payload",
+        "timeZone": "",
+        "persistDynamic": false,
+        "commandResponseMsgOutput": "output1",
+        "outputs": 1,
+        "options": [
+            {
+                "name": "schedule1",
+                "topic": "topic1",
+                "payloadType": "default",
+                "payload": "",
+                "expressionType": "cron",
+                "expression": "2 0 * * * ? *",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            }
+        ],
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "ff3efd6328b76f9a"
+            ]
+        ]
     },
     {
         "id": "17ce6d249432505f",
@@ -8206,19 +8238,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8256,25 +8288,25 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
         ],
         "topic": "3",
-        "x": 430,
+        "x": 410,
         "y": 160,
         "wires": [
             [
@@ -8306,19 +8338,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8356,19 +8388,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8406,19 +8438,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8456,19 +8488,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8506,19 +8538,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8556,19 +8588,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8606,19 +8638,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8656,19 +8688,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8706,19 +8738,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8756,19 +8788,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8806,19 +8838,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8856,19 +8888,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8906,19 +8938,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -8956,19 +8988,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9006,19 +9038,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9056,19 +9088,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9106,19 +9138,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9156,19 +9188,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9206,19 +9238,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9256,19 +9288,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9306,19 +9338,19 @@
         "options": [
             {
                 "label": "ON",
-                "value": "N",
+                "value": "ON",
                 "valueType": "str",
                 "color": "#009933"
             },
             {
                 "label": "OFF",
-                "value": "O",
+                "value": "OFF",
                 "valueType": "str",
                 "color": "#ff0000"
             },
             {
                 "label": "Compute",
-                "value": "A",
+                "value": "Compute",
                 "valueType": "str",
                 "color": "#0000ff"
             }
@@ -9329,41 +9361,6 @@
         "wires": [
             [
                 "5f6065eb82f9a7fa"
-            ]
-        ]
-    },
-    {
-        "id": "4fefdaaa53f4c774",
-        "type": "inject",
-        "z": "c72b4f57ca4915e9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 80,
-        "wires": [
-            [
-                "8c71e3ac389bd037",
-                "4969bbb4c9ef48a8",
-                "e02e0461e3ec9b41",
-                "a7e95973d24ec2d9",
-                "7feced3b57d3175c",
-                "551fefdc173e1391",
-                "3222094829ff40a1"
             ]
         ]
     },
@@ -9421,6 +9418,7 @@
         "id": "55ba5beb1f91a535",
         "type": "cronplus",
         "z": "c72b4f57ca4915e9",
+        "d": true,
         "name": "a minuit",
         "outputField": "payload",
         "timeZone": "",
@@ -9439,18 +9437,6 @@
                 "offset": "0",
                 "solarType": "all",
                 "solarEvents": "sunrise,sunset"
-            },
-            {
-                "name": "schedule2",
-                "topic": "topic2",
-                "payloadType": "str",
-                "payload": "go",
-                "expressionType": "cron",
-                "expression": "0 */60 * * * *",
-                "location": "",
-                "offset": "0",
-                "solarType": "all",
-                "solarEvents": "sunrise,sunset"
             }
         ],
         "x": 800,
@@ -9465,6 +9451,7 @@
         "id": "72de08905cfed673",
         "type": "change",
         "z": "c72b4f57ca4915e9",
+        "d": true,
         "name": "set scenario to  1",
         "rules": [
             {
@@ -9482,75 +9469,6 @@
         "reg": false,
         "x": 980,
         "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cebe7952ce2a7133",
-        "type": "cronplus",
-        "z": "c72b4f57ca4915e9",
-        "name": "a 1h",
-        "outputField": "payload",
-        "timeZone": "",
-        "persistDynamic": false,
-        "commandResponseMsgOutput": "output1",
-        "outputs": 1,
-        "options": [
-            {
-                "name": "schedule1",
-                "topic": "topic1 chrono",
-                "payloadType": "str",
-                "payload": "hour",
-                "expressionType": "cron",
-                "expression": "0 0 1 * * *",
-                "location": "",
-                "offset": "0",
-                "solarType": "all",
-                "solarEvents": "sunrise,sunset"
-            },
-            {
-                "name": "schedule2",
-                "topic": "topic2",
-                "payloadType": "str",
-                "payload": "go",
-                "expressionType": "cron",
-                "expression": "0 */60 * * * *",
-                "location": "",
-                "offset": "0",
-                "solarType": "all",
-                "solarEvents": "sunrise,sunset"
-            }
-        ],
-        "x": 790,
-        "y": 100,
-        "wires": [
-            [
-                "d004b549095b1b8b"
-            ]
-        ]
-    },
-    {
-        "id": "d004b549095b1b8b",
-        "type": "change",
-        "z": "c72b4f57ca4915e9",
-        "name": "set scenario to  2",
-        "rules": [
-            {
-                "t": "set",
-                "p": "scenario",
-                "pt": "global",
-                "to": "scenario2",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 980,
-        "y": 100,
         "wires": [
             []
         ]
@@ -10104,6 +10022,1057 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "830c367dbe3cddb5",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 6",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario6",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 340,
+        "wires": [
+            [
+                "551fefdc173e1391"
+            ]
+        ]
+    },
+    {
+        "id": "697b8dab739e7534",
+        "type": "inject",
+        "z": "c72b4f57ca4915e9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 60,
+        "y": 520,
+        "wires": [
+            [
+                "830c367dbe3cddb5",
+                "a28295c33530bbf4",
+                "a43c3b2b025336cb",
+                "2385afd84aaea702",
+                "38dcba9cf76b2015",
+                "b3ea0f5ba623abf5",
+                "36b91e405234fec9",
+                "8f8d91e785db96db",
+                "58c4be7bf0189962",
+                "b915c73d1832d58d",
+                "987d5a72f14b9203",
+                "c896d774036293c9",
+                "2ea265f402bc7298",
+                "90bfefce96d035ea",
+                "44d3437face36c5c",
+                "da010351ee6e158f",
+                "dcc051e74fa4599d",
+                "70387756015b5ee4",
+                "460ffa79fee3facf",
+                "197cd56195295657",
+                "48a03bb6296e7d24",
+                "7db8840cc73faa9d",
+                "fd379075743e32b1",
+                "8c6af0c0c66a9ad5"
+            ]
+        ]
+    },
+    {
+        "id": "a28295c33530bbf4",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario1",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 40,
+        "wires": [
+            [
+                "8c71e3ac389bd037"
+            ]
+        ]
+    },
+    {
+        "id": "a43c3b2b025336cb",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario2",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "4969bbb4c9ef48a8"
+            ]
+        ]
+    },
+    {
+        "id": "2385afd84aaea702",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 3",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario3",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "e02e0461e3ec9b41"
+            ]
+        ]
+    },
+    {
+        "id": "38dcba9cf76b2015",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario4",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "a7e95973d24ec2d9"
+            ]
+        ]
+    },
+    {
+        "id": "b3ea0f5ba623abf5",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario5",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 280,
+        "wires": [
+            [
+                "7feced3b57d3175c"
+            ]
+        ]
+    },
+    {
+        "id": "b915c73d1832d58d",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 10",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario10",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 560,
+        "wires": [
+            [
+                "1784db644e431d3c"
+            ]
+        ]
+    },
+    {
+        "id": "36b91e405234fec9",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 7",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario7",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 400,
+        "wires": [
+            [
+                "3222094829ff40a1"
+            ]
+        ]
+    },
+    {
+        "id": "8f8d91e785db96db",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 8",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario8",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 460,
+        "wires": [
+            [
+                "3e6c4a1a9e4a7123"
+            ]
+        ]
+    },
+    {
+        "id": "58c4be7bf0189962",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 9",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario9",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 500,
+        "wires": [
+            [
+                "d22cbaa1c2650cfd"
+            ]
+        ]
+    },
+    {
+        "id": "2ea265f402bc7298",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 13",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario13",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 700,
+        "wires": [
+            [
+                "8f95bee877fc98fd"
+            ]
+        ]
+    },
+    {
+        "id": "987d5a72f14b9203",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 11",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario11",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 600,
+        "wires": [
+            [
+                "62efe42d01e31651"
+            ]
+        ]
+    },
+    {
+        "id": "c896d774036293c9",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 12",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario12",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "8bf44c70a348230c"
+            ]
+        ]
+    },
+    {
+        "id": "90bfefce96d035ea",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 14",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario14",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 740,
+        "wires": [
+            [
+                "1bf383c650dd69b3"
+            ]
+        ]
+    },
+    {
+        "id": "44d3437face36c5c",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 15",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario15",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 780,
+        "wires": [
+            [
+                "70ec8010312191ec"
+            ]
+        ]
+    },
+    {
+        "id": "da010351ee6e158f",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 16",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario16",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 820,
+        "wires": [
+            [
+                "34bbb5021a490fc4"
+            ]
+        ]
+    },
+    {
+        "id": "dcc051e74fa4599d",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 17",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario17",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 860,
+        "wires": [
+            [
+                "a86217de6b1e0ba7"
+            ]
+        ]
+    },
+    {
+        "id": "70387756015b5ee4",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 18",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario18",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 900,
+        "wires": [
+            [
+                "3c9b09085c12fe44"
+            ]
+        ]
+    },
+    {
+        "id": "460ffa79fee3facf",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 19",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario19",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 940,
+        "wires": [
+            [
+                "c7d9014699093cf2"
+            ]
+        ]
+    },
+    {
+        "id": "197cd56195295657",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 20",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario20",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 980,
+        "wires": [
+            [
+                "f23a1214f7f19be8"
+            ]
+        ]
+    },
+    {
+        "id": "48a03bb6296e7d24",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 21",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario21",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1020,
+        "wires": [
+            [
+                "54c0aa6cd89521eb"
+            ]
+        ]
+    },
+    {
+        "id": "7db8840cc73faa9d",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 22",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario22",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1060,
+        "wires": [
+            [
+                "452acc3d2fa2a821"
+            ]
+        ]
+    },
+    {
+        "id": "fd379075743e32b1",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 23",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario23",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1100,
+        "wires": [
+            [
+                "c0e6461f8e8efdd2"
+            ]
+        ]
+    },
+    {
+        "id": "8c6af0c0c66a9ad5",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set 24",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "scenario24",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1140,
+        "wires": [
+            [
+                "2e049675ece2cb2f"
+            ]
+        ]
+    },
+    {
+        "id": "ab08c9b4ed02022c",
+        "type": "cronplus",
+        "z": "c72b4f57ca4915e9",
+        "name": " cron generale",
+        "outputField": "payload",
+        "timeZone": "",
+        "persistDynamic": false,
+        "commandResponseMsgOutput": "output1",
+        "outputs": 1,
+        "options": [
+            {
+                "name": "schedule1",
+                "topic": "topic1 chrono",
+                "payloadType": "global",
+                "payload": "scenario1",
+                "expressionType": "cron",
+                "expression": "0 01 * * *",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule2",
+                "topic": "topic2",
+                "payloadType": "global",
+                "payload": "scenario2",
+                "expressionType": "cron",
+                "expression": "0 02 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule3",
+                "topic": "topic3",
+                "payloadType": "global",
+                "payload": "scenario3",
+                "expressionType": "cron",
+                "expression": "0 03 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule4",
+                "topic": "topic4",
+                "payloadType": "global",
+                "payload": "scenario4",
+                "expressionType": "cron",
+                "expression": "0 04 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule5",
+                "topic": "topic5",
+                "payloadType": "global",
+                "payload": "scenario5",
+                "expressionType": "cron",
+                "expression": "0 05 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule6",
+                "topic": "topic6",
+                "payloadType": "global",
+                "payload": "scenario6",
+                "expressionType": "cron",
+                "expression": "0 06 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule7",
+                "topic": "topic7",
+                "payloadType": "global",
+                "payload": "scenario7",
+                "expressionType": "cron",
+                "expression": "0 07 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule8",
+                "topic": "topic8",
+                "payloadType": "global",
+                "payload": "scenario8",
+                "expressionType": "cron",
+                "expression": "0 08 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule9",
+                "topic": "topic9",
+                "payloadType": "global",
+                "payload": "scenario9",
+                "expressionType": "cron",
+                "expression": "0 09 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule10",
+                "topic": "topic10",
+                "payloadType": "global",
+                "payload": "scenario10",
+                "expressionType": "cron",
+                "expression": "0 10 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule11",
+                "topic": "topic11",
+                "payloadType": "global",
+                "payload": "scenario11",
+                "expressionType": "cron",
+                "expression": "0 11 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule12",
+                "topic": "topic12",
+                "payloadType": "global",
+                "payload": "scenario12",
+                "expressionType": "cron",
+                "expression": "0 12 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule13",
+                "topic": "topic13",
+                "payloadType": "global",
+                "payload": "scenario13",
+                "expressionType": "cron",
+                "expression": "0 13 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule14",
+                "topic": "topic14",
+                "payloadType": "global",
+                "payload": "scenario14",
+                "expressionType": "cron",
+                "expression": "0 14 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule15",
+                "topic": "topic15",
+                "payloadType": "global",
+                "payload": "scenario15",
+                "expressionType": "cron",
+                "expression": "0 15 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule16",
+                "topic": "topic16",
+                "payloadType": "global",
+                "payload": "scenario16",
+                "expressionType": "cron",
+                "expression": "0 16 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule17",
+                "topic": "topic17",
+                "payloadType": "global",
+                "payload": "scenario17",
+                "expressionType": "cron",
+                "expression": "0 17 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule18",
+                "topic": "topic18",
+                "payloadType": "global",
+                "payload": "scenario18",
+                "expressionType": "cron",
+                "expression": "0 18 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule19",
+                "topic": "topic19",
+                "payloadType": "global",
+                "payload": "scenario19",
+                "expressionType": "cron",
+                "expression": "0 19 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule20",
+                "topic": "topic20",
+                "payloadType": "global",
+                "payload": "scenario20",
+                "expressionType": "cron",
+                "expression": "0 20 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule21",
+                "topic": "topic21",
+                "payloadType": "global",
+                "payload": "scenario21",
+                "expressionType": "cron",
+                "expression": "0 21 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule22",
+                "topic": "topic22",
+                "payloadType": "global",
+                "payload": "scenario22",
+                "expressionType": "cron",
+                "expression": "0 22 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule23",
+                "topic": "topic23",
+                "payloadType": "global",
+                "payload": "scenario23",
+                "expressionType": "cron",
+                "expression": "0 23 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            },
+            {
+                "name": "schedule24",
+                "topic": "topic24",
+                "payloadType": "global",
+                "payload": "scenario24",
+                "expressionType": "cron",
+                "expression": "0 24 * * * ",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            }
+        ],
+        "x": 800,
+        "y": 280,
+        "wires": [
+            [
+                "ad7a05848f589e64",
+                "760cc170a40470e9"
+            ]
+        ]
+    },
+    {
+        "id": "ad7a05848f589e64",
+        "type": "change",
+        "z": "c72b4f57ca4915e9",
+        "name": "set scenario",
+        "rules": [
+            {
+                "t": "set",
+                "p": "scenario",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "760cc170a40470e9",
+        "type": "debug",
+        "z": "c72b4f57ca4915e9",
+        "name": "debug 67",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 980,
+        "y": 220,
+        "wires": []
     },
     {
         "id": "cc8073ae8d857758",
