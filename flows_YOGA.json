@@ -416,30 +416,8 @@
         "password": "jul"
     },
     {
-        "id": "2e95ee0379714654",
-        "type": "ui_group",
-        "d": true,
-        "name": "eco2mix",
-        "tab": "988df4f2cc6c55bd",
-        "order": 5,
-        "disp": true,
-        "width": "16",
-        "collapse": true
-    },
-    {
         "id": "d41b83de71e38c79",
         "type": "sme-connector"
-    },
-    {
-        "id": "134107bd092c9208",
-        "type": "ui_group",
-        "d": true,
-        "name": "Saisie Ecogeste ",
-        "tab": "988df4f2cc6c55bd",
-        "order": 3,
-        "disp": true,
-        "width": "8",
-        "collapse": false
     },
     {
         "id": "b4c867ea06f5361b",
@@ -1445,7 +1423,7 @@
         "id": "9938406b62001eea",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 8,
         "width": 10,
         "height": 1
@@ -1454,7 +1432,7 @@
         "id": "2f40c7421e8286a8",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 9,
         "width": 10,
         "height": 1
@@ -1463,7 +1441,7 @@
         "id": "4e577101d43dc8fc",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 10,
         "width": 10,
         "height": 1
@@ -1472,7 +1450,7 @@
         "id": "a2b24a4c6bcbe2b7",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 11,
         "width": 10,
         "height": 1
@@ -1481,7 +1459,7 @@
         "id": "54533a70badfee4d",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 12,
         "width": 10,
         "height": 1
@@ -1490,7 +1468,7 @@
         "id": "baf735b9f675a637",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 13,
         "width": 10,
         "height": 1
@@ -2480,7 +2458,7 @@
         "id": "3246558131fcde77",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 8,
         "width": 10,
         "height": 1
@@ -2489,7 +2467,7 @@
         "id": "69eb9c61b30fe349",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 9,
         "width": 10,
         "height": 1
@@ -2498,7 +2476,7 @@
         "id": "1a11106b047e2860",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 10,
         "width": 10,
         "height": 1
@@ -2507,7 +2485,7 @@
         "id": "e92a4d691cad90ea",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 11,
         "width": 10,
         "height": 1
@@ -2516,7 +2494,7 @@
         "id": "9692cc5938c71007",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 12,
         "width": 10,
         "height": 1
@@ -2525,7 +2503,7 @@
         "id": "f937d7ac9403fa7a",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 13,
         "width": 10,
         "height": 1
@@ -2534,7 +2512,7 @@
         "id": "10be46959aac248a",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "134107bd092c9208",
+        "group": "",
         "order": 29,
         "width": 1,
         "height": 1
@@ -8510,7 +8488,8 @@
         "y": 260,
         "wires": [
             [
-                "276dcab622bed177"
+                "276dcab622bed177",
+                "b9b71a2a15cba9c1"
             ]
         ]
     },
@@ -8548,7 +8527,7 @@
         "senderr": false,
         "headers": [],
         "x": 420,
-        "y": 200,
+        "y": 220,
         "wires": [
             [
                 "3d6671eccf47240a"
@@ -8564,10 +8543,10 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "carbon intensity",
+        "label": "carbon intensity FR",
         "format": "{{msg.payload}} ",
         "layout": "row-spread",
-        "x": 960,
+        "x": 970,
         "y": 140,
         "wires": []
     },
@@ -8651,8 +8630,8 @@
         "label": "heure",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1130,
-        "y": 140,
+        "x": 1110,
+        "y": 220,
         "wires": []
     },
     {
@@ -8905,7 +8884,9 @@
         "x": 980,
         "y": 100,
         "wires": [
-            []
+            [
+                "1cfbe318921365a5"
+            ]
         ]
     },
     {
@@ -9036,5 +9017,146 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "1cfbe318921365a5",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "debug 68",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b9b71a2a15cba9c1",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": " lastest  CO2 DE",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=DE",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "b27649f3940930bd",
+                "8c1c1fcc8f6390f3"
+            ]
+        ]
+    },
+    {
+        "id": "b27649f3940930bd",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "etat latest carbone",
+        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "1657601942a856f8",
+                "8e165643b9d3d3d8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1657601942a856f8",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "d": true,
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "CO2 DE",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 860,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8e165643b9d3d3d8",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity DE",
+        "format": "{{msg.payload}} ",
+        "layout": "row-spread",
+        "x": 930,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "8c1c1fcc8f6390f3",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "debug 69",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 540,
+        "y": 340,
+        "wires": []
     }
 ]

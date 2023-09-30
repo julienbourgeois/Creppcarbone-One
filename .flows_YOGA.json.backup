@@ -1,26 +1,10 @@
 [
     {
-        "id": "2b544a037b25f120",
-        "type": "tab",
-        "label": "req eco2mix qui marche",
-        "disabled": true,
-        "info": "API pour interroger ECO2MIX \r\nva recuperer 5 valeurs de l'API ECO2MIX, \r\nqui envoie toutes les heures \r\nles 4 valeurs par quart d'heure\r\nva les charger dans la base mysql locale",
-        "env": []
-    },
-    {
         "id": "ddd0105b04875be6",
         "type": "tab",
         "label": "lecture fichier  KSI csv",
         "disabled": true,
         "info": "lit le fichier de simulation créé par Bernard\r\nle rentre dans mysql (désactivé car 1 fois suffit)\r\njoue la simulation a l'ecran\r\n",
-        "env": []
-    },
-    {
-        "id": "801f4ef8c0c0ca9b",
-        "type": "tab",
-        "label": "lecture fichier echantillons",
-        "disabled": true,
-        "info": "",
         "env": []
     },
     {
@@ -44,14 +28,6 @@
         "label": "liste appareil consommateur",
         "disabled": true,
         "info": "gere le choix de l'appareil consommateur\r\n",
-        "env": []
-    },
-    {
-        "id": "f52a234fc0ec8d0e",
-        "type": "tab",
-        "label": "ecogeste planif",
-        "disabled": true,
-        "info": "planification de l'armement de la prise",
         "env": []
     },
     {
@@ -440,30 +416,8 @@
         "password": "jul"
     },
     {
-        "id": "2e95ee0379714654",
-        "type": "ui_group",
-        "d": true,
-        "name": "eco2mix",
-        "tab": "988df4f2cc6c55bd",
-        "order": 5,
-        "disp": true,
-        "width": "16",
-        "collapse": true
-    },
-    {
         "id": "d41b83de71e38c79",
         "type": "sme-connector"
-    },
-    {
-        "id": "134107bd092c9208",
-        "type": "ui_group",
-        "d": true,
-        "name": "Saisie Ecogeste ",
-        "tab": "988df4f2cc6c55bd",
-        "order": 3,
-        "disp": true,
-        "width": "8",
-        "collapse": false
     },
     {
         "id": "b4c867ea06f5361b",
@@ -1469,7 +1423,7 @@
         "id": "9938406b62001eea",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 8,
         "width": 10,
         "height": 1
@@ -1478,7 +1432,7 @@
         "id": "2f40c7421e8286a8",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 9,
         "width": 10,
         "height": 1
@@ -1487,7 +1441,7 @@
         "id": "4e577101d43dc8fc",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 10,
         "width": 10,
         "height": 1
@@ -1496,7 +1450,7 @@
         "id": "a2b24a4c6bcbe2b7",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 11,
         "width": 10,
         "height": 1
@@ -1505,7 +1459,7 @@
         "id": "54533a70badfee4d",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 12,
         "width": 10,
         "height": 1
@@ -1514,7 +1468,7 @@
         "id": "baf735b9f675a637",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 13,
         "width": 10,
         "height": 1
@@ -2504,7 +2458,7 @@
         "id": "3246558131fcde77",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 8,
         "width": 10,
         "height": 1
@@ -2513,7 +2467,7 @@
         "id": "69eb9c61b30fe349",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 9,
         "width": 10,
         "height": 1
@@ -2522,7 +2476,7 @@
         "id": "1a11106b047e2860",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 10,
         "width": 10,
         "height": 1
@@ -2531,7 +2485,7 @@
         "id": "e92a4d691cad90ea",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 11,
         "width": 10,
         "height": 1
@@ -2540,7 +2494,7 @@
         "id": "9692cc5938c71007",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 12,
         "width": 10,
         "height": 1
@@ -2549,7 +2503,7 @@
         "id": "f937d7ac9403fa7a",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "2e95ee0379714654",
+        "group": "",
         "order": 13,
         "width": 10,
         "height": 1
@@ -2558,7 +2512,7 @@
         "id": "10be46959aac248a",
         "type": "ui_spacer",
         "name": "spacer",
-        "group": "134107bd092c9208",
+        "group": "",
         "order": 29,
         "width": 1,
         "height": 1
@@ -2667,705 +2621,6 @@
         "type": "chronos-config",
         "name": "gg",
         "sunPositions": []
-    },
-    {
-        "id": "a92d03ad9027fe25",
-        "type": "ui_text_input",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "label": "date recupérée",
-        "tooltip": "",
-        "group": "2e95ee0379714654",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 820,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "16ad42d1e7a614b8",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": "function 12",
-        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6=4;\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg1.payload = msg.payload.records[msg6].fields.date;\nmsg2.payload = msg.payload.records[msg6].fields.heure;\nmsg3.payload = msg.payload.records[msg6].fields.solaire;\nmsg4.payload = msg.payload.records[msg6].fields.taux_co2;\nmsg5.payload = msg.payload.records[msg6].fields.eolien;\nreturn [msg1, msg2, msg3, msg4, msg5];\nreturn msg;",
-        "outputs": 5,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 310,
-        "y": 180,
-        "wires": [
-            [
-                "a85c8d76e20727c7",
-                "a92d03ad9027fe25"
-            ],
-            [
-                "56adfca7595680bb",
-                "aa43769c2c6587d5"
-            ],
-            [
-                "73bd9f6d3609402b",
-                "4e0d0649f64455b2",
-                "e72320d6bfc1babb"
-            ],
-            [
-                "4f3043bb911952e2",
-                "777c9fdee5e533b9",
-                "3181de8b8c5fc0f4"
-            ],
-            [
-                "c02eaf7000142705",
-                "40c134ff209853e2"
-            ]
-        ]
-    },
-    {
-        "id": "a85c8d76e20727c7",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "date",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 630,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "56adfca7595680bb",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "heure",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 630,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "73bd9f6d3609402b",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "solaire",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 650,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "4f3043bb911952e2",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "co2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 670,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "c02eaf7000142705",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "eolien",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 630,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "aa43769c2c6587d5",
-        "type": "ui_text_input",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "label": "heure récupérée",
-        "tooltip": "",
-        "group": "2e95ee0379714654",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 840,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4e0d0649f64455b2",
-        "type": "ui_text_input",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "label": "solaire récupéré",
-        "tooltip": "",
-        "group": "2e95ee0379714654",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 840,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "777c9fdee5e533b9",
-        "type": "ui_text_input",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "label": "co2 récupéré",
-        "tooltip": "",
-        "group": "2e95ee0379714654",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 790,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "40c134ff209853e2",
-        "type": "ui_text_input",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "label": "eolien récupéré",
-        "tooltip": "",
-        "group": "2e95ee0379714654",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 800,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "39c240b644513144",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "debug 23",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 360,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "645946e5797e655e",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": "preparer la repquete eco2mix",
-        "func": "var d = new Date();\nvar day = d.getDate() ; //day as a number 1 -31\nvar weekday = d.getDay() ; //-weekday as a number  0-6\nvar month = d.getMonth(); // month as a number 0-11\nmonth = month+1;\n//month = 6;\nvar year = d.getFullYear() ;//year as a four digit number (yyyy)\nvar hours = d.getHours(); //the hour (0-23)\nvar minutes = d.getMinutes(); //-the minute (0-59)\nvar seconds = d.getSeconds(); //-the seconds (0-59)\nvar cal= year+\"-\"+month+\"-\"+day;\nvar hd = hours-3;\nvar hf = hours-2 ;\nvar addr = \"https://odre.opendatasoft.com/api/records/1.0/search/\";\nvar data = \"?dataset=eco2mix-national-tr&q=date_heure%3A%5B\";\n//var dated = \"2023-05-31\"; // date du debut\n//var heured = \"T17%3A00%3A00Z\";\nvar finheured = \"%3A00%3A00Z\";\nvar to = \"+TO+\";\n//var datef = \"2023-05-31\"; //date de fin\n//var heuref = \"T18%3A00%3A00Z\";\nvar rows = \"%5D&rows=10\"; // Row\nvar facet = \"&facet=nature&facet=date_heure&refine.date_heure=2023\";\n\nmsg.method=\"get\";\nmsg.url=addr+data+cal+\"T\"+hd+finheured+to+cal+\"T\"+hf+finheured+rows+facet;\nmsg.payload = cal;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 40,
-        "wires": [
-            [
-                "3087c366221fb1b0"
-            ]
-        ]
-    },
-    {
-        "id": "e72320d6bfc1babb",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": "function 17",
-        "func": "\nvar a;\na=msg.payload;\nif (a < 40) {\n    msg.payload =0;\n}else {\n    msg.payload =10;\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 630,
-        "y": 400,
-        "wires": [
-            [
-                "ee39249915a47f45"
-            ]
-        ]
-    },
-    {
-        "id": "ee39249915a47f45",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "debug 24",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 760,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "3181de8b8c5fc0f4",
-        "type": "switch",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "gte",
-                "v": "50",
-                "vt": "str"
-            },
-            {
-                "t": "lt",
-                "v": "50",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 670,
-        "y": 360,
-        "wires": [
-            [
-                "d0c8b180ab902986"
-            ],
-            [
-                "6a2b5a97742036fd"
-            ]
-        ]
-    },
-    {
-        "id": "d0c8b180ab902986",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "plus 50",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1000,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "6a2b5a97742036fd",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "moins 50",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 1020,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "063620ba72291e20",
-        "type": "inject",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3600",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 90,
-        "y": 40,
-        "wires": [
-            [
-                "645946e5797e655e",
-                "77b2d193a5652d7c"
-            ]
-        ]
-    },
-    {
-        "id": "9e4c535179591fcd",
-        "type": "mysql",
-        "z": "2b544a037b25f120",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 400,
-        "y": 340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "79bcb9ff1b1f7b54",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": " querry complet 2",
-        "func": "var msg1 ;\nvar msg2;\nvar msg3;\nvar msg4;\nvar msg5;\n//var msg2 = {};\n//var msg3 = {};\n//var msg4 = {};\n//var msg5 = {};\n\n//let count = 5\n//for (let x = 0; x < count; x++) {\n  var x =2;\n    msg1 = msg.payload.records[x].fields.date;\n    msg2 = msg.payload.records[x].fields.heure;\n    msg3= msg.payload.records[x].fields.solaire;\n    msg4 = msg.payload.records[x].fields.taux_co2;\n    msg5 = msg.payload.records[x].fields.eolien;\n//var P1 = msg1.split(\"-\")[0];\n//var P2 = msg1.split(\"-\")[1];\n//var P3 = msg1.split(\"-\")[2];\n//var P4 = msg2.split(\":\")[0];\n//var P5 = msg2.split(\":\" )[1];\n//var P6 = P1+P2+P3+P4+P5+\"00\";\n    var query = \"INSERT INTO eco2mixreel (datetimer,eolien,solaire,CO2) VALUES (\" + msg1.split(\"-\")[0] + msg1.split(\"-\")[1] + msg1.split(\"-\")[2] + msg2.split(\":\")[0] + msg2.split(\":\")[1] + \"00\" +\", \" + msg5+ \", \" + msg3+ \", \" + msg4 + \")\";\n    msg.topic = query;\nreturn msg;\n\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 320,
-        "wires": [
-            [
-                "9e4c535179591fcd"
-            ]
-        ]
-    },
-    {
-        "id": "3087c366221fb1b0",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "debug 34",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 540,
-        "y": 20,
-        "wires": []
-    },
-    {
-        "id": "9db846d0a16befd3",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": " querry complet 0",
-        "func": "var msg1 ;\nvar msg2;\nvar msg3;\nvar msg4;\nvar msg5;\n//var msg2 = {};\n//var msg3 = {};\n//var msg4 = {};\n//var msg5 = {};\n\n//let count = 5\n//for (let x = 0; x < count; x++) {\n  var x =0;\n    msg1 = msg.payload.records[x].fields.date;\n    msg2 = msg.payload.records[x].fields.heure;\n    msg3= msg.payload.records[x].fields.solaire;\n    msg4 = msg.payload.records[x].fields.taux_co2;\n    msg5 = msg.payload.records[x].fields.eolien;\n//var P1 = msg1.split(\"-\")[0];\n//var P2 = msg1.split(\"-\")[1];\n//var P3 = msg1.split(\"-\")[2];\n//var P4 = msg2.split(\":\")[0];\n//var P5 = msg2.split(\":\" )[1];\n//var P6 = P1+P2+P3+P4+P5+\"00\";\n    var query = \"INSERT INTO eco2mixreel (datetimer,eolien,solaire,CO2) VALUES (\" + msg1.split(\"-\")[0] + msg1.split(\"-\")[1] + msg1.split(\"-\")[2] + msg2.split(\":\")[0] + msg2.split(\":\")[1] + \"00\" +\", \" + msg5+ \", \" + msg3+ \", \" + msg4 + \")\";\n    msg.topic = query;\nreturn msg;\n\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 240,
-        "wires": [
-            [
-                "9e4c535179591fcd"
-            ]
-        ]
-    },
-    {
-        "id": "5c274f2f8db44e93",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": " querry complet 1",
-        "func": "var msg1 ;\nvar msg2;\nvar msg3;\nvar msg4;\nvar msg5;\n//var msg2 = {};\n//var msg3 = {};\n//var msg4 = {};\n//var msg5 = {};\n\n//let count = 5\n//for (let x = 0; x < count; x++) {\n  var x =1;\n    msg1 = msg.payload.records[x].fields.date;\n    msg2 = msg.payload.records[x].fields.heure;\n    msg3= msg.payload.records[x].fields.solaire;\n    msg4 = msg.payload.records[x].fields.taux_co2;\n    msg5 = msg.payload.records[x].fields.eolien;\n//var P1 = msg1.split(\"-\")[0];\n//var P2 = msg1.split(\"-\")[1];\n//var P3 = msg1.split(\"-\")[2];\n//var P4 = msg2.split(\":\")[0];\n//var P5 = msg2.split(\":\" )[1];\n//var P6 = P1+P2+P3+P4+P5+\"00\";\n    var query = \"INSERT INTO eco2mixreel (datetimer,eolien,solaire,CO2) VALUES (\" + msg1.split(\"-\")[0] + msg1.split(\"-\")[1] + msg1.split(\"-\")[2] + msg2.split(\":\")[0] + msg2.split(\":\")[1] + \"00\" +\", \" + msg5+ \", \" + msg3+ \", \" + msg4 + \")\";\n    msg.topic = query;\nreturn msg;\n\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 280,
-        "wires": [
-            [
-                "9e4c535179591fcd"
-            ]
-        ]
-    },
-    {
-        "id": "6b064507054f49d0",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": " querry complet 3",
-        "func": "var msg1 ;\nvar msg2;\nvar msg3;\nvar msg4;\nvar msg5;\n//var msg2 = {};\n//var msg3 = {};\n//var msg4 = {};\n//var msg5 = {};\n\n//let count = 5\n//for (let x = 0; x < count; x++) {\n  var x =3;\n    msg1 = msg.payload.records[x].fields.date;\n    msg2 = msg.payload.records[x].fields.heure;\n    msg3= msg.payload.records[x].fields.solaire;\n    msg4 = msg.payload.records[x].fields.taux_co2;\n    msg5 = msg.payload.records[x].fields.eolien;\n//var P1 = msg1.split(\"-\")[0];\n//var P2 = msg1.split(\"-\")[1];\n//var P3 = msg1.split(\"-\")[2];\n//var P4 = msg2.split(\":\")[0];\n//var P5 = msg2.split(\":\" )[1];\n//var P6 = P1+P2+P3+P4+P5+\"00\";\n    var query = \"INSERT INTO eco2mixreel (datetimer,eolien,solaire,CO2) VALUES (\" + msg1.split(\"-\")[0] + msg1.split(\"-\")[1] + msg1.split(\"-\")[2] + msg2.split(\":\")[0] + msg2.split(\":\")[1] + \"00\" +\", \" + msg5+ \", \" + msg3+ \", \" + msg4 + \")\";\n    msg.topic = query;\nreturn msg;\n\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 360,
-        "wires": [
-            [
-                "9e4c535179591fcd"
-            ]
-        ]
-    },
-    {
-        "id": "cf8c20fbeae9b796",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": " querry complet 4",
-        "func": "var msg1 ;\nvar msg2;\nvar msg3;\nvar msg4;\nvar msg5;\n//var msg2 = {};\n//var msg3 = {};\n//var msg4 = {};\n//var msg5 = {};\n\n//let count = 5\n//for (let x = 0; x < count; x++) {\n  var x =4;\n    msg1 = msg.payload.records[x].fields.date;\n    msg2 = msg.payload.records[x].fields.heure;\n    msg3= msg.payload.records[x].fields.solaire;\n    msg4 = msg.payload.records[x].fields.taux_co2;\n    msg5 = msg.payload.records[x].fields.eolien;\n//var P1 = msg1.split(\"-\")[0];\n//var P2 = msg1.split(\"-\")[1];\n//var P3 = msg1.split(\"-\")[2];\n//var P4 = msg2.split(\":\")[0];\n//var P5 = msg2.split(\":\" )[1];\n//var P6 = P1+P2+P3+P4+P5+\"00\";\n    var query = \"INSERT INTO eco2mixreel (datetimer,eolien,solaire,CO2) VALUES (\" + msg1.split(\"-\")[0] + msg1.split(\"-\")[1] + msg1.split(\"-\")[2] + msg2.split(\":\")[0] + msg2.split(\":\")[1] + \"00\" +\", \" + msg5+ \", \" + msg3+ \", \" + msg4 + \")\";\n    msg.topic = query;\nreturn msg;\n\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 400,
-        "wires": [
-            [
-                "9e4c535179591fcd"
-            ]
-        ]
-    },
-    {
-        "id": "ade8c3af90f6848c",
-        "type": "inject",
-        "z": "2b544a037b25f120",
-        "name": "SELECT",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "SELECT DISTINCT CO2,datetimer FROM eco2mixreel WHERE datetimer >0 ORDER BY datetimer ASC;",
-        "payload": "",
-        "payloadType": "date",
-        "x": 80,
-        "y": 480,
-        "wires": [
-            [
-                "bd1b29ebc5224cec"
-            ]
-        ]
-    },
-    {
-        "id": "5bcb6d99caf01176",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "debug 38",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 440,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "15c86c1c8284e0b8",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": "prepareHtml",
-        "func": "var temp = {};\nvar html = \"<table width='100%'><tr><td width='75%'>Date</td><td width='25%'>CO2</td></tr>\";\nfor(var i in msg.payload)\n{\n    temp = msg.payload[i];\n    html += \"<tr><td>\"+temp.datetimer+\"</td><td>\"+temp.CO2+\"</td></tr>\";\n}\nhtml += \"</table>\";\nmsg.payload = html;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 490,
-        "y": 660,
-        "wires": [
-            [
-                "1c1fae585061312c"
-            ]
-        ]
-    },
-    {
-        "id": "1c1fae585061312c",
-        "type": "ui_template",
-        "z": "2b544a037b25f120",
-        "group": "2e95ee0379714654",
-        "name": "result C02",
-        "order": 7,
-        "width": 6,
-        "height": 6,
-        "format": "<div ng-bind-html=\"msg.payload\"></div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 690,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ccb5b8ce0c71bc6a",
-        "type": "function",
-        "z": "2b544a037b25f120",
-        "name": "prepare chart",
-        "func": "var temp = {};\nvar data = [];\n\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = { \"x\": temp.datetimer, \"y\": temp.CO2 };\n}\n\nvar chart = [{\n    \"series\": [\"CO2\"],\n    \"data\": [\n        data\n    ]\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 503.1903381347656,
-        "y": 511.81817626953125,
-        "wires": [
-            [
-                "5b9b045b5de70c83"
-            ]
-        ]
-    },
-    {
-        "id": "5b9b045b5de70c83",
-        "type": "ui_chart",
-        "z": "2b544a037b25f120",
-        "name": "",
-        "group": "2e95ee0379714654",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "label": "chart C022",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "dd HH:mm",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "",
-        "removeOlder": "10",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 670,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "77b2d193a5652d7c",
-        "type": "debug",
-        "z": "2b544a037b25f120",
-        "name": "debug 51",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 220,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "bd1b29ebc5224cec",
-        "type": "mysql",
-        "z": "2b544a037b25f120",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 180,
-        "y": 540,
-        "wires": [
-            [
-                "ccb5b8ce0c71bc6a",
-                "15c86c1c8284e0b8",
-                "5bcb6d99caf01176"
-            ]
-        ]
     },
     {
         "id": "d83a67fcb7073cd7",
@@ -4324,534 +3579,6 @@
         "y": 580,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "3064dc20c089d16f",
-        "type": "inject",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 160,
-        "wires": [
-            [
-                "1bfb87a3f36ec555"
-            ]
-        ]
-    },
-    {
-        "id": "1bfb87a3f36ec555",
-        "type": "file in",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "filename": "C:\\Users\\julien\\Documents\\Projet 2023 -1 Crepp Carbone\\use case 2 telephone chargeur solaire\\Delta4.csv",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 690,
-        "y": 160,
-        "wires": [
-            [
-                "994c6a9c870f62b6"
-            ]
-        ]
-    },
-    {
-        "id": "994c6a9c870f62b6",
-        "type": "csv",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "sep": ";",
-        "hdrin": true,
-        "hdrout": "none",
-        "multi": "mult",
-        "ret": "\\r\\n",
-        "temp": "",
-        "skip": "0",
-        "strings": false,
-        "include_empty_strings": "",
-        "include_null_values": "",
-        "x": 330,
-        "y": 240,
-        "wires": [
-            [
-                "36680d8a3e3e766c"
-            ]
-        ]
-    },
-    {
-        "id": "dd99a9d1c29d22a3",
-        "type": "mysql",
-        "z": "801f4ef8c0c0ca9b",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 1000,
-        "y": 240,
-        "wires": [
-            [
-                "e10c438fecff103f",
-                "78d4fcfd71132d50",
-                "aa4fea5ba8232502"
-            ]
-        ]
-    },
-    {
-        "id": "36680d8a3e3e766c",
-        "type": "split",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 510,
-        "y": 240,
-        "wires": [
-            [
-                "699f8f58edbda1de",
-                "3b9b38c4cad43237"
-            ]
-        ]
-    },
-    {
-        "id": "699f8f58edbda1de",
-        "type": "function",
-        "z": "801f4ef8c0c0ca9b",
-        "d": true,
-        "name": " querry complet marche",
-        "func": "var P1 = msg.payload[\"Temps (s)\"];\nvar P2 = msg.payload[\"dP(GW)\"] ;\nvar P3 = msg.payload[\"KSI (GWh)\"];\n\n\nvar query = \"INSERT INTO deltap (timein,dp,ksi) VALUES (\" + P1 + \", \" + P2 + \", \"+ P3 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 240,
-        "wires": [
-            [
-                "dd99a9d1c29d22a3"
-            ]
-        ]
-    },
-    {
-        "id": "767533e602393e6c",
-        "type": "inject",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "SELECT",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "SELECT DISTINCT dp,timein FROM deltap ORDER BY timein ASC;",
-        "payload": "",
-        "payloadType": "date",
-        "x": 700,
-        "y": 320,
-        "wires": [
-            [
-                "dd99a9d1c29d22a3"
-            ]
-        ]
-    },
-    {
-        "id": "e10c438fecff103f",
-        "type": "function",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "prepareHtml",
-        "func": "var temp = {};\nvar html = \"<table width='100%'><tr><td width='75%'>Date</td><td width='25%'>dp</td></tr>\";\nfor(var i in msg.payload)\n{\n    temp = msg.payload[i];\n    html += \"<tr><td>\"+temp.timein+\"</td><td>\"+temp.dp+\"</td></tr>\";\n}\nhtml += \"</table>\";\nmsg.payload = html;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1250,
-        "y": 260,
-        "wires": [
-            [
-                "3d807e30a2904afa"
-            ]
-        ]
-    },
-    {
-        "id": "78d4fcfd71132d50",
-        "type": "function",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "prepare chart",
-        "func": "var temp = {};\nvar data = [];\n\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = { \"x\": temp.timein, \"y\": temp.dp };\n}\n\nvar chart = [{\n    \"series\": [\"dp\"],\n    \"data\": [\n        data\n    ]\n}];\nmsg.payload = chart;\n\nreturn msg;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1270,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3d807e30a2904afa",
-        "type": "ui_template",
-        "z": "801f4ef8c0c0ca9b",
-        "d": true,
-        "group": "",
-        "name": "dp",
-        "order": 8,
-        "width": "16",
-        "height": "6",
-        "format": "<div ng-bind-html=\"msg.payload\"></div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 1430,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b3429517073ce3f0",
-        "type": "debug",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "debug 37",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1180,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "f07f29d40f8fa2d8",
-        "type": "ui_button",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "group": "",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "delta P",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "SELECT DISTINCT dp,timein FROM deltap ORDER BY timein ASC;",
-        "x": 760,
-        "y": 400,
-        "wires": [
-            [
-                "dd99a9d1c29d22a3"
-            ]
-        ]
-    },
-    {
-        "id": "aa4fea5ba8232502",
-        "type": "function",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "prepare chart",
-        "func": "var temp = {};\nvar data = [];\nvar delayInMilliseconds = 1000; //1 second\n\n\n\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    setTimeout(data[i] = { \"x\": temp.timein, \"y\": temp.dp },1000);\n}\n\nvar chart = [{\n    \"series\": [\"dp\"],\n    \"data\": [\n        data\n    ]\n}];\nmsg.payload = chart;\n\nreturn msg;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 970,
-        "y": 460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3b9b38c4cad43237",
-        "type": "function",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "function 18",
-        "func": "var P1 = msg.payload[\"Temps (s)\"];\nvar P2 = msg.payload[\"dP(GW)\"];\nvar P3 = msg.payload[\"KSI (GWh)\"];\nvar msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\n//var msg4 = {};\n//var msg5 = {};\n//var msg6=4;\nmsg1.topic = 'time';\nmsg2.topic = 'dp';\nmsg3.topic = 'ksi';\n//msg4.topic = 'S4';\n//msg5.topic = 'S5';\nmsg1.payload = msg.payload[\"Temps (s)\"];\nmsg2.payload = msg.payload[\"dP(GW)\"];\nmsg3.payload = msg.payload[\"KSI (GWh)\"];\n//msg4.payload = msg.payload.records[msg6].fields.taux_co2;\n//msg5.payload = msg.payload.records[msg6].fields.eolien;\nreturn [msg1, msg2, msg3];\nreturn msg;",
-        "outputs": 3,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 230,
-        "y": 420,
-        "wires": [
-            [
-                "6053b1762c4dbcd1"
-            ],
-            [
-                "00b15239993f68c3"
-            ],
-            [
-                "409cbfcbc1ad3873"
-            ]
-        ]
-    },
-    {
-        "id": "b52c431295fa5dbf",
-        "type": "ui_chart",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "time",
-        "group": "",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "time",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "100",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 510,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "539b8ca654b476fa",
-        "type": "ui_chart",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "delta p",
-        "group": "",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "label": "delta p",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "100",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 530,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "978baa97b0547a76",
-        "type": "ui_chart",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "ksi",
-        "group": "",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "label": "ksi",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "100",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 530,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "03722325df7f52f8",
-        "type": "ui_button",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "go",
-        "group": "",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "go ",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "",
-        "x": 110,
-        "y": 220,
-        "wires": [
-            [
-                "1bfb87a3f36ec555"
-            ]
-        ]
-    },
-    {
-        "id": "6053b1762c4dbcd1",
-        "type": "delay",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.5",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 330,
-        "y": 300,
-        "wires": [
-            [
-                "b52c431295fa5dbf"
-            ]
-        ]
-    },
-    {
-        "id": "00b15239993f68c3",
-        "type": "delay",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.5",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 390,
-        "y": 420,
-        "wires": [
-            [
-                "539b8ca654b476fa"
-            ]
-        ]
-    },
-    {
-        "id": "409cbfcbc1ad3873",
-        "type": "delay",
-        "z": "801f4ef8c0c0ca9b",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.5",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 415.0994567871094,
-        "y": 502,
-        "wires": [
-            [
-                "978baa97b0547a76"
-            ]
         ]
     },
     {
@@ -6825,1344 +5552,6 @@
         "x": 1020,
         "y": 440,
         "wires": []
-    },
-    {
-        "id": "8a245d4b332d89fe",
-        "type": "ui_template",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "group": "134107bd092c9208",
-        "name": "",
-        "order": 27,
-        "width": 10,
-        "height": "15",
-        "format": "<table>\n    <tr>\n        <th></th>\n\n\n        <td> On grid </td>\n        <td> Off grid </td>\n        <td> Armée</td>\n        <td> Prix spot </td>\n\n    </tr>\n\n    <tr>\n        <td>0-1</td>\n        <td><input type=\"radio\" name=\"1\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"1\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"1\" value=\"armé\"></td>\n        <td>74 €</td>\n    </tr>\n    <tr>\n        <td>1-2</td>\n        <td><input type=\"radio\" name=\"2\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"2\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"2\" value=\"armé\"></td>\n        <td> 54 €</td>\n    </tr>\n    <tr>\n        <td>2-3</td>\n        <td><input type=\"radio\" name=\"3\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"3\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"3\" value=\"armé\"></td>\n        <td> 29 €</td>\n    </tr>\n    <tr>\n        <td>3-4</td>\n        <td><input type=\"radio\" name=\"4\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"4\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"4\" value=\"armé\"></td>\n        <td> 20 €</td>\n    </tr>\n    <tr>\n        <td>4-5</td>\n        <td><input type=\"radio\" name=\"5\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"5\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"5\" value=\"armé\"></td>\n        <td> 7 € </td>\n    </tr>\n    <tr>\n        <td>5-6</td>\n        <td><input type=\"radio\" name=\"6\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"6\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"6\" value=\"armé\"></td>\n        <td> 14 € </td>\n    </tr>\n\n    <tr>\n        <td>6-7</td>\n        <td><input type=\"radio\" name=\"7\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"7\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"7\" value=\"armé\"></td>\n        <td> 20 € </td>\n    </tr>\n    <tr>\n        <td>7-8</td>\n        <td><input type=\"radio\" name=\"8\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"8\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"8\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>8-9</td>\n        <td><input type=\"radio\" name=\"9\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"9\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"9\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>9-10</td>\n        <td><input type=\"radio\" name=\"10\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"10\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"10\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>10-11</td>\n        <td><input type=\"radio\" name=\"11\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"11\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"11\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>11-12</td>\n        <td><input type=\"radio\" name=\"12\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"12\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"12\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>12-13</td>\n        <td><input type=\"radio\" name=\"13\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"13\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"13\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>13-14</td>\n        <td><input type=\"radio\" name=\"14\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"14\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"14\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>14-15</td>\n        <td><input type=\"radio\" name=\"15\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"15\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"15\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>15-16</td>\n        <td><input type=\"radio\" name=\"16\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"16\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"16\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>16-17</td>\n        <td><input type=\"radio\" name=\"17\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"17\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"17\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>17-18</td>\n        <td><input type=\"radio\" name=\"18\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"18\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"18\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>18-19</td>\n        <td><input type=\"radio\" name=\"19\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"19\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"19\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>19-20</td>\n        <td><input type=\"radio\" name=\"20\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"20\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"20\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>20-21</td>\n        <td><input type=\"radio\" name=\"21\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"21\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"21\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>21-22</td>\n        <td><input type=\"radio\" name=\"22\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"22\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"22\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>22-23</td>\n        <td><input type=\"radio\" name=\"23\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"23\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"23\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n    <tr>\n        <td>23-24</td>\n        <td><input type=\"radio\" name=\"24\" value=\"alumé\"></td>\n        <td><input type=\"radio\" name=\"24\" value=\"éteint\"></td>\n        <td><input type=\"radio\" name=\"24\" value=\"armé\"></td>\n        <td> 23 € </td>\n    </tr>\n</table>\n\n<button type=\"button\" onclick=\"displayRadioValue()\">\n        Submit\n    </button>\n\n\n\n<br>\n<div id=\"result\"></div>\n<div id=\"result2\"></div>\n<script>\n    function displayRadioValue() {\n            var ele = document.getElementsByName('1');\n            var ele2 = document.getElementsByName('2');\n \n            for (i = 0; i < ele.length; i++) {\n                if (ele[i].checked)\n                    document.getElementById(\"result\").innerHTML\n                        = \"1: \" + ele[i].value; }\n\n             \n \n            for (j = 0; j < ele2.length; j++) {\n               if (ele2[j].checked)\n                  document.getElementById(\"result2\").innerHTML\n                       = \"2: \" + ele2[j].value;\n            }\n            var msg = { payload:\"first out of output 1\" };\n\nreturn msg;\n        }\n \n\n</script>",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "x": 260,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1e97475d12636755",
-        "type": "mysql",
-        "z": "f52a234fc0ec8d0e",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 820,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e7e7948dd5af3705",
-        "type": "function",
-        "z": "f52a234fc0ec8d0e",
-        "name": " querry planifecogest",
-        "func": "var P1 = msg.payload.plageH;\nvar P2 = msg.payload.choix;\n\nvar query = \"INSERT INTO planifecogest (plageH,choix) VALUES ('\" + P1 + \"', '\" + P2 + \"') \" ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3574e61e1e22faad",
-        "type": "ui_template",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "group": "134107bd092c9208",
-        "name": "Reverse Song name",
-        "order": 28,
-        "width": "0",
-        "height": "0",
-        "format": "<script>\n  this.scope.action = function(opt) {\n        var splitString = opt.split(\"\"); \n        var reverseArray = splitString.reverse();\n        var joinArray = reverseArray.join(\"\");\n        opt = joinArray;\n     return opt; }    \n</script>\n\n<div style=\"margin: 0 0 0 ;\">\n  <ul>\n    <li ng-repeat=\"song in msg.payload track by $index\" style=\"list-style-type: none;\">\n      <label>\n            <input type=\"radio\"  name=\"{{song}}\" value=\"on grid\" />{{song}}\n            <input type=\"radio\"  name=\"{{song}}\" value=\"off grid\" />{{song}}\n            <input type=\"radio\" name=\"{{song}}\" value=\"armé\" />{{song}}\n        </label>\n    </li>\n  </ul>\n  <md-button ng-click=\"send({payload:action(song)})\">\n    Click to send data to backend\n  </md-button>\n\n</div>",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "x": 400,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "55aae6a8104a7e30",
-        "type": "ui_template",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "group": "134107bd092c9208",
-        "name": "",
-        "order": 30,
-        "width": 0,
-        "height": 0,
-        "format": "<script>\n    this.scope.action = function(opt) {\n        var splitString = opt.split(\"\"); \n        var reverseArray = splitString.reverse();\n        var joinArray = reverseArray.join(\"\");\n        opt = joinArray;\n     return opt; }    \n</script>\n\n<div style=\"margin: 0 0 0 -40px;\">\n    <ul>\n        <li ng-repeat=\"song in msg.payload track by $index\" style=\"list-style-type: none;\">\n            <label>\n            <input type=\"radio\" ng-model=\"$parent.song\" value=\"{{song}}\" name=\"data\" />{{song}}\n        </label>\n        </li>\n    </ul>\n    <md-button ng-click=\"send({payload:action(song)})\">\n        Click to send data to backend\n    </md-button>\n\n</div>",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "x": 420,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2310c89f4b09fa4c",
-        "type": "ui_form",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "",
-        "label": "armement",
-        "group": "134107bd092c9208",
-        "order": 31,
-        "width": "4",
-        "height": "2",
-        "options": [
-            {
-                "label": "0-1",
-                "value": "a1",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "1-2",
-                "value": "a2",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "2-3",
-                "value": "a3",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "3-4",
-                "value": "a4",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "4-5",
-                "value": "a5",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "5-6",
-                "value": "a6",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "6-7",
-                "value": "a7",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "7-8",
-                "value": "a8",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "8-9",
-                "value": "a9",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "9-10",
-                "value": "a10",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "10-11",
-                "value": "a11",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "11-12",
-                "value": "a12",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "12-13",
-                "value": "a13",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "13-14",
-                "value": "a14",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "14-15",
-                "value": "a15",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "15-16",
-                "value": "a16",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "16-17",
-                "value": "a17",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "17-18",
-                "value": "a18",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "18-19",
-                "value": "a19",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "19-20",
-                "value": "a20",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "20-21",
-                "value": "a21",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "21-22",
-                "value": "a22",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "22-23",
-                "value": "a23",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "23-24",
-                "value": "a24",
-                "type": "switch",
-                "required": false,
-                "rows": null
-            }
-        ],
-        "formValue": {
-            "a1": false,
-            "a2": false,
-            "a3": false,
-            "a4": false,
-            "a5": false,
-            "a6": false,
-            "a7": false,
-            "a8": false,
-            "a9": false,
-            "a10": false,
-            "a11": false,
-            "a12": false,
-            "a13": false,
-            "a14": false,
-            "a15": false,
-            "a16": false,
-            "a17": false,
-            "a18": false,
-            "a19": false,
-            "a20": false,
-            "a21": false,
-            "a22": false,
-            "a23": false,
-            "a24": false
-        },
-        "payload": "",
-        "submit": "submit",
-        "cancel": "cancel",
-        "topic": "",
-        "x": 80,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6ad31a4f0ec4984d",
-        "type": "debug",
-        "z": "f52a234fc0ec8d0e",
-        "name": "debug 59",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 540,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "7e40b69421789a86",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "0-1",
-        "group": "134107bd092c9208",
-        "order": 2,
-        "width": "5",
-        "height": "1",
-        "label": "0-1",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "1",
-        "x": 350,
-        "y": 380,
-        "wires": [
-            [
-                "6ad31a4f0ec4984d"
-            ]
-        ]
-    },
-    {
-        "id": "83ee711fb66e8365",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "1-2",
-        "group": "134107bd092c9208",
-        "order": 5,
-        "width": "5",
-        "height": "1",
-        "label": "1-2",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "2",
-        "x": 350,
-        "y": 440,
-        "wires": [
-            [
-                "a9c78cfe38e9756f"
-            ]
-        ]
-    },
-    {
-        "id": "b4a7374d25ca6ef7",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "2-3",
-        "group": "134107bd092c9208",
-        "order": 8,
-        "width": "5",
-        "height": "1",
-        "label": "2-3",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "3",
-        "x": 350,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3bb4d238b81f2cc0",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "3-4",
-        "group": "134107bd092c9208",
-        "order": 11,
-        "width": "5",
-        "height": "1",
-        "label": "3-4",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "4",
-        "x": 350,
-        "y": 540,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "86184d98e1b5889e",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "4-5",
-        "group": "134107bd092c9208",
-        "order": 14,
-        "width": "5",
-        "height": "1",
-        "label": "4-5",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "5",
-        "x": 350,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "55f143169421f7b6",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "5-6",
-        "group": "134107bd092c9208",
-        "order": 17,
-        "width": "5",
-        "height": "1",
-        "label": "5-6",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "6",
-        "x": 350,
-        "y": 620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b1d1fdebf85d2f46",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "6-7",
-        "group": "134107bd092c9208",
-        "order": 20,
-        "width": "5",
-        "height": "1",
-        "label": "6-7",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "7",
-        "x": 350,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5e1ed4d613c55a7e",
-        "type": "ui_multistate_switch",
-        "z": "f52a234fc0ec8d0e",
-        "d": true,
-        "name": "7-8",
-        "group": "134107bd092c9208",
-        "order": 23,
-        "width": "5",
-        "height": "1",
-        "label": "7-8",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "normal",
-                "value": "N",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "off grid",
-                "value": "O",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "Armed",
-                "value": "A",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "8",
-        "x": 350,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "db976cf9e4c1956d",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 3,
-        "width": "3",
-        "height": "1",
-        "name": "prix marché de l' ecogeste",
-        "label": "<font size={{ 1}} > 0-1h prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 970,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "5f9cc4733f1b281c",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "74",
-        "payloadType": "str",
-        "x": 730,
-        "y": 440,
-        "wires": [
-            [
-                "db976cf9e4c1956d"
-            ]
-        ]
-    },
-    {
-        "id": "6db3c246605cd10e",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "54",
-        "payloadType": "str",
-        "x": 730,
-        "y": 480,
-        "wires": [
-            [
-                "368f1c14d5a0fb0c"
-            ]
-        ]
-    },
-    {
-        "id": "368f1c14d5a0fb0c",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 6,
-        "width": "3",
-        "height": "1",
-        "name": "spot2",
-        "label": "<font size={{ 1}} >1-2h  prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "a4f2e28d9eb95c31",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 9,
-        "width": "3",
-        "height": "1",
-        "name": "spot3",
-        "label": "<font size={{ 1}} >2-3h prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "5c57f355f8b81897",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 12,
-        "width": "3",
-        "height": "1",
-        "name": "spot4",
-        "label": "<font size={{ 1}} > 3-4h prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "0ac08961736d6fe2",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 15,
-        "width": "3",
-        "height": "1",
-        "name": "spot5",
-        "label": "<font size={{ 1}} > 4-5h prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "20085c46e7636716",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 18,
-        "width": "3",
-        "height": "1",
-        "name": "spot6",
-        "label": "<font size={{ 1}} > 5-6h  prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "098d79c5df96553d",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 21,
-        "width": "3",
-        "height": "1",
-        "name": "spot7",
-        "label": "<font size={{ 1}} > 6-7h  prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "0ca45d36625d02f9",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "29",
-        "payloadType": "str",
-        "x": 730,
-        "y": 520,
-        "wires": [
-            [
-                "a4f2e28d9eb95c31"
-            ]
-        ]
-    },
-    {
-        "id": "6f9d4325337167b4",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "20",
-        "payloadType": "str",
-        "x": 730,
-        "y": 560,
-        "wires": [
-            [
-                "5c57f355f8b81897"
-            ]
-        ]
-    },
-    {
-        "id": "f65ee1768687481f",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "7",
-        "payloadType": "str",
-        "x": 730,
-        "y": 600,
-        "wires": [
-            [
-                "0ac08961736d6fe2"
-            ]
-        ]
-    },
-    {
-        "id": "8d20496759365ff9",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "14",
-        "payloadType": "str",
-        "x": 730,
-        "y": 640,
-        "wires": [
-            [
-                "20085c46e7636716"
-            ]
-        ]
-    },
-    {
-        "id": "c1fdbbf4b90ec10f",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "20",
-        "payloadType": "str",
-        "x": 730,
-        "y": 680,
-        "wires": [
-            [
-                "098d79c5df96553d"
-            ]
-        ]
-    },
-    {
-        "id": "0a2787cc844aa9a0",
-        "type": "ui_text",
-        "z": "f52a234fc0ec8d0e",
-        "group": "134107bd092c9208",
-        "order": 24,
-        "width": "3",
-        "height": "1",
-        "name": "spot8",
-        "label": "<font size={{ 1}} > 7-8h prix marché de l' ecogeste</font>",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "6bd65f3288b9c0f4",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "23",
-        "payloadType": "str",
-        "x": 730,
-        "y": 720,
-        "wires": [
-            [
-                "0a2787cc844aa9a0"
-            ]
-        ]
-    },
-    {
-        "id": "d588bce31bac09ac",
-        "type": "inject",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 150,
-        "y": 440,
-        "wires": [
-            [
-                "83ee711fb66e8365"
-            ]
-        ]
-    },
-    {
-        "id": "a9c78cfe38e9756f",
-        "type": "debug",
-        "z": "f52a234fc0ec8d0e",
-        "name": "debug 60",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 540,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "53d8a7b65de4fadb",
-        "type": "ui_date_picker",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "label": "date",
-        "group": "134107bd092c9208",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "topic": "",
-        "x": 330,
-        "y": 800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e29dd25f1cbf6ce8",
-        "type": "ui_button",
-        "z": "f52a234fc0ec8d0e",
-        "name": "",
-        "group": "134107bd092c9208",
-        "order": 26,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "valider ",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "",
-        "x": 570,
-        "y": 800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5aba52fb15d0fabf",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 2",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 7,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1280,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "40c1305063250e2c",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 3",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 10,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1312.741455078125,
-        "y": 485.1515197753906,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e877e96664e5ab1b",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 4",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 13,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1220,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "81e27fcfdf5c5510",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 1",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 4,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1260,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9182c3f0875a2139",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 5",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 16,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1240,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "04dd9f92561e834c",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 6",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 19,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1200,
-        "y": 680,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "45277d5250575ef7",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 7",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 22,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1180,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1f6a32b511662a8d",
-        "type": "ui_text_input",
-        "z": "f52a234fc0ec8d0e",
-        "name": "ordre de vente 8",
-        "label": "ordre de vente",
-        "tooltip": "",
-        "group": "134107bd092c9208",
-        "order": 25,
-        "width": "3",
-        "height": "1",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 1200,
-        "y": 760,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "8c71e3ac389bd037",
@@ -11099,7 +8488,8 @@
         "y": 260,
         "wires": [
             [
-                "276dcab622bed177"
+                "276dcab622bed177",
+                "b9b71a2a15cba9c1"
             ]
         ]
     },
@@ -11137,7 +8527,7 @@
         "senderr": false,
         "headers": [],
         "x": 420,
-        "y": 200,
+        "y": 220,
         "wires": [
             [
                 "3d6671eccf47240a"
@@ -11153,10 +8543,10 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "carbon intensity",
+        "label": "carbon intensity FR",
         "format": "{{msg.payload}} ",
         "layout": "row-spread",
-        "x": 960,
+        "x": 970,
         "y": 140,
         "wires": []
     },
@@ -11240,8 +8630,8 @@
         "label": "heure",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1130,
-        "y": 140,
+        "x": 1110,
+        "y": 220,
         "wires": []
     },
     {
@@ -11494,7 +8884,9 @@
         "x": 980,
         "y": 100,
         "wires": [
-            []
+            [
+                "1cfbe318921365a5"
+            ]
         ]
     },
     {
@@ -11625,5 +9017,146 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "1cfbe318921365a5",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "debug 68",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b9b71a2a15cba9c1",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": " lastest  CO2 DE",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=DE",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "b27649f3940930bd",
+                "8c1c1fcc8f6390f3"
+            ]
+        ]
+    },
+    {
+        "id": "b27649f3940930bd",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "etat latest carbone",
+        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 280,
+        "wires": [
+            [
+                "1657601942a856f8",
+                "8e165643b9d3d3d8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1657601942a856f8",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "d": true,
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "CO2 DE",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 860,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8e165643b9d3d3d8",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity DE",
+        "format": "{{msg.payload}} ",
+        "layout": "row-spread",
+        "x": 930,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "8c1c1fcc8f6390f3",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "debug 69",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 540,
+        "y": 340,
+        "wires": []
     }
 ]
