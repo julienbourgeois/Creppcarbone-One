@@ -61,7 +61,7 @@
         "id": "6aec93185a5b7c14",
         "type": "ui_base",
         "theme": {
-            "name": "theme-custom",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -73,7 +73,8 @@
                 "default": "#097479",
                 "baseColor": "#097479",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Julien Theme 1",
@@ -84,44 +85,44 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#76df3a",
-                    "value": "#76df3a",
+                    "default": "#097479",
+                    "value": "#097479",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#76df3a",
+                    "value": "#097479",
                     "edited": true
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
+                    "value": "#111111",
                     "edited": true
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#a4ea7c",
+                    "value": "#0eb8c0",
                     "edited": true
                 },
                 "group-borderColor": {
-                    "value": "#3c18f2",
+                    "value": "#555555",
                     "edited": true
                 },
                 "group-backgroundColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": true
                 },
                 "widget-textColor": {
-                    "value": "#111111",
+                    "value": "#eeeeee",
                     "edited": false
                 },
                 "widget-backgroundColor": {
-                    "value": "#76df3a",
+                    "value": "#097479",
                     "edited": true
                 },
                 "widget-borderColor": {
-                    "value": "#ddf8dd",
+                    "value": "#333333",
                     "edited": true
                 },
                 "base-font": {
@@ -8488,8 +8489,7 @@
         "y": 260,
         "wires": [
             [
-                "276dcab622bed177",
-                "b9b71a2a15cba9c1"
+                "276dcab622bed177"
             ]
         ]
     },
@@ -8539,15 +8539,15 @@
         "type": "ui_text",
         "z": "d931280a91eab542",
         "group": "016964b9b18bce81",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
         "label": "carbon intensity FR",
         "format": "{{msg.payload}} ",
         "layout": "row-spread",
-        "x": 970,
-        "y": 140,
+        "x": 930,
+        "y": 120,
         "wires": []
     },
     {
@@ -8566,7 +8566,8 @@
         "wires": [
             [
                 "42e955fdb64dd44f",
-                "7a818431fcf3f8d8"
+                "7a818431fcf3f8d8",
+                "de4551c3b52ae065"
             ],
             [
                 "1e36a1a99ffc1a77"
@@ -8606,7 +8607,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 6,
+        "order": 9,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8614,7 +8615,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "x": 930,
-        "y": 180,
+        "y": 200,
         "wires": []
     },
     {
@@ -8623,14 +8624,14 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 7,
+        "order": 10,
         "width": 0,
         "height": 0,
         "name": "",
         "label": "heure",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 1110,
+        "x": 1010,
         "y": 220,
         "wires": []
     },
@@ -8695,7 +8696,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 9,
+        "order": 12,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8712,7 +8713,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 8,
+        "order": 11,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8729,7 +8730,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 10,
+        "order": 13,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8799,7 +8800,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 11,
+        "order": 14,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8816,7 +8817,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 12,
+        "order": 15,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8833,7 +8834,7 @@
         "z": "d931280a91eab542",
         "d": true,
         "group": "016964b9b18bce81",
-        "order": 13,
+        "order": 16,
         "width": 0,
         "height": 0,
         "name": "",
@@ -8850,7 +8851,7 @@
         "z": "d931280a91eab542",
         "name": "",
         "group": "016964b9b18bce81",
-        "order": 2,
+        "order": 4,
         "width": 0,
         "height": 0,
         "label": "CO2 FR",
@@ -8881,8 +8882,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 980,
-        "y": 100,
+        "x": 920,
+        "y": 60,
         "wires": [
             [
                 "1cfbe318921365a5"
@@ -8895,7 +8896,7 @@
         "z": "d931280a91eab542",
         "name": "",
         "group": "016964b9b18bce81",
-        "order": 3,
+        "order": 6,
         "width": 0,
         "height": 0,
         "label": "eolien  FR",
@@ -8938,7 +8939,7 @@
         "z": "d931280a91eab542",
         "name": "",
         "group": "016964b9b18bce81",
-        "order": 4,
+        "order": 7,
         "width": 0,
         "height": 0,
         "label": "solaire  FR",
@@ -8981,7 +8982,7 @@
         "z": "d931280a91eab542",
         "name": "",
         "group": "016964b9b18bce81",
-        "order": 5,
+        "order": 8,
         "width": 0,
         "height": 0,
         "label": "gaz FR",
@@ -9031,34 +9032,9 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1120,
-        "y": 100,
+        "x": 1060,
+        "y": 60,
         "wires": []
-    },
-    {
-        "id": "b9b71a2a15cba9c1",
-        "type": "http request",
-        "z": "d931280a91eab542",
-        "name": " lastest  CO2 DE",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=DE",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 400,
-        "y": 280,
-        "wires": [
-            [
-                "b27649f3940930bd",
-                "8c1c1fcc8f6390f3"
-            ]
-        ]
     },
     {
         "id": "b27649f3940930bd",
@@ -9089,7 +9065,7 @@
         "d": true,
         "name": "",
         "group": "016964b9b18bce81",
-        "order": 2,
+        "order": 5,
         "width": 0,
         "height": 0,
         "label": "CO2 DE",
@@ -9131,7 +9107,7 @@
         "type": "ui_text",
         "z": "d931280a91eab542",
         "group": "016964b9b18bce81",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
@@ -9157,6 +9133,32 @@
         "statusType": "auto",
         "x": 540,
         "y": 340,
+        "wires": []
+    },
+    {
+        "id": "de4551c3b52ae065",
+        "type": "ui_gauge",
+        "z": "d931280a91eab542",
+        "name": "CO2",
+        "group": "016964b9b18bce81",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "CO2  FR",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "700",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "70",
+        "seg2": "250",
+        "x": 910,
+        "y": 160,
         "wires": []
     }
 ]
