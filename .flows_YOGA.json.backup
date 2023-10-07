@@ -4,8 +4,7 @@
         "type": "tab",
         "label": "lecture fichier  KSI csv",
         "disabled": true,
-        "info": "lit le fichier de simulation créé par Bernard\r\nle rentre dans mysql (désactivé car 1 fois suffit)\r\njoue la simulation a l'ecran\r\n",
-        "env": []
+        "info": "lit le fichier de simulation créé par Bernard\r\nle rentre dans mysql (désactivé car 1 fois suffit)\r\njoue la simulation a l'ecran\r\n"
     },
     {
         "id": "13de37cb61fc3ad2",
@@ -19,32 +18,28 @@
         "type": "tab",
         "label": "chargeur velo Tasmota",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
         "id": "761b5806c43a83e0",
         "type": "tab",
         "label": "liste appareil consommateur",
         "disabled": true,
-        "info": "gere le choix de l'appareil consommateur\r\n",
-        "env": []
+        "info": "gere le choix de l'appareil consommateur\r\n"
     },
     {
         "id": "c72b4f57ca4915e9",
         "type": "tab",
         "label": "scenario consommation",
         "disabled": false,
-        "info": "ecogeste de planification creppcarbone sans ksi\r\nprog 1 - soleil = quand y a du soleil\r\nprog 2 - eolien  = quand y a du vent\r\nprog 3 - nuit eolien= la nuit quand y a du vent\r\n",
-        "env": []
+        "info": "ecogeste de planification creppcarbone sans ksi\r\nprog 1 - soleil = quand y a du soleil\r\nprog 2 - eolien  = quand y a du vent\r\nprog 3 - nuit eolien= la nuit quand y a du vent\r\n"
     },
     {
         "id": "d931280a91eab542",
         "type": "tab",
         "label": "electricity maps",
         "disabled": false,
-        "info": "recuperer les taux de CO2",
-        "env": []
+        "info": "recuperer les taux de CO2"
     },
     {
         "id": "89761449a9ab2711",
@@ -305,7 +300,6 @@
         "broker": "192.168.1.20",
         "port": "1883",
         "clientid": "",
-        "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -322,7 +316,6 @@
         "willQos": "0",
         "willPayload": "",
         "willMsg": {},
-        "userProps": "",
         "sessionExpiry": ""
     },
     {
@@ -370,7 +363,6 @@
         "broker": "10.3.141.1",
         "port": "1883",
         "clientid": "",
-        "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -2629,13 +2621,12 @@
         "z": "ddd0105b04875be6",
         "name": "",
         "filename": "C:\\Users\\julien\\Downloads\\pksi15.csv",
-        "filenameType": "str",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 590,
+        "x": 610,
         "y": 40,
         "wires": [
             [
@@ -2960,7 +2951,6 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
-        "outputs": 1,
         "x": 730,
         "y": 420,
         "wires": [
@@ -3117,7 +3107,6 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
-        "outputs": 1,
         "x": 500,
         "y": 560,
         "wires": [
@@ -3594,7 +3583,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 370,
         "y": 80,
         "wires": [
@@ -3650,7 +3638,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 190,
         "y": 280,
         "wires": [
@@ -3672,7 +3659,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 140,
         "y": 740,
         "wires": [
@@ -3768,7 +3754,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 170,
         "y": 440,
         "wires": [
@@ -4339,7 +4324,6 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "outputs": 1,
         "x": 400,
         "y": 400,
         "wires": [
@@ -4440,7 +4424,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 180,
         "y": 340,
         "wires": [
@@ -4496,7 +4479,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 190,
         "y": 260,
         "wires": [
@@ -4660,7 +4642,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 180,
         "y": 420,
         "wires": [
@@ -8522,10 +8503,7 @@
         "tls": "",
         "persist": false,
         "proxy": "",
-        "insecureHTTPParser": false,
         "authType": "bearer",
-        "senderr": false,
-        "headers": [],
         "x": 420,
         "y": 220,
         "wires": [
@@ -8589,10 +8567,7 @@
         "tls": "",
         "persist": false,
         "proxy": "",
-        "insecureHTTPParser": false,
         "authType": "bearer",
-        "senderr": false,
-        "headers": [],
         "x": 360,
         "y": 420,
         "wires": [
@@ -8753,10 +8728,7 @@
         "tls": "",
         "persist": false,
         "proxy": "",
-        "insecureHTTPParser": false,
         "authType": "bearer",
-        "senderr": false,
-        "headers": [],
         "x": 340,
         "y": 620,
         "wires": [
