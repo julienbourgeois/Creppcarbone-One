@@ -7,6 +7,13 @@
         "info": "lit le fichier de simulation créé par Bernard\r\nle rentre dans mysql (désactivé car 1 fois suffit)\r\njoue la simulation a l'ecran\r\n"
     },
     {
+        "id": "bd0e39b0e5b0cc70",
+        "type": "tab",
+        "label": "lectures graphiques bdd",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "13de37cb61fc3ad2",
         "type": "tab",
         "label": "panneau solaire NOUS AT1",
@@ -328,7 +335,7 @@
         "id": "43d8c011dfdc997f",
         "type": "MySQLdatabase",
         "name": "",
-        "host": "127.0.0.1",
+        "host": "192.168.1.25",
         "port": "3306",
         "db": "creppcarbone",
         "tz": "",
@@ -2583,6 +2590,40 @@
         "sunPositions": []
     },
     {
+        "id": "f8e408a8348f1a42",
+        "type": "ui_group",
+        "name": "graphique",
+        "tab": "988df4f2cc6c55bd",
+        "order": 7,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c716d8f1.4bb848",
+        "type": "ui_group",
+        "name": "bar-chart",
+        "tab": "957fd14a.a1277",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "957fd14a.a1277",
+        "type": "ui_tab",
+        "name": "bar-chart",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e0e7ea5c.056af8",
+        "type": "persist-store",
+        "filename": "~/store.json",
+        "interval": "60"
+    },
+    {
         "id": "d83a67fcb7073cd7",
         "type": "file in",
         "z": "ddd0105b04875be6",
@@ -3760,7 +3801,7 @@
         "finalize": "",
         "libs": [],
         "x": 600,
-        "y": 620,
+        "y": 580,
         "wires": [
             [
                 "14b8ae40236455da"
@@ -3793,7 +3834,8 @@
             [
                 "82f90504532f7cfb",
                 "e37a9137ae70d6fd",
-                "41ae7b7bbb215bf5"
+                "41ae7b7bbb215bf5",
+                "a17fbaf85af5ef8f"
             ],
             [
                 "2dbad1d9cd1c4dad"
@@ -3954,6 +3996,7 @@
         "id": "a9f5554ea321a159",
         "type": "ui_chart",
         "z": "13de37cb61fc3ad2",
+        "d": true,
         "name": "Energie Totale",
         "group": "af6e9ca4e8ef71ea",
         "order": 15,
@@ -4026,7 +4069,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "x": 750,
-        "y": 280,
+        "y": 300,
         "wires": []
     },
     {
@@ -4068,7 +4111,7 @@
         "z": "13de37cb61fc3ad2",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone",
-        "x": 760,
+        "x": 780,
         "y": 400,
         "wires": [
             []
@@ -4079,7 +4122,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": " querry Tasmota ",
-        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\n//var P6 =   P1 ;\n var P6 = P11 + P2 + P3+P4+P5+P7;\n//var P6 = P1 + P2 + P3 + P4 + P5 + \"00\";\n//msg.payload =P6;\nvar query = \"INSERT INTO Tasmota (Time,activepower,energytoday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4178,6 +4221,7 @@
         "id": "41ae7b7bbb215bf5",
         "type": "ui_chart",
         "z": "13de37cb61fc3ad2",
+        "d": true,
         "name": "puissance instantanée",
         "group": "af6e9ca4e8ef71ea",
         "order": 13,
@@ -4237,6 +4281,7 @@
         "id": "f38c3248a6beb9f2",
         "type": "ui_chart",
         "z": "13de37cb61fc3ad2",
+        "d": true,
         "name": "Energie aujourdhui",
         "group": "af6e9ca4e8ef71ea",
         "order": 14,
@@ -4523,15 +4568,16 @@
         "type": "ui_switch",
         "z": "a21c4b8426a30f7f",
         "name": "",
-        "label": "switch",
+        "label": "",
         "tooltip": "",
         "group": "1b256139bc926903",
-        "order": 15,
+        "order": 16,
         "width": 2,
         "height": 1,
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
+        "topicType": "str",
         "style": "",
         "onvalue": "ON",
         "onvalueType": "str",
@@ -4541,6 +4587,7 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
+        "animate": true,
         "x": 670,
         "y": 120,
         "wires": [
@@ -4574,7 +4621,7 @@
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
         "group": "1b256139bc926903",
-        "order": 11,
+        "order": 12,
         "width": 2,
         "height": 1,
         "name": "",
@@ -4667,7 +4714,8 @@
             [
                 "e448084356ac29f8",
                 "b48d26f67b30143c",
-                "45f48a9ff03d61f4"
+                "45f48a9ff03d61f4",
+                "f5d0f579d220ae99"
             ],
             [
                 "b61e934b264bb3ec"
@@ -4781,12 +4829,12 @@
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
         "group": "1b256139bc926903",
-        "order": 10,
-        "width": "2",
+        "order": 11,
+        "width": "6",
         "height": 1,
         "name": "Energie totale (KWH)",
-        "label": "<font size={{ 1}} > Energie totale  </font>",
-        "format": "<font size={{ 1}} >{{msg.payload}} {{\"Kwh\"}}</font> ",
+        "label": "<font size={{ 4}} > Energie totale  </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"Kwh\"}}</font> ",
         "layout": "row-spread",
         "x": 1540,
         "y": 380,
@@ -4796,9 +4844,10 @@
         "id": "55f99eba2d0fcc71",
         "type": "ui_chart",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "name": "Energie Totale",
         "group": "1b256139bc926903",
-        "order": 14,
+        "order": 15,
         "width": "6",
         "height": "5",
         "label": "<font size={{ 1}} >Energie Totale KWh </font>",
@@ -4829,7 +4878,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1520,
+        "x": 1660,
         "y": 340,
         "wires": [
             []
@@ -4839,8 +4888,9 @@
         "id": "c4533dad3da52f65",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
-        "order": 6,
+        "order": 7,
         "width": "2",
         "height": 1,
         "name": "Puissance Réactive (VAr)",
@@ -4856,24 +4906,25 @@
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
         "group": "1b256139bc926903",
-        "order": 4,
-        "width": "2",
+        "order": 5,
+        "width": "6",
         "height": 1,
         "name": "Puissance instantanée (W)",
-        "label": "<font size={{ 1}} > puissance instantanée </font>",
-        "format": "<font size={{ 2}} >{{msg.payload}} {{\"W\"}}</font> ",
+        "label": "<font size={{ 4}} > puissance instantanée </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"W\"}}</font> ",
         "layout": "row-spread",
-        "x": 1580,
-        "y": 660,
+        "x": 1560,
+        "y": 640,
         "wires": []
     },
     {
         "id": "45f48a9ff03d61f4",
         "type": "ui_chart",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "name": "puissance instantanée",
         "group": "1b256139bc926903",
-        "order": 12,
+        "order": 13,
         "width": "6",
         "height": 4,
         "label": "<font size={{ 1}} >puissance instantanée W </font>",
@@ -4904,8 +4955,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1560,
-        "y": 620,
+        "x": 1660,
+        "y": 600,
         "wires": [
             []
         ]
@@ -4915,14 +4966,14 @@
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
         "group": "1b256139bc926903",
-        "order": 8,
-        "width": "2",
+        "order": 9,
+        "width": "6",
         "height": 1,
         "name": "Energie aujourdhui (kWh)",
-        "label": "<font size={{ 1}} > Energie aujourdhui</font>",
-        "format": "<font size={{ 2}} >{{msg.payload}} {{\"KW\"}}</font> ",
+        "label": "<font size={{ 4}} > Energie aujourdhui</font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"KWh\"}}</font> ",
         "layout": "row-spread",
-        "x": 1570,
+        "x": 1550,
         "y": 560,
         "wires": []
     },
@@ -4930,9 +4981,10 @@
         "id": "ceb7434a5f83e8e0",
         "type": "ui_chart",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "name": "Energie aujourdhui",
         "group": "1b256139bc926903",
-        "order": 13,
+        "order": 14,
         "width": "6",
         "height": 4,
         "label": "<font size={{ 1}} >Energie aujourdhui KWh </font>",
@@ -4963,7 +5015,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1550,
+        "x": 1690,
         "y": 520,
         "wires": [
             []
@@ -4973,8 +5025,9 @@
         "id": "f98185a9a8e3b334",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
-        "order": 2,
+        "order": 3,
         "width": "2",
         "height": 1,
         "name": "Tension (V)",
@@ -4989,8 +5042,9 @@
         "id": "c0ce396c95c37dd0",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
-        "order": 3,
+        "order": 4,
         "width": "2",
         "height": 1,
         "name": "Courrant (A)",
@@ -5005,15 +5059,16 @@
         "id": "cefc9adad453c524",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
-        "order": 5,
+        "order": 6,
         "width": "2",
         "height": 1,
         "name": "Puissance apparente (W)",
         "label": "<font size={{ 1}} > puissance apparente </font>",
         "format": "<font size={{ 1}} >{{msg.payload}} {{\"W\"}}</font> ",
         "layout": "row-spread",
-        "x": 1550,
+        "x": 1530,
         "y": 300,
         "wires": []
     },
@@ -5021,8 +5076,9 @@
         "id": "6f3ec12ee31a1cd6",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
-        "order": 7,
+        "order": 8,
         "width": "2",
         "height": 1,
         "name": "facteur puissance",
@@ -5038,15 +5094,15 @@
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
         "group": "1b256139bc926903",
-        "order": 9,
-        "width": "2",
+        "order": 10,
+        "width": "6",
         "height": 1,
         "name": "Energie hier(kWh)",
-        "label": "<font size={{ 1}} > Energie hier</font>",
-        "format": "<font size={{ 1}} >{{msg.payload}} {{\"KW\"}}</font> ",
+        "label": "<font size={{ 4}} > Energie hier</font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"KWh\"}}</font> ",
         "layout": "row-spread",
-        "x": 1550,
-        "y": 720,
+        "x": 1530,
+        "y": 680,
         "wires": []
     },
     {
@@ -5533,7 +5589,8 @@
             [
                 "9f62eccd26ec7245",
                 "71ee95f2d1c8e19e",
-                "cd0bbbcbedddac94"
+                "cd0bbbcbedddac94",
+                "497c9b68470b543a"
             ]
         ]
     },
@@ -5639,9 +5696,7 @@
         "x": 170,
         "y": 420,
         "wires": [
-            [
-                "b787f32585919542"
-            ]
+            []
         ]
     },
     {
@@ -5803,6 +5858,7 @@
         "id": "7a818431fcf3f8d8",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 6,
@@ -5846,6 +5902,7 @@
         "id": "4c4e15ccead7a6c5",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 7,
@@ -5889,6 +5946,7 @@
         "id": "b0d72ac318e6d5b0",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 8,
@@ -5932,6 +5990,7 @@
         "id": "343a629fc33defe8",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 9,
@@ -6030,8 +6089,8 @@
         "onstart": false,
         "scope": "local",
         "tooltip": "",
-        "x": 810,
-        "y": 820,
+        "x": 230,
+        "y": 860,
         "wires": [
             []
         ]
@@ -6158,8 +6217,7 @@
         "y": 200,
         "wires": [
             [
-                "f224d94832b207c0",
-                "4762928cd6b5f5fa"
+                "f224d94832b207c0"
             ]
         ]
     },
@@ -6213,8 +6271,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 620,
-        "y": 280,
+        "x": 590,
+        "y": 340,
         "wires": []
     },
     {
@@ -6234,7 +6292,7 @@
         "onstart": false,
         "scope": "local",
         "tooltip": "",
-        "x": 370,
+        "x": 150,
         "y": 480,
         "wires": [
             []
@@ -6267,13 +6325,13 @@
         "id": "a17fbaf85af5ef8f",
         "type": "ui_gauge",
         "z": "13de37cb61fc3ad2",
-        "name": "CO2",
+        "name": "puissance inst",
         "group": "af6e9ca4e8ef71ea",
         "order": 3,
         "width": "2",
         "height": "2",
         "gtype": "gage",
-        "title": "Puissance instantanée",
+        "title": "P instantanée",
         "label": "W",
         "format": "{{value}}",
         "min": 0,
@@ -6285,8 +6343,409 @@
         ],
         "seg1": "80",
         "seg2": "250",
-        "x": 810,
+        "x": 840,
         "y": 860,
         "wires": []
+    },
+    {
+        "id": "f5d0f579d220ae99",
+        "type": "ui_gauge",
+        "z": "a21c4b8426a30f7f",
+        "name": "puissance inst",
+        "group": "1b256139bc926903",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "P instantanée",
+        "label": "W",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "120",
+        "colors": [
+            "#ff8000",
+            "#0080ff",
+            "#00ff40"
+        ],
+        "seg1": "5",
+        "seg2": "90",
+        "x": 1003,
+        "y": 644,
+        "wires": []
+    },
+    {
+        "id": "88561731123f1da8",
+        "type": "file in",
+        "z": "ddd0105b04875be6",
+        "name": "",
+        "filename": "mb://freebox-server.local/disque dur sur freebox-server.local/Téléchargements/creppcarbone",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 330,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "497c9b68470b543a",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "d": true,
+        "name": " lastest  CO2 Poland",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=PL",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "bearer",
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "65aabe17d51a2f30",
+                "4762928cd6b5f5fa"
+            ]
+        ]
+    },
+    {
+        "id": "65aabe17d51a2f30",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "etat latest carbone",
+        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 260,
+        "wires": [
+            [
+                "b6d034fab19bc5ac"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b6d034fab19bc5ac",
+        "type": "ui_text",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "carbon intensity poland",
+        "format": "{{msg.payload}} ",
+        "layout": "row-spread",
+        "x": 850,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "be350b0989e83a38",
+        "type": "inject",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "SELECT",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmota WHERE  Time >0 ORDER BY Time DESC LIMIT 10;",
+        "payloadType": "date",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "c00041db67beb73f"
+            ]
+        ]
+    },
+    {
+        "id": "c00041db67beb73f",
+        "type": "mysql",
+        "z": "bd0e39b0e5b0cc70",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "d199b79962a4c5c7",
+                "25b51aef2a1b633f"
+            ]
+        ]
+    },
+    {
+        "id": "d199b79962a4c5c7",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prepare chart",
+        "func": "var temp = {};\nvar data = [];\n\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = { \"x\": temp.Time, \"y\": temp.energytoday };\n}\n\nvar chart = [{\n    \"series\": [\"energytoday\"],\n    \"data\": [\n        data\n    ]\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "1c37b49de04230b6"
+            ]
+        ]
+    },
+    {
+        "id": "1c37b49de04230b6",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "energy today",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 750,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "58fbaa6a32b1881f",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "prepareHtml",
+        "func": "var temp = {};\nvar html = \"<table width='100%'><tr><td width='75%'>Date</td><td width='25%'>CO2</td></tr>\";\nfor(var i in msg.payload)\n{\n    temp = msg.payload[i];\n    html += \"<tr><td>\"+temp.Time+\"</td><td>\"+temp.energytoday+\"</td></tr>\";\n}\nhtml += \"</table>\";\nmsg.payload = html;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "219145b338150570"
+            ]
+        ]
+    },
+    {
+        "id": "219145b338150570",
+        "type": "ui_template",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "group": "f8e408a8348f1a42",
+        "name": "result C02",
+        "order": 38,
+        "width": "0",
+        "height": "0",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 710,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a795513ac79a480",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "today",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmota WHERE  Time >0 ORDER BY Time DESC LIMIT 10;",
+        "topicType": "str",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "c00041db67beb73f"
+            ]
+        ]
+    },
+    {
+        "id": "6f92af84d4fe241f",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "",
+        "func": "msg.payload=[{\n    \"series\": [\"temp1\", \"temp2\", \"temp3\" ],\n    \"data\": [ [5,5,5], [3,8,5], [6,7,2] ],\n    \"labels\": [ \"Jan\", \"Feb\", \"Mar\" ]\n}];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5313c45ac291fc72",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "",
+        "func": "msg.payload=[{\n    \"series\": [\"temp1\" ],\n    \"data\": [ [5,5,5] ],\n    \"labels\": [ \"Jan\", \"Feb\", \"Mar\" ]\n}];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35ef98de50d6d14b",
+        "type": "inject",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "25b51aef2a1b633f",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nconst str1 = 'num';\n\n\n\n\n//for (var i in msg.payload) {\n  //  temp = msg.payload[i];\n//    data[i] = temp.energytoday;\n  //  labels[i] =temp.Time\n  // labels[i]= i;\n // labels[i]= str1.concat(i);\n//}\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = temp.energytoday;\n  // labels[i]= i;\n // labels[i]= str1.concat(i);\n}\nfor (var j in msg.payload) {\n    temp = msg.payload[j];\n  \n    labels[j] =temp.Time\n  // labels[i]= i;\n  //labels[j]= str1.concat(j);\n}\n\nvar chart = [{\n    \"series\": [\"Energy today\"],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 400,
+        "wires": [
+            [
+                "d12a938fb030e109"
+            ]
+        ]
+    },
+    {
+        "id": "d12a938fb030e109",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "chart jul 2",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 700,
+        "y": 400,
+        "wires": [
+            []
+        ]
     }
 ]
