@@ -2489,7 +2489,7 @@
         "type": "ui_group",
         "name": "Scenario consommateur",
         "tab": "988df4f2cc6c55bd",
-        "order": 7,
+        "order": 5,
         "disp": true,
         "width": "6",
         "collapse": true
@@ -2508,6 +2508,84 @@
         "id": "2606e140c9d98a7a",
         "type": "ui_group",
         "name": "saisie appareil consommateur",
+        "tab": "988df4f2cc6c55bd",
+        "order": 7,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "016964b9b18bce81",
+        "type": "ui_group",
+        "name": "electric city",
+        "tab": "988df4f2cc6c55bd",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "6739328cae73abc5",
+        "type": "chronos-config",
+        "name": "one",
+        "sunPositions": []
+    },
+    {
+        "id": "f0e0984a1740d14a",
+        "type": "chronos-config",
+        "name": "onne",
+        "sunPositions": []
+    },
+    {
+        "id": "fc08d7e8c78fd4ad",
+        "type": "chronos-config",
+        "name": "jj",
+        "sunPositions": []
+    },
+    {
+        "id": "e98bbc0d7820536c",
+        "type": "chronos-config",
+        "name": "gg",
+        "sunPositions": []
+    },
+    {
+        "id": "f8e408a8348f1a42",
+        "type": "ui_group",
+        "name": "graphique panneau solaire",
+        "tab": "988df4f2cc6c55bd",
+        "order": 6,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "c716d8f1.4bb848",
+        "type": "ui_group",
+        "name": "bar-chart",
+        "tab": "957fd14a.a1277",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "957fd14a.a1277",
+        "type": "ui_tab",
+        "name": "bar-chart",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e0e7ea5c.056af8",
+        "type": "persist-store",
+        "filename": "~/store.json",
+        "interval": "60"
+    },
+    {
+        "id": "faba16dc1215cec9",
+        "type": "ui_group",
+        "name": "graphique chargeur velo",
         "tab": "988df4f2cc6c55bd",
         "order": 8,
         "disp": true,
@@ -2554,74 +2632,6 @@
         "actionButton-color": "#434343",
         "actionButton-flashColor": "#f2f2f2",
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
-    },
-    {
-        "id": "016964b9b18bce81",
-        "type": "ui_group",
-        "name": "electric city",
-        "tab": "988df4f2cc6c55bd",
-        "order": 9,
-        "disp": true,
-        "width": "6",
-        "collapse": true
-    },
-    {
-        "id": "6739328cae73abc5",
-        "type": "chronos-config",
-        "name": "one",
-        "sunPositions": []
-    },
-    {
-        "id": "f0e0984a1740d14a",
-        "type": "chronos-config",
-        "name": "onne",
-        "sunPositions": []
-    },
-    {
-        "id": "fc08d7e8c78fd4ad",
-        "type": "chronos-config",
-        "name": "jj",
-        "sunPositions": []
-    },
-    {
-        "id": "e98bbc0d7820536c",
-        "type": "chronos-config",
-        "name": "gg",
-        "sunPositions": []
-    },
-    {
-        "id": "f8e408a8348f1a42",
-        "type": "ui_group",
-        "name": "graphique",
-        "tab": "988df4f2cc6c55bd",
-        "order": 7,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "c716d8f1.4bb848",
-        "type": "ui_group",
-        "name": "bar-chart",
-        "tab": "957fd14a.a1277",
-        "order": 1,
-        "disp": true,
-        "width": "12",
-        "collapse": false
-    },
-    {
-        "id": "957fd14a.a1277",
-        "type": "ui_tab",
-        "name": "bar-chart",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "e0e7ea5c.056af8",
-        "type": "persist-store",
-        "filename": "~/store.json",
-        "interval": "60"
     },
     {
         "id": "d83a67fcb7073cd7",
@@ -2768,7 +2778,6 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "SELECT DISTINCT CO2,datetimer FROM mesure_prise WHERE CO2 > 15 and datetimer >0 ORDER BY datetimer ASC;",
-        "payload": "",
         "payloadType": "date",
         "x": 700,
         "y": 240,
@@ -4104,7 +4113,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": " querry Tasmota ",
-        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\n//msg.topic = query;\n//return msg;\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4138,9 +4147,8 @@
         "id": "41ae7b7bbb215bf5",
         "type": "ui_chart",
         "z": "13de37cb61fc3ad2",
-        "d": true,
         "name": "puissance instantanée",
-        "group": "af6e9ca4e8ef71ea",
+        "group": "f8e408a8348f1a42",
         "order": 13,
         "width": "6",
         "height": 4,
@@ -4582,7 +4590,9 @@
         "y": 420,
         "wires": [
             [
-                "52ad1b37b89bdc71"
+                "52ad1b37b89bdc71",
+                "eecd0d82adf8583b",
+                "861d2b287b052532"
             ]
         ]
     },
@@ -5107,8 +5117,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 160,
+        "x": 560,
+        "y": 180,
         "wires": []
     },
     {
@@ -5504,29 +5514,10 @@
         "y": 220,
         "wires": [
             [
-                "9f62eccd26ec7245",
-                "71ee95f2d1c8e19e",
                 "cd0bbbcbedddac94",
                 "497c9b68470b543a"
             ]
         ]
-    },
-    {
-        "id": "ad2e622241249cba",
-        "type": "debug",
-        "z": "d931280a91eab542",
-        "name": "debug 62",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 920,
-        "y": 540,
-        "wires": []
     },
     {
         "id": "42e955fdb64dd44f",
@@ -5548,6 +5539,7 @@
         "id": "3d6671eccf47240a",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "etat latest carbone",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
@@ -5581,8 +5573,8 @@
         "persist": false,
         "proxy": "",
         "authType": "bearer",
-        "x": 400,
-        "y": 380,
+        "x": 380,
+        "y": 280,
         "wires": [
             [
                 "f23f027a0b8b58e4"
@@ -5608,18 +5600,21 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
         "payloadType": "date",
-        "x": 170,
-        "y": 420,
+        "x": 90,
+        "y": 480,
         "wires": [
-            []
+            [
+                "b787f32585919542",
+                "96c8f3a956dfe7c5"
+            ]
         ]
     },
     {
         "id": "f23f027a0b8b58e4",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "etat historycarbone",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.history[0].carbonIntensity;\nmsg2.payload = msg.payload.history[1].carbonIntensity;\nmsg3.payload = msg.payload.history[2].carbonIntensity;\n//msg4.payload = msg.payload.[0];\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
@@ -5627,75 +5622,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 420,
+        "x": 610,
+        "y": 300,
         "wires": [
-            [
-                "a2c508d274e5833d"
-            ],
-            [
-                "dcf20230b2cc22cb"
-            ],
-            [
-                "e2e5b63dccafcadf"
-            ]
+            [],
+            [],
+            []
         ]
-    },
-    {
-        "id": "a2c508d274e5833d",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "d": true,
-        "group": "016964b9b18bce81",
-        "order": 11,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "carbon intensity 0",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 850,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "dcf20230b2cc22cb",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "d": true,
-        "group": "016964b9b18bce81",
-        "order": 10,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "carbon intensity 1",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 850,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "e2e5b63dccafcadf",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "d": true,
-        "group": "016964b9b18bce81",
-        "order": 12,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "carbon intensity 2",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 850,
-        "y": 460,
-        "wires": []
     },
     {
         "id": "83bc8d9faed2973d",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "latest power-breakdown",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.powerProductionBreakdown.wind;\nmsg2.payload = msg.payload.powerProductionBreakdown.solar;\nmsg3.payload = msg.payload.powerProductionBreakdown.gas;\n//msg4.payload = msg.payload.[0];\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
@@ -5703,8 +5642,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
-        "y": 620,
+        "x": 510,
+        "y": 900,
         "wires": [
             [
                 "d777d1b6cf51b89f",
@@ -5733,8 +5672,8 @@
         "label": "eolien",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 830,
-        "y": 600,
+        "x": 750,
+        "y": 820,
         "wires": []
     },
     {
@@ -5750,8 +5689,8 @@
         "label": "solaire",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 830,
-        "y": 640,
+        "x": 750,
+        "y": 860,
         "wires": []
     },
     {
@@ -5767,8 +5706,8 @@
         "label": "gaz",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 830,
-        "y": 680,
+        "x": 750,
+        "y": 900,
         "wires": []
     },
     {
@@ -5853,8 +5792,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1020,
-        "y": 600,
+        "x": 880,
+        "y": 820,
         "wires": [
             []
         ]
@@ -5897,8 +5836,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1040,
-        "y": 640,
+        "x": 890,
+        "y": 860,
         "wires": [
             []
         ]
@@ -5941,8 +5880,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 990,
-        "y": 680,
+        "x": 880,
+        "y": 900,
         "wires": [
             []
         ]
@@ -6016,6 +5955,7 @@
         "id": "9f62eccd26ec7245",
         "type": "http request",
         "z": "d931280a91eab542",
+        "d": true,
         "name": " lastest  CO2 FR",
         "method": "GET",
         "ret": "obj",
@@ -6034,26 +5974,6 @@
         ]
     },
     {
-        "id": "616a0921fe27a189",
-        "type": "http request",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "history  CO2 FR",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/history?zone=FR",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "bearer",
-        "x": 400,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "b787f32585919542",
         "type": "http request",
         "z": "d931280a91eab542",
@@ -6066,33 +5986,12 @@
         "persist": false,
         "proxy": "",
         "authType": "bearer",
-        "x": 340,
-        "y": 660,
+        "x": 380,
+        "y": 500,
         "wires": [
             [
-                "83bc8d9faed2973d",
-                "ad2e622241249cba"
-            ]
-        ]
-    },
-    {
-        "id": "71ee95f2d1c8e19e",
-        "type": "http request",
-        "z": "d931280a91eab542",
-        "name": " lastest  CO2 DE",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=DE",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "bearer",
-        "x": 343.75,
-        "y": 80,
-        "wires": [
-            [
-                "8dcc69f85042b150"
+                "408fd67293af3b67",
+                "3d6e323de1001661"
             ]
         ]
     },
@@ -6100,6 +5999,7 @@
         "id": "8dcc69f85042b150",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "etat latest carbone",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
@@ -6121,6 +6021,7 @@
         "id": "cd0bbbcbedddac94",
         "type": "http request",
         "z": "d931280a91eab542",
+        "d": true,
         "name": " lastest  CO2 IT",
         "method": "GET",
         "ret": "obj",
@@ -6142,6 +6043,7 @@
         "id": "f224d94832b207c0",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "etat latest carbone",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
@@ -6188,8 +6090,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 590,
-        "y": 340,
+        "x": 830,
+        "y": 280,
         "wires": []
     },
     {
@@ -6210,7 +6112,7 @@
         "scope": "local",
         "tooltip": "",
         "x": 150,
-        "y": 480,
+        "y": 500,
         "wires": [
             []
         ]
@@ -6232,8 +6134,8 @@
         "onstart": false,
         "scope": "local",
         "tooltip": "",
-        "x": 200,
-        "y": 320,
+        "x": 130,
+        "y": 280,
         "wires": [
             []
         ]
@@ -6334,6 +6236,7 @@
         "id": "65aabe17d51a2f30",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "etat latest carbone",
         "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
         "outputs": 3,
@@ -6342,7 +6245,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 260,
+        "y": 240,
         "wires": [
             [
                 "b6d034fab19bc5ac"
@@ -6368,45 +6271,17 @@
         "wires": []
     },
     {
-        "id": "be350b0989e83a38",
-        "type": "inject",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "SELECT",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "SELECT DISTINCT energytoday,Time FROM tasmota WHERE  Time >0 ORDER BY Time DESC LIMIT 10;",
-        "payloadType": "date",
-        "x": 140,
-        "y": 120,
-        "wires": [
-            [
-                "c00041db67beb73f"
-            ]
-        ]
-    },
-    {
         "id": "c00041db67beb73f",
         "type": "mysql",
         "z": "bd0e39b0e5b0cc70",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone",
-        "x": 340,
-        "y": 140,
+        "x": 500,
+        "y": 300,
         "wires": [
             [
-                "d199b79962a4c5c7",
-                "25b51aef2a1b633f"
+                "15756baa45607ed7",
+                "3d255eb038993c2e"
             ]
         ]
     },
@@ -6414,6 +6289,7 @@
         "id": "d199b79962a4c5c7",
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
+        "d": true,
         "name": "prepare chart",
         "func": "var temp = {};\nvar data = [];\n\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = { \"x\": temp.Time, \"y\": temp.energytoday };\n}\n\nvar chart = [{\n    \"series\": [\"energytoday\"],\n    \"data\": [\n        data\n    ]\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
         "outputs": 1,
@@ -6421,8 +6297,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 120,
+        "x": 680,
+        "y": 40,
         "wires": [
             [
                 "1c37b49de04230b6"
@@ -6433,6 +6309,7 @@
         "id": "1c37b49de04230b6",
         "type": "ui_chart",
         "z": "bd0e39b0e5b0cc70",
+        "d": true,
         "name": "",
         "group": "f8e408a8348f1a42",
         "order": 1,
@@ -6466,8 +6343,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 750,
-        "y": 140,
+        "x": 870,
+        "y": 40,
         "wires": [
             []
         ]
@@ -6484,8 +6361,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 200,
+        "x": 670,
+        "y": 80,
         "wires": [
             [
                 "219145b338150570"
@@ -6499,7 +6376,7 @@
         "d": true,
         "group": "f8e408a8348f1a42",
         "name": "result C02",
-        "order": 38,
+        "order": 9,
         "width": "0",
         "height": "0",
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -6507,8 +6384,8 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 710,
-        "y": 200,
+        "x": 870,
+        "y": 80,
         "wires": [
             []
         ]
@@ -6517,9 +6394,10 @@
         "id": "7a795513ac79a480",
         "type": "ui_button",
         "z": "bd0e39b0e5b0cc70",
+        "d": true,
         "name": "",
         "group": "f8e408a8348f1a42",
-        "order": 3,
+        "order": 2,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -6533,27 +6411,7 @@
         "topic": "SELECT DISTINCT energytoday,Time FROM tasmota WHERE  Time >0 ORDER BY Time DESC LIMIT 10;",
         "topicType": "str",
         "x": 150,
-        "y": 160,
-        "wires": [
-            [
-                "c00041db67beb73f"
-            ]
-        ]
-    },
-    {
-        "id": "6f92af84d4fe241f",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "d": true,
-        "name": "",
-        "func": "msg.payload=[{\n    \"series\": [\"temp1\", \"temp2\", \"temp3\" ],\n    \"data\": [ [5,5,5], [3,8,5], [6,7,2] ],\n    \"labels\": [ \"Jan\", \"Feb\", \"Mar\" ]\n}];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 280,
+        "y": 60,
         "wires": [
             []
         ]
@@ -6570,35 +6428,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "35ef98de50d6d14b",
-        "type": "inject",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 200,
-        "y": 280,
+        "x": 320,
+        "y": 60,
         "wires": [
             []
         ]
@@ -6607,6 +6438,7 @@
         "id": "25b51aef2a1b633f",
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
+        "d": true,
         "name": "prepare chart bar",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nconst str1 = 'num';\n\n\n\n\n//for (var i in msg.payload) {\n  //  temp = msg.payload[i];\n//    data[i] = temp.energytoday;\n  //  labels[i] =temp.Time\n  // labels[i]= i;\n // labels[i]= str1.concat(i);\n//}\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = temp.energytoday;\n  // labels[i]= i;\n // labels[i]= str1.concat(i);\n}\nfor (var j in msg.payload) {\n    temp = msg.payload[j];\n  \n    labels[j] =temp.Time\n  // labels[i]= i;\n  //labels[j]= str1.concat(j);\n}\n\nvar chart = [{\n    \"series\": [\"Energy today\"],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
         "outputs": 1,
@@ -6614,8 +6446,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 400,
+        "x": 710,
+        "y": 160,
         "wires": [
             [
                 "d12a938fb030e109"
@@ -6626,12 +6458,13 @@
         "id": "d12a938fb030e109",
         "type": "ui_chart",
         "z": "bd0e39b0e5b0cc70",
+        "d": true,
         "name": "",
         "group": "f8e408a8348f1a42",
         "order": 3,
         "width": 0,
         "height": 0,
-        "label": "chart jul 2",
+        "label": "energie",
         "chartType": "bar",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -6659,8 +6492,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 700,
-        "y": 400,
+        "x": 900,
+        "y": 160,
         "wires": [
             []
         ]
@@ -6697,5 +6530,946 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "772f27aafec01181",
+        "type": "mysql",
+        "z": "a21c4b8426a30f7f",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 760,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "016e8ec9b9e593e3",
+        "type": "function",
+        "z": "a21c4b8426a30f7f",
+        "name": " querry Tasmota ",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmotaconsomateur (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 580,
+        "wires": [
+            [
+                "772f27aafec01181"
+            ]
+        ]
+    },
+    {
+        "id": "eecd0d82adf8583b",
+        "type": "delay",
+        "z": "a21c4b8426a30f7f",
+        "name": "1 fois par heure",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "016e8ec9b9e593e3"
+            ]
+        ]
+    },
+    {
+        "id": "4f02013243c73f1a",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "today",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "topicType": "str",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15756baa45607ed7",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 710,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3d255eb038993c2e",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar work_interval = flow.get(\"interval_conso\");\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "42530c38a83b58c6",
+                "78f5d865954c1ab9"
+            ]
+        ]
+    },
+    {
+        "id": "42530c38a83b58c6",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "energie  KWh",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 890,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c9e8079736c375f5",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 4,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": ">>",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "topicType": "str",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd3e40a27889ddfd",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 3,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "<<",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "topicType": "str",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6ddcdb4b90156bb",
+        "type": "ui_multistate_switch",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 2,
+        "width": 0,
+        "height": 1,
+        "label": "",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "day",
+                "value": "DAY",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "month",
+                "value": "MONTH",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "year",
+                "value": "YEAR",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "",
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "a1c9c9e44111a070",
+                "fd74b9a5e9629bb1"
+            ]
+        ]
+    },
+    {
+        "id": "a1c9c9e44111a070",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "consomateur",
+        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\ninterval  =msg.payload;\n//intervalmonth =\"MONTH\";\n//intervalyear =\"YEAR\";\n\n\ntopic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" \"+interval+\") AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" \"+interval+\");\";\n\n\n//if (msg.payload==\"DAY\")\n// day\n //topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\n //{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 0 DAY) AND DATE_SUB(CURDATE(), INTERVAL 0 DAY);\"}\n\n//if (msg.payload==\"MONTH\")\n// month\n //{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+d+\" MONTH) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" MONTH);\"}\n// {topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 MONTH) AND DATE_SUB(CURDATE(), INTERVAL 0 MONTH);\"}\n\n//if (msg.payload==\"YEAR\")\n// year\n//topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\";\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+d+\" YEAR) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" YEAR);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 YEAR) AND DATE_SUB(CURDATE(), INTERVAL 0 YEAR);\"}\n\n//msg.topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "c00041db67beb73f",
+                "b1b1a892753ec670"
+            ]
+        ]
+    },
+    {
+        "id": "b1b1a892753ec670",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 510,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "861d2b287b052532",
+        "type": "delay",
+        "z": "a21c4b8426a30f7f",
+        "name": "1 fois par jour",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "day",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 360,
+        "y": 640,
+        "wires": [
+            [
+                "dc25a376ab1273ec"
+            ]
+        ]
+    },
+    {
+        "id": "dc25a376ab1273ec",
+        "type": "function",
+        "z": "a21c4b8426a30f7f",
+        "name": " querry Tasmota ",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota_conso_month (Time,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" , \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 640,
+        "wires": [
+            [
+                "772f27aafec01181"
+            ]
+        ]
+    },
+    {
+        "id": "fd74b9a5e9629bb1",
+        "type": "change",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval_conso",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "pile_conso",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1df141e2e5b30ff5",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "",
+        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\ninterval  =msg.payload;\n//intervalmonth =\"MONTH\";\n//intervalyear =\"YEAR\";\n\n\ntopic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" \"+interval+\") AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" \"+interval+\");\";\n\n\n//if (msg.payload==\"DAY\")\n// day\n //topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\n //{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 0 DAY) AND DATE_SUB(CURDATE(), INTERVAL 0 DAY);\"}\n\n//if (msg.payload==\"MONTH\")\n// month\n //{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+d+\" MONTH) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" MONTH);\"}\n// {topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 MONTH) AND DATE_SUB(CURDATE(), INTERVAL 0 MONTH);\"}\n\n//if (msg.payload==\"YEAR\")\n// year\n//topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\";\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+d+\" YEAR) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" YEAR);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 YEAR) AND DATE_SUB(CURDATE(), INTERVAL 0 YEAR);\"}\n\n//msg.topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "78f5d865954c1ab9",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 910,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "119fae5e21bb55aa",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "energie  KWh",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 890,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2008708e2c1b7a40",
+        "type": "ui_multistate_switch",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 6,
+        "width": 0,
+        "height": 1,
+        "label": "",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "day",
+                "value": "DAY",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "month",
+                "value": "MONTH",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "year",
+                "value": "YEAR",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "69d6bf89ee282848"
+            ]
+        ]
+    },
+    {
+        "id": "a18dcc0f2baa7bee",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 8,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": ">>",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "topicType": "str",
+        "x": 70,
+        "y": 360,
+        "wires": [
+            [
+                "628f84447b2544b0"
+            ]
+        ]
+    },
+    {
+        "id": "561c9262f517b0e8",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 7,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "<<",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "topicType": "str",
+        "x": 70,
+        "y": 400,
+        "wires": [
+            [
+                "0613ca847400880b"
+            ]
+        ]
+    },
+    {
+        "id": "53c3bdbde118dacc",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "panneau",
+        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n //topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\n {topic=\"SELECT DISTINCT energytoday,Time FROM tasmota WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 0 DAY) AND DATE_SUB(CURDATE(), INTERVAL 0 DAY);\"}\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "f8139817cddba33a"
+            ]
+        ]
+    },
+    {
+        "id": "5a806665b9f42d9a",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar jserie =\"hy\";\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [
+                "119fae5e21bb55aa"
+            ]
+        ]
+    },
+    {
+        "id": "f8139817cddba33a",
+        "type": "mysql",
+        "z": "bd0e39b0e5b0cc70",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 500,
+        "y": 440,
+        "wires": [
+            [
+                "5a806665b9f42d9a",
+                "5710acf73c7b8754"
+            ]
+        ]
+    },
+    {
+        "id": "5710acf73c7b8754",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "prepare chart",
+        "func": "var temp = {};\nvar data = [];\n\nfor (var i in msg.payload) {\n    temp = msg.payload[i];\n    data[i] = { \"x\": temp.Time, \"y\": temp.energytoday };\n}\n\nvar chart = [{\n    \"series\": [\"energytoday\"],\n    \"data\": [\n        data\n    ]\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 480,
+        "wires": [
+            [
+                "f9b2b063d707cc49"
+            ]
+        ]
+    },
+    {
+        "id": "f9b2b063d707cc49",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "energy today",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 910,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d118c0791a35d0a",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar work_interval = flow.get(\"interval\");\n\nif (work_interval == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval == \"MONTH\")\n{\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n   data[j] = temp.energytoday;\n  labels[j] =temp.jour ;\n  \n  \n}\n\nvar chartd = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [\"j\"],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n    \n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69d6bf89ee282848",
+        "type": "change",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval_panneau",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "pile_panneau",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 520,
+        "wires": [
+            [
+                "53c3bdbde118dacc"
+            ]
+        ]
+    },
+    {
+        "id": "628f84447b2544b0",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "plus pile_panneau",
+        "func": "var work_delta = flow.get(\"pile_panneau\");\nwork_delta = work_delta +1;\nflow.set(\"pile_panneau\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "53c3bdbde118dacc"
+            ]
+        ]
+    },
+    {
+        "id": "0613ca847400880b",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "moins pile_panneau",
+        "func": "var work_delta = flow.get(\"pile_panneau\");\nwork_delta = work_delta -1;\nflow.set(\"pile_panneau\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "53c3bdbde118dacc"
+            ]
+        ]
+    },
+    {
+        "id": "96c8f3a956dfe7c5",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown DE",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/power-breakdown/latest?zone=DE",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "bearer",
+        "x": 320,
+        "y": 640,
+        "wires": [
+            [
+                "408fd67293af3b67"
+            ]
+        ]
+    },
+    {
+        "id": "3d6e323de1001661",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "debug 62",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 600,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "e3bb2492a92b3851",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown PL",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/power-breakdown/latest?zone=PL",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "bearer",
+        "x": 280,
+        "y": 800,
+        "wires": [
+            [
+                "1472cbc443b7627b"
+            ]
+        ]
+    },
+    {
+        "id": "1472cbc443b7627b",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 510,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "9acbd817b8302419",
+        "type": "http request",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown IT",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-access.electricitymaps.com/free-tier/power-breakdown/latest?zone=IT",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "bearer",
+        "x": 300,
+        "y": 840,
+        "wires": [
+            [
+                "8bea7a566560dba0"
+            ]
+        ]
+    },
+    {
+        "id": "8bea7a566560dba0",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "408fd67293af3b67",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown-CO2 emission",
+        "func": "var localcoal =0;\nvar localgas = 0;\nvar localoil = 0;\nvar P1 =0;\nvar P2 =0;\nvar P3 =0;\nvar P4 =0;\nvar P5 =0;\nvar P6 =0;\nvar P7 =0;\nif (msg.payload.powerProductionBreakdown.coal!=null)\nlocalcoal= msg.payload.powerProductionBreakdown.coal;\nif (msg.payload.powerProductionBreakdown.gas!=null)\nlocalgas = msg.payload.powerProductionBreakdown.gas;\nif (msg.payload.powerProductionBreakdown.oil!=null)\nlocaloil = msg.payload.powerProductionBreakdown.oil;\nvar localtime = msg.payload.datetime;\nvar localzone = msg.payload.zone;\nif (msg.payload.powerProductionBreakdown.biomass!=null)\n P1 = msg.payload.powerProductionBreakdown.biomass;\nif (msg.payload.powerProductionBreakdown.hydro!=null)\n P2 = msg.payload.powerProductionBreakdown.hydro;\nif (msg.payload.powerProductionBreakdown.wind!=null)\n P3 = msg.payload.powerProductionBreakdown.wind;\nif (msg.payload.powerProductionBreakdown.oil!=null)\nP4 = msg.payload.powerProductionBreakdown.solar;\nif (msg.payload.powerProductionBreakdown.unknown!=null)\n P5 = msg.payload.powerProductionBreakdown.unknown;\n if (msg.payload.powerProductionBreakdown.geothermal!=null)\n P6 = msg.payload.powerProductionBreakdown.geothermal;\n if (msg.payload.powerProductionBreakdown.nuclear!=null)\nP7 = msg.payload.powerProductionBreakdown.nuclear;\nvar P8 = msg.payload.powerProductionTotal;\n//var P9 = msg.payload.hydro discharge;\n//var P7 = msg.payload.battery discharge;\n// var query = \"INSERT INTO electricity_maps (coal,gas,oil,zone,time,nuclear,biomass,hydro,wind,solar,unknown) VALUES (\" + localcoal + \" ,\" + localgas + \", \" + localoil + \" , ' \" +localzone+\"','\"+localtime+\"',\" + P7 + \",\" + P1 + \",\" + P2 + \",\" + P3 + \",\" + P4 + \",\"+ P5 + \")\";\n  var query = \"INSERT INTO electricity_maps (coal,gas,oil,zone,time,nuclear,geo,biomass,hydro,wind,solar,unknown,powerproductiontotal) VALUES (\" + localcoal + \" ,\" + localgas + \", \" + localoil + \" , ' \" +localzone+\"','\"+localtime+\"',\" + P7 + \",\" + P6 +\",\" + P1+\",\"+ P2+\",\" + P3+\",\" + P4+\",\"+ P5+\",\"+P8+\")\";\n\n\nmsg.topic = query;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 600,
+        "wires": [
+            [
+                "293b1a81ade8e02b"
+            ]
+        ]
+    },
+    {
+        "id": "12db918943706231",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "d": true,
+        "name": " querry Tasmota ",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "293b1a81ade8e02b",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone2",
+        "x": 1060,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "49b004ccc734ba24",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 380,
+        "wires": []
     }
 ]
