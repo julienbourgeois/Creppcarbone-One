@@ -3847,7 +3847,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 980,
-        "y": 480,
+        "y": 500,
         "wires": []
     },
     {
@@ -3864,7 +3864,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 980,
-        "y": 420,
+        "y": 460,
         "wires": []
     },
     {
@@ -4102,8 +4102,8 @@
         "z": "13de37cb61fc3ad2",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone",
-        "x": 780,
-        "y": 400,
+        "x": 760,
+        "y": 360,
         "wires": [
             []
         ]
@@ -4120,7 +4120,7 @@
         "finalize": "",
         "libs": [],
         "x": 580,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "e8fd93fa7a68f788"
@@ -4147,6 +4147,7 @@
         "id": "41ae7b7bbb215bf5",
         "type": "ui_chart",
         "z": "13de37cb61fc3ad2",
+        "d": true,
         "name": "puissance instantanée",
         "group": "f8e408a8348f1a42",
         "order": 13,
@@ -4262,11 +4263,12 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
-        "x": 400,
-        "y": 400,
+        "x": 360,
+        "y": 380,
         "wires": [
             [
-                "ae3ee607321b49e9"
+                "ae3ee607321b49e9",
+                "59039a96a726413b"
             ]
         ]
     },
@@ -5491,46 +5493,6 @@
         "wires": []
     },
     {
-        "id": "42e955fdb64dd44f",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "group": "016964b9b18bce81",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "carbon intensity FR",
-        "format": "{{msg.payload}} ",
-        "layout": "row-spread",
-        "x": 813.75,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "3d6671eccf47240a",
-        "type": "function",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "etat latest carbone",
-        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.carbonIntensity;\nmsg2.payload = msg.payload.zone;\nmsg3.payload = msg.payload.datetime;\n//msg4.payload = msg.payload.ENERGY.Total;\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
-        "outputs": 3,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 570,
-        "y": 140,
-        "wires": [
-            [
-                "42e955fdb64dd44f",
-                "7a818431fcf3f8d8",
-                "de4551c3b52ae065"
-            ],
-            [],
-            []
-        ]
-    },
-    {
         "id": "4acee825ab57f244",
         "type": "inject",
         "z": "d931280a91eab542",
@@ -5544,7 +5506,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "3600",
+        "repeat": "1800",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -5557,291 +5519,10 @@
                 "b787f32585919542",
                 "5dd6275318962893",
                 "a97ec4b6b6e666e4",
-                "66e698f49a2a0840"
+                "66e698f49a2a0840",
+                "c5ec19364953206f"
             ]
         ]
-    },
-    {
-        "id": "83bc8d9faed2973d",
-        "type": "function",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "latest power-breakdown",
-        "func": "var msg1 = {};\nvar msg2 = {};\nvar msg3 = {};\nvar msg4 = {};\nvar msg5 = {};\nvar msg6= {};\nvar msg7= {};\nvar msg8= {};\nmsg1.topic = 'S1';\nmsg2.topic = 'S2';\nmsg3.topic = 'S3';\nmsg4.topic = 'S4';\nmsg5.topic = 'S5';\nmsg6.topic = 'S6';\nmsg7.topic = 'S7';\nmsg8.topic = 'S8';\nmsg1.payload = msg.payload.powerProductionBreakdown.wind;\nmsg2.payload = msg.payload.powerProductionBreakdown.solar;\nmsg3.payload = msg.payload.powerProductionBreakdown.gas;\n//msg4.payload = msg.payload.[0];\n//msg5.payload = msg.payload.ENERGY.Total*16;\n//msg6.payload = msg.payload.ENERGY.Power*16;\n//msg7.payload = msg.payload.ENERGY.Power*16;\n//msg8.payload = msg.payload.ENERGY.Power;\nreturn [msg1, msg2, msg3];\n",
-        "outputs": 3,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 80,
-        "wires": [
-            [
-                "d777d1b6cf51b89f",
-                "4c4e15ccead7a6c5"
-            ],
-            [
-                "0a697afef894fff0",
-                "b0d72ac318e6d5b0"
-            ],
-            [
-                "f48b9eaaeb7e5fb9",
-                "343a629fc33defe8"
-            ]
-        ]
-    },
-    {
-        "id": "d777d1b6cf51b89f",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "d": true,
-        "group": "016964b9b18bce81",
-        "order": 13,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "eolien",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 350,
-        "y": 20,
-        "wires": []
-    },
-    {
-        "id": "0a697afef894fff0",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "d": true,
-        "group": "016964b9b18bce81",
-        "order": 14,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "solaire",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 350,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "f48b9eaaeb7e5fb9",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "d": true,
-        "group": "016964b9b18bce81",
-        "order": 15,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "gaz",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 350,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "7a818431fcf3f8d8",
-        "type": "ui_chart",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "",
-        "group": "016964b9b18bce81",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "label": "CO2 FR",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 783.75,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4c4e15ccead7a6c5",
-        "type": "ui_chart",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "",
-        "group": "016964b9b18bce81",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "label": "eolien  FR",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 480,
-        "y": 20,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b0d72ac318e6d5b0",
-        "type": "ui_chart",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "",
-        "group": "016964b9b18bce81",
-        "order": 8,
-        "width": 0,
-        "height": 0,
-        "label": "solaire  FR",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 490,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "343a629fc33defe8",
-        "type": "ui_chart",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": "",
-        "group": "016964b9b18bce81",
-        "order": 9,
-        "width": 0,
-        "height": 0,
-        "label": "gaz FR",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 480,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "de4551c3b52ae065",
-        "type": "ui_gauge",
-        "z": "d931280a91eab542",
-        "name": "CO2",
-        "group": "016964b9b18bce81",
-        "order": 2,
-        "width": "2",
-        "height": "2",
-        "gtype": "gage",
-        "title": "CO2  FR",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "700",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "70",
-        "seg2": "250",
-        "x": 770,
-        "y": 160,
-        "wires": []
     },
     {
         "id": "1bb73e704c412c23",
@@ -5867,28 +5548,6 @@
         ]
     },
     {
-        "id": "9f62eccd26ec7245",
-        "type": "http request",
-        "z": "d931280a91eab542",
-        "d": true,
-        "name": " lastest  CO2 FR",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://api-access.electricitymaps.com/free-tier/carbon-intensity/latest?zone=FR",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "bearer",
-        "x": 380,
-        "y": 140,
-        "wires": [
-            [
-                "3d6671eccf47240a"
-            ]
-        ]
-    },
-    {
         "id": "b787f32585919542",
         "type": "http request",
         "z": "d931280a91eab542",
@@ -5901,30 +5560,14 @@
         "persist": false,
         "proxy": "",
         "authType": "bearer",
-        "x": 360,
-        "y": 400,
+        "x": 340,
+        "y": 280,
         "wires": [
             [
                 "93e5a01ec27daaf0",
                 "e24d57b159397cb1"
             ]
         ]
-    },
-    {
-        "id": "f89443aa95a33305",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "group": "016964b9b18bce81",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "carbon intensity Italy",
-        "format": "{{msg.payload}} ",
-        "layout": "row-spread",
-        "x": 800,
-        "y": 200,
-        "wires": []
     },
     {
         "id": "ae97a4d3dc433689",
@@ -5967,7 +5610,7 @@
         "scope": "local",
         "tooltip": "",
         "x": 130,
-        "y": 280,
+        "y": 220,
         "wires": [
             []
         ]
@@ -6040,22 +5683,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "b6d034fab19bc5ac",
-        "type": "ui_text",
-        "z": "d931280a91eab542",
-        "group": "016964b9b18bce81",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "carbon intensity poland",
-        "format": "{{msg.payload}} ",
-        "layout": "row-spread",
-        "x": 810,
-        "y": 240,
-        "wires": []
     },
     {
         "id": "c00041db67beb73f",
@@ -6550,7 +6177,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 920,
+        "x": 1000,
         "y": 440,
         "wires": [
             []
@@ -6665,7 +6292,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "panneau",
-        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n //topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\n {topic=\"SELECT DISTINCT energytoday,Time FROM tasmota WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 0 DAY) AND DATE_SUB(CURDATE(), INTERVAL 0 DAY);\"}\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n// {topic=\"SELECT DISTINCT energytoday,Time FROM tasmota WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmota_panneau_day WHERE jour =DAY(CURDATE()) +\"+ work_pile +\"  ORDER BY heure ASC;\"}\n{topic =\"SELECT DISTINCT energytoday,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\n\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6684,7 +6311,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "prepare chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar jserie =\"hy\";\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n\n// decallage de la periode observée\n//var day =d.getDate();\n//var month = d.getMonth();\n//var year =d.getYear();\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\nvar d =new Date();\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.heure + \"h\";\n  //jdate =\"hello\";\n// jdate = temp.JourN+\"/\"+temp.mois+\"/\"+temp.an;\n  \n}\n//if (typeof jdate == 'undefined') {\n//    jdate= [\"good\"];\n//}\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6708,7 +6335,8 @@
         "y": 440,
         "wires": [
             [
-                "5a806665b9f42d9a"
+                "5a806665b9f42d9a",
+                "ca451c59b8419f27"
             ]
         ]
     },
@@ -6797,8 +6425,8 @@
         "persist": false,
         "proxy": "",
         "authType": "bearer",
-        "x": 360,
-        "y": 520,
+        "x": 400,
+        "y": 380,
         "wires": [
             [
                 "3ba8c3a55112ab20",
@@ -6823,7 +6451,8 @@
         "y": 580,
         "wires": [
             [
-                "1472cbc443b7627b"
+                "1472cbc443b7627b",
+                "ba79ea5fccabaf06"
             ]
         ]
     },
@@ -6840,8 +6469,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 590,
-        "y": 580,
+        "x": 570,
+        "y": 540,
         "wires": []
     },
     {
@@ -6857,8 +6486,8 @@
         "persist": false,
         "proxy": "",
         "authType": "bearer",
-        "x": 380,
-        "y": 680,
+        "x": 480,
+        "y": 460,
         "wires": [
             [
                 "8bea7a566560dba0",
@@ -6879,8 +6508,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 730,
-        "y": 620,
+        "x": 670,
+        "y": 420,
         "wires": []
     },
     {
@@ -6894,8 +6523,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 720,
-        "y": 680,
+        "x": 800,
+        "y": 460,
         "wires": [
             [
                 "293b1a81ade8e02b"
@@ -6908,8 +6537,8 @@
         "z": "d931280a91eab542",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone3",
-        "x": 980,
-        "y": 680,
+        "x": 1060,
+        "y": 460,
         "wires": [
             []
         ]
@@ -6918,7 +6547,7 @@
         "id": "6d44572ab02c994d",
         "type": "inject",
         "z": "d931280a91eab542",
-        "name": "",
+        "name": "affichage electricity city",
         "props": [
             {
                 "p": "payload"
@@ -6928,17 +6557,21 @@
                 "vt": "str"
             }
         ],
-        "repeat": "3600",
+        "repeat": "1200",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 190,
-        "y": 980,
+        "x": 130,
+        "y": 940,
         "wires": [
             [
-                "44e6de58511930e7"
+                "44e6de58511930e7",
+                "2ec20a3dca6d004c",
+                "6161544a1d92c129",
+                "512e74a7fdc30ecd",
+                "bed5678b0bf59b3b"
             ]
         ]
     },
@@ -6946,15 +6579,15 @@
         "id": "44e6de58511930e7",
         "type": "function",
         "z": "d931280a91eab542",
-        "name": "electriccityC2_emission",
-        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,MAX(time),zone FROM electricity_maps;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "name": "electriccityC2_emission EU",
+        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%EU' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 980,
+        "x": 400,
+        "y": 940,
         "wires": [
             [
                 "8d1368be2f65301b"
@@ -6967,12 +6600,13 @@
         "z": "d931280a91eab542",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 5",
-        "x": 640,
-        "y": 980,
+        "x": 620,
+        "y": 940,
         "wires": [
             [
                 "0a6125203bf56ed7",
-                "d5f3ad6f0ba19d7c"
+                "d5f3ad6f0ba19d7c",
+                "9920572274c8325d"
             ]
         ]
     },
@@ -6980,19 +6614,19 @@
         "id": "d5f3ad6f0ba19d7c",
         "type": "function",
         "z": "d931280a91eab542",
-        "name": "prepare chart bar",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours(h) +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
+        "name": "prepare chart bar 2",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 850,
-        "y": 980,
+        "y": 940,
         "wires": [
             [
                 "3798ce7550d603d1",
-                "151aa9ae63756cf7"
+                "5d1323462427a776"
             ]
         ]
     },
@@ -7009,8 +6643,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 750,
-        "y": 340,
+        "x": 650,
+        "y": 220,
         "wires": []
     },
     {
@@ -7026,8 +6660,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 650,
-        "y": 520,
+        "x": 630,
+        "y": 320,
         "wires": []
     },
     {
@@ -7041,8 +6675,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 720,
-        "y": 400,
+        "x": 680,
+        "y": 280,
         "wires": [
             [
                 "ea4b4476c566468a"
@@ -7055,8 +6689,8 @@
         "z": "d931280a91eab542",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone1",
-        "x": 980,
-        "y": 400,
+        "x": 960,
+        "y": 280,
         "wires": [
             []
         ]
@@ -7072,8 +6706,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 660,
-        "y": 460,
+        "x": 720,
+        "y": 380,
         "wires": [
             [
                 "44995f07d0cf189a"
@@ -7086,8 +6720,8 @@
         "z": "d931280a91eab542",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone2",
-        "x": 960,
-        "y": 460,
+        "x": 1000,
+        "y": 380,
         "wires": [
             []
         ]
@@ -7108,8 +6742,8 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
-        "x": 320,
-        "y": 460,
+        "x": 180,
+        "y": 380,
         "wires": [
             [
                 "96c8f3a956dfe7c5"
@@ -7132,8 +6766,8 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
-        "x": 160,
-        "y": 660,
+        "x": 280,
+        "y": 460,
         "wires": [
             [
                 "9acbd817b8302419"
@@ -7146,7 +6780,7 @@
         "z": "d931280a91eab542",
         "name": "",
         "pauseType": "delay",
-        "timeout": "3",
+        "timeout": "4",
         "timeoutUnits": "seconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -7156,8 +6790,8 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
-        "x": 220,
-        "y": 760,
+        "x": 240,
+        "y": 660,
         "wires": [
             [
                 "45874f4513484d5a"
@@ -7168,15 +6802,15 @@
         "id": "45874f4513484d5a",
         "type": "function",
         "z": "d931280a91eab542",
-        "name": "update C2",
-        "func": "var query = \"UPDATE electricity_maps SET C2gas= gas *(SELECT emission FROM emissions_C2 WHERE energie = 'gas');\" +\n\"UPDATE electricity_maps SET C2oil= oil *(SELECT emission FROM emissions_C2 WHERE energie = 'oil');\"+\n\"UPDATE electricity_maps SET C2coal= coal *(SELECT emission FROM emissions_C2 WHERE energie = 'coal');\"+\n\"UPDATE electricity_maps SET sum_C2energy= C2oil + C2coal+ C2gas ;\" +\n\"UPDATE electricity_maps SET C2par_KWH=sum_C2energy/powerproductiontotal;\"+\n\n\"INSERT IGNORE INTO electricity_maps (coal,gas,oil,powerproductiontotal,time,zone,C2coal,C2gas,C2oil,sum_C2energy,C2par_KWH,nuclear,geo,biomass,hydro,wind,solar,unknown)\"+\n\"Select  SUM(coal),SUM(gas) ,SUM(oil),SUM(powerproductiontotal),time,\"+\"'EU'\"+\",SUM(C2coal),SUM(C2gas),SUM(C2oil),SUM(sum_C2energy),SUM(sum_C2energy)/SUM(powerproductiontotal),SUM(nuclear),SUM(geo),SUM(biomass),SUM(hydro),SUM(wind),SUM(solar),SUM(unknown) FROM electricity_maps WHERE zone  LIKE'%FR' OR zone LIKE'%DE'OR zone  LIKE'%IT'\"+ \n\"GROUP BY time;\"\n\n\nmsg.topic = query;\nreturn msg;\n",
+        "name": "update C2 and EU",
+        "func": "var query = \"UPDATE electricity_maps SET C2gas= gas *(SELECT emission FROM emissions_C2 WHERE energie = 'gas');\" +\n\"UPDATE electricity_maps SET C2oil= oil *(SELECT emission FROM emissions_C2 WHERE energie = 'oil');\"+\n\"UPDATE electricity_maps SET C2coal= coal *(SELECT emission FROM emissions_C2 WHERE energie = 'coal');\"+\n\"UPDATE electricity_maps SET sum_C2energy= C2oil + C2coal+ C2gas ;\" +\n\"UPDATE electricity_maps SET C2par_KWH=sum_C2energy/powerproductiontotal;\"+\n\n\"INSERT IGNORE INTO electricity_maps (coal,gas,oil,powerproductiontotal,time,zone,C2coal,C2gas,C2oil,sum_C2energy,C2par_KWH,nuclear,geo,biomass,hydro,wind,solar,unknown)\"+\n\"Select  SUM(coal),SUM(gas) ,SUM(oil),SUM(powerproductiontotal),time,\"+\"'EU'\"+\",SUM(C2coal),SUM(C2gas),SUM(C2oil),SUM(sum_C2energy),SUM(sum_C2energy)/SUM(powerproductiontotal),SUM(nuclear),SUM(geo),SUM(biomass),SUM(hydro),SUM(wind),SUM(solar),SUM(unknown) FROM electricity_maps WHERE zone  LIKE'%FR' OR zone LIKE'%DE'OR zone  LIKE'%IT' OR zone LIKE '%PL'\"+ \n\"GROUP BY time;\"\n\n\nmsg.topic = query;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 760,
+        "x": 450,
+        "y": 660,
         "wires": [
             [
                 "f4ccc91cd194dda3"
@@ -7189,8 +6823,8 @@
         "z": "d931280a91eab542",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone4",
-        "x": 620,
-        "y": 760,
+        "x": 660,
+        "y": 660,
         "wires": [
             []
         ]
@@ -7216,8 +6850,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
-        "y": 840,
+        "x": 200,
+        "y": 720,
         "wires": [
             [
                 "45874f4513484d5a"
@@ -7228,7 +6862,7 @@
         "id": "0a6125203bf56ed7",
         "type": "debug",
         "z": "d931280a91eab542",
-        "name": "",
+        "name": "sortie mysql",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -7237,8 +6871,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 810,
-        "y": 1060,
+        "x": 830,
+        "y": 820,
         "wires": []
     },
     {
@@ -7247,9 +6881,9 @@
         "z": "d931280a91eab542",
         "name": "",
         "group": "016964b9b18bce81",
-        "order": 5,
-        "width": 0,
-        "height": 0,
+        "order": 3,
+        "width": "3",
+        "height": "3",
         "label": "gCO2eqpar KWH",
         "chartType": "bar",
         "legend": "true",
@@ -7278,27 +6912,11 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 980,
+        "x": 1110,
+        "y": 940,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "151aa9ae63756cf7",
-        "type": "debug",
-        "z": "d931280a91eab542",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 1060,
-        "wires": []
     },
     {
         "id": "c812295e81b0d22e",
@@ -7731,8 +7349,8 @@
         "onstart": false,
         "scope": "local",
         "tooltip": "",
-        "x": 330,
-        "y": 60,
+        "x": 310,
+        "y": 80,
         "wires": [
             []
         ]
@@ -7816,5 +7434,673 @@
                 "42530c38a83b58c6"
             ]
         ]
+    },
+    {
+        "id": "2ec20a3dca6d004c",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "electriccityC2_emission fr",
+        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%FR' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1040,
+        "wires": [
+            [
+                "812694fccda0f031"
+            ]
+        ]
+    },
+    {
+        "id": "6161544a1d92c129",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "electriccityC2_emission DE",
+        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%DE' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1080,
+        "wires": [
+            [
+                "1d1b09f527c4576d"
+            ]
+        ]
+    },
+    {
+        "id": "512e74a7fdc30ecd",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "electriccityC2_emission IT",
+        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%IT' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1120,
+        "wires": [
+            [
+                "257996a12725bcbd"
+            ]
+        ]
+    },
+    {
+        "id": "812694fccda0f031",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 5",
+        "x": 660,
+        "y": 1040,
+        "wires": [
+            [
+                "da791e512d500128"
+            ]
+        ]
+    },
+    {
+        "id": "1d1b09f527c4576d",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 5",
+        "x": 680,
+        "y": 1080,
+        "wires": [
+            [
+                "430c69d106e4ef63"
+            ]
+        ]
+    },
+    {
+        "id": "257996a12725bcbd",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 5",
+        "x": 700,
+        "y": 1120,
+        "wires": [
+            [
+                "0907947ac5e91ff5"
+            ]
+        ]
+    },
+    {
+        "id": "38fcd0221552f95f",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 4,
+        "width": "3",
+        "height": "3",
+        "label": "gCO2eqpar KWH",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1110,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0814b3a765f5f2db",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 5,
+        "width": "3",
+        "height": "3",
+        "label": "gCO2eqpar KWH",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1150,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ea50531c7f98453",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 6,
+        "width": "3",
+        "height": "3",
+        "label": "gCO2eqpar KWH",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1150,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9920572274c8325d",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp[\"MAX(time)\"];\n// h=h.getHours(h) +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = data[0];\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 878,
+        "wires": [
+            [
+                "b40bdc562d5e3ca7",
+                "f2559638a3853e96"
+            ]
+        ]
+    },
+    {
+        "id": "b40bdc562d5e3ca7",
+        "type": "ui_gauge",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "  EU",
+        "label": "geqCO2/KWH",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "400",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "100",
+        "seg2": "200",
+        "x": 1100,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "ba79ea5fccabaf06",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "latest power-breakdown-CO2 emission 3",
+        "func": "var localcoal =0;\nvar localgas = 0;\nvar localoil = 0;\nvar P1 =0;\nvar P2 =0;\nvar P3 =0;\nvar P4 =0;\nvar P5 =0;\nvar P6 =0;\nvar P7 =0;\nif (msg.payload.powerProductionBreakdown.coal!=null)\nlocalcoal= msg.payload.powerProductionBreakdown.coal;\nif (msg.payload.powerProductionBreakdown.gas!=null)\nlocalgas = msg.payload.powerProductionBreakdown.gas;\nif (msg.payload.powerProductionBreakdown.oil!=null)\nlocaloil = msg.payload.powerProductionBreakdown.oil;\nvar localtime = msg.payload.datetime;\nvar localzone = msg.payload.zone;\nif (msg.payload.powerProductionBreakdown.biomass!=null)\n P1 = msg.payload.powerProductionBreakdown.biomass;\nif (msg.payload.powerProductionBreakdown.hydro!=null)\n P2 = msg.payload.powerProductionBreakdown.hydro;\nif (msg.payload.powerProductionBreakdown.wind!=null)\n P3 = msg.payload.powerProductionBreakdown.wind;\nif (msg.payload.powerProductionBreakdown.oil!=null)\nP4 = msg.payload.powerProductionBreakdown.solar;\nif (msg.payload.powerProductionBreakdown.unknown!=null)\n P5 = msg.payload.powerProductionBreakdown.unknown;\n if (msg.payload.powerProductionBreakdown.geothermal!=null)\n P6 = msg.payload.powerProductionBreakdown.geothermal;\n if (msg.payload.powerProductionBreakdown.nuclear!=null)\nP7 = msg.payload.powerProductionBreakdown.nuclear;\nvar P8 = msg.payload.powerProductionTotal;\n//var P9 = msg.payload.hydro discharge;\n//var P7 = msg.payload.battery discharge;\n// var query = \"INSERT INTO electricity_maps (coal,gas,oil,zone,time,nuclear,biomass,hydro,wind,solar,unknown) VALUES (\" + localcoal + \" ,\" + localgas + \", \" + localoil + \" , ' \" +localzone+\"','\"+localtime+\"',\" + P7 + \",\" + P1 + \",\" + P2 + \",\" + P3 + \",\" + P4 + \",\"+ P5 + \")\";\n  var query = \"INSERT INTO electricity_maps (coal,gas,oil,zone,time,nuclear,geo,biomass,hydro,wind,solar,unknown,powerproductiontotal) VALUES (\" + localcoal + \" ,\" + localgas + \", \" + localoil + \" , ' \" +localzone+\"','\"+localtime+\"',\" + P7 + \",\" + P6 +\",\" + P1+\",\"+ P2+\",\" + P3+\",\" + P4+\",\"+ P5+\",\"+P8+\")\";\n\n\nmsg.topic = query;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 580,
+        "wires": [
+            [
+                "2a964f4247f88f9a"
+            ]
+        ]
+    },
+    {
+        "id": "2a964f4247f88f9a",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone3",
+        "x": 1100,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bed5678b0bf59b3b",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "electriccityC2_emission PL",
+        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%PL' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1160,
+        "wires": [
+            [
+                "16a4dcb747c8221f"
+            ]
+        ]
+    },
+    {
+        "id": "16a4dcb747c8221f",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 5",
+        "x": 720,
+        "y": 1160,
+        "wires": [
+            [
+                "31366052e69e1223"
+            ]
+        ]
+    },
+    {
+        "id": "a2a76306e160dff9",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 6,
+        "width": "3",
+        "height": "3",
+        "label": "gCO2eqpar KWH",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1170,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f2559638a3853e96",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "gauge",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "c5ec19364953206f",
+        "type": "delay",
+        "z": "d931280a91eab542",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 280,
+        "y": 540,
+        "wires": [
+            [
+                "e3bb2492a92b3851"
+            ]
+        ]
+    },
+    {
+        "id": "5d1323462427a776",
+        "type": "debug",
+        "z": "d931280a91eab542",
+        "name": "graph",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "da791e512d500128",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "prepare chart bar 2",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 1040,
+        "wires": [
+            [
+                "38fcd0221552f95f"
+            ]
+        ]
+    },
+    {
+        "id": "430c69d106e4ef63",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "prepare chart bar 2",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 1080,
+        "wires": [
+            [
+                "0814b3a765f5f2db"
+            ]
+        ]
+    },
+    {
+        "id": "0907947ac5e91ff5",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "prepare chart bar 2",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 1120,
+        "wires": [
+            [
+                "3ea50531c7f98453"
+            ]
+        ]
+    },
+    {
+        "id": "31366052e69e1223",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "prepare chart bar 2",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 1160,
+        "wires": [
+            [
+                "a2a76306e160dff9"
+            ]
+        ]
+    },
+    {
+        "id": "59039a96a726413b",
+        "type": "delay",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "141dc589c8a5923a"
+            ]
+        ]
+    },
+    {
+        "id": "141dc589c8a5923a",
+        "type": "function",
+        "z": "13de37cb61fc3ad2",
+        "name": "maj day, month,year",
+        "func": "\n\n// \nvar query = \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\";\"\"\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 420,
+        "wires": [
+            [
+                "e76810157b2f3d7c"
+            ]
+        ]
+    },
+    {
+        "id": "e76810157b2f3d7c",
+        "type": "mysql",
+        "z": "13de37cb61fc3ad2",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 920,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "828834256292691e",
+        "type": "inject",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "640f512e0b7efe21"
+            ]
+        ]
+    },
+    {
+        "id": "640f512e0b7efe21",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "func": "var d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n//d=d+work_pile;\n// decallage de la periode observée\n\nd.setDate(d.getDate()+ work_pile);\n\n\n\n//var day =d.getDate().toString();\n//var month = d.getMonth().toString();\n//var year =d.getYear().toString();\n//var result =day +\"/\"+month+ \"/\"+ year;\nmsg.payload  = d.toDateString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 580,
+        "wires": [
+            [
+                "516927bb07c88626"
+            ]
+        ]
+    },
+    {
+        "id": "516927bb07c88626",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 680,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "eefc360e998552f4",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca451c59b8419f27",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "panneauday",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 720,
+        "y": 500,
+        "wires": []
     }
 ]
