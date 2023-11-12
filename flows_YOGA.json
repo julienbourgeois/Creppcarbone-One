@@ -360,10 +360,11 @@
     {
         "id": "c4ad40011fadd485",
         "type": "mqtt-broker",
-        "name": "mqtt raspberry",
-        "broker": "10.3.141.1",
+        "name": "mqtt yoga",
+        "broker": "192.168.1.25",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -380,6 +381,7 @@
         "willQos": "0",
         "willPayload": "",
         "willMsg": {},
+        "userProps": "",
         "sessionExpiry": ""
     },
     {
@@ -2577,12 +2579,6 @@
         "hidden": false
     },
     {
-        "id": "e0e7ea5c.056af8",
-        "type": "persist-store",
-        "filename": "~/store.json",
-        "interval": "60"
-    },
-    {
         "id": "faba16dc1215cec9",
         "type": "ui_group",
         "name": "graphique chargeur velo",
@@ -2632,6 +2628,12 @@
         "actionButton-color": "#434343",
         "actionButton-flashColor": "#f2f2f2",
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
+    },
+    {
+        "id": "e0e7ea5c.056af8",
+        "type": "persist-store",
+        "filename": "~/store.json",
+        "interval": "60"
     },
     {
         "id": "d83a67fcb7073cd7",
@@ -2751,8 +2753,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 940,
-        "y": 120,
+        "x": 980,
+        "y": 100,
         "wires": [
             [
                 "fb35337ff2417960"
@@ -2968,6 +2970,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
+        "outputs": 1,
         "x": 730,
         "y": 420,
         "wires": [
@@ -3124,6 +3127,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
+        "outputs": 1,
         "x": 500,
         "y": 560,
         "wires": [
@@ -3589,6 +3593,863 @@
         ]
     },
     {
+        "id": "88561731123f1da8",
+        "type": "file in",
+        "z": "ddd0105b04875be6",
+        "name": "",
+        "filename": "mb://freebox-server.local/disque dur sur freebox-server.local/Téléchargements/creppcarbone",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 330,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c00041db67beb73f",
+        "type": "mysql",
+        "z": "bd0e39b0e5b0cc70",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "15756baa45607ed7",
+                "d0051e55e8074334"
+            ]
+        ]
+    },
+    {
+        "id": "58fbaa6a32b1881f",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "prepareHtml",
+        "func": "var temp = {};\nvar html = \"<table width='100%'><tr><td width='75%'>Date</td><td width='25%'>CO2</td></tr>\";\nfor(var i in msg.payload)\n{\n    temp = msg.payload[i];\n    html += \"<tr><td>\"+temp.Time+\"</td><td>\"+temp.energytoday+\"</td></tr>\";\n}\nhtml += \"</table>\";\nmsg.payload = html;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 80,
+        "wires": [
+            [
+                "219145b338150570"
+            ]
+        ]
+    },
+    {
+        "id": "219145b338150570",
+        "type": "ui_template",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "group": "f8e408a8348f1a42",
+        "name": "result C02",
+        "order": 9,
+        "width": "0",
+        "height": "0",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 690,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15756baa45607ed7",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 690,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "3d255eb038993c2e",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "d": true,
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar work_interval = flow.get(\"interval_conso\");\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "42530c38a83b58c6",
+                "78f5d865954c1ab9"
+            ]
+        ]
+    },
+    {
+        "id": "42530c38a83b58c6",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "energie  chargeur KWh",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 920,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c9e8079736c375f5",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 6,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": ">>",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd3e40a27889ddfd",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 5,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "<<",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6ddcdb4b90156bb",
+        "type": "ui_multistate_switch",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "faba16dc1215cec9",
+        "order": 4,
+        "width": 0,
+        "height": 1,
+        "label": "",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "day",
+                "value": "DAY",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "month",
+                "value": "MONTH",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "year",
+                "value": "YEAR",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "",
+        "x": 80,
+        "y": 300,
+        "wires": [
+            [
+                "fd74b9a5e9629bb1"
+            ]
+        ]
+    },
+    {
+        "id": "a1c9c9e44111a070",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "consomateur",
+        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\n\n\n\nvar interval  =flow.get(\"interval_conso\");\n// intervale d echelle du graphique jour,mois ou annee\n\nvar work_pile = flow.get(\"pile_conso\");\n// decallage de la periode observée +1 ou -1\n\n//topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" \"+interval+\") AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" \"+interval+\");\";\n\n\nif (interval==\"DAY\")\n //topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\n {topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 0 DAY) AND DATE_SUB(CURDATE(), INTERVAL 0 DAY);\"}\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_conso_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_conso_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "c00041db67beb73f",
+                "b1b1a892753ec670"
+            ]
+        ]
+    },
+    {
+        "id": "b1b1a892753ec670",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 490,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "fd74b9a5e9629bb1",
+        "type": "change",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval_conso",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "pile_conso",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 240,
+        "wires": [
+            [
+                "a1c9c9e44111a070"
+            ]
+        ]
+    },
+    {
+        "id": "78f5d865954c1ab9",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 910,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "119fae5e21bb55aa",
+        "type": "ui_chart",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "energie panneau KWh",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1000,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2008708e2c1b7a40",
+        "type": "ui_multistate_switch",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 6,
+        "width": 0,
+        "height": 1,
+        "label": "",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "day",
+                "value": "DAY",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "month",
+                "value": "MONTH",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "year",
+                "value": "YEAR",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "",
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "69d6bf89ee282848"
+            ]
+        ]
+    },
+    {
+        "id": "a18dcc0f2baa7bee",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 8,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": ">>",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "x": 70,
+        "y": 360,
+        "wires": [
+            [
+                "628f84447b2544b0"
+            ]
+        ]
+    },
+    {
+        "id": "561c9262f517b0e8",
+        "type": "ui_button",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "group": "f8e408a8348f1a42",
+        "order": 7,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "<<",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "x": 70,
+        "y": 400,
+        "wires": [
+            [
+                "0613ca847400880b"
+            ]
+        ]
+    },
+    {
+        "id": "53c3bdbde118dacc",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "panneau",
+        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n// {topic=\"SELECT DISTINCT energytoday,Time FROM tasmota WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmota_panneau_day WHERE jour =DAY(CURDATE()) +\"+ work_pile +\"  ORDER BY heure ASC;\"}\n{topic =\"SELECT DISTINCT energytoday,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\n\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "f8139817cddba33a"
+            ]
+        ]
+    },
+    {
+        "id": "5a806665b9f42d9a",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prepare chart bar panneau",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n\n// decallage de la periode observée\n//var day =d.getDate();\n//var month = d.getMonth();\n//var year =d.getYear();\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\nvar d =new Date();\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.heure + \"h\";\n  //jdate =\"hello\";\n// jdate = temp.JourN+\"/\"+temp.mois+\"/\"+temp.an;\n  \n}\n//if (typeof jdate == 'undefined') {\n//    jdate= [\"good\"];\n//}\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 440,
+        "wires": [
+            [
+                "119fae5e21bb55aa"
+            ]
+        ]
+    },
+    {
+        "id": "f8139817cddba33a",
+        "type": "mysql",
+        "z": "bd0e39b0e5b0cc70",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 500,
+        "y": 440,
+        "wires": [
+            [
+                "5a806665b9f42d9a",
+                "ca451c59b8419f27"
+            ]
+        ]
+    },
+    {
+        "id": "69d6bf89ee282848",
+        "type": "change",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval_panneau",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "pile_panneau",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "53c3bdbde118dacc"
+            ]
+        ]
+    },
+    {
+        "id": "628f84447b2544b0",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "plus pile_panneau",
+        "func": "var work_delta = flow.get(\"pile_panneau\");\nwork_delta = work_delta +1;\nflow.set(\"pile_panneau\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "53c3bdbde118dacc"
+            ]
+        ]
+    },
+    {
+        "id": "0613ca847400880b",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "moins pile_panneau",
+        "func": "var work_delta = flow.get(\"pile_panneau\");\nwork_delta = work_delta -1;\nflow.set(\"pile_panneau\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "53c3bdbde118dacc"
+            ]
+        ]
+    },
+    {
+        "id": "320f75c7e4d750f6",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "plus pile_conso",
+        "func": "var work_delta = flow.get(\"pile_conso\");\nwork_delta = work_delta +1;\nflow.set(\"pile_conso\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "a1c9c9e44111a070"
+            ]
+        ]
+    },
+    {
+        "id": "cf6d4a234e1afb43",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "moins pile_conso",
+        "func": "var work_delta = flow.get(\"pile_conso\");\nwork_delta = work_delta -1;\nflow.set(\"pile_conso\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "a1c9c9e44111a070"
+            ]
+        ]
+    },
+    {
+        "id": "d0051e55e8074334",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prepare chart bar conso",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar jserie =\"hy\";\nvar work_interval2 = flow.get(\"interval_conso\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 340,
+        "wires": [
+            [
+                "42530c38a83b58c6"
+            ]
+        ]
+    },
+    {
+        "id": "828834256292691e",
+        "type": "inject",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "640f512e0b7efe21"
+            ]
+        ]
+    },
+    {
+        "id": "640f512e0b7efe21",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "func": "var d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n//d=d+work_pile;\n// decallage de la periode observée\n\nd.setDate(d.getDate()+ work_pile);\n\n\n\n//var day =d.getDate().toString();\n//var month = d.getMonth().toString();\n//var year =d.getYear().toString();\n//var result =day +\"/\"+month+ \"/\"+ year;\nmsg.payload  = d.toDateString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 580,
+        "wires": [
+            [
+                "516927bb07c88626"
+            ]
+        ]
+    },
+    {
+        "id": "516927bb07c88626",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 680,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "eefc360e998552f4",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca451c59b8419f27",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "panneauday",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 720,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "2bd1dc98dcbd6c2d",
+        "type": "ui_media",
+        "z": "bd0e39b0e5b0cc70",
+        "group": "f8e408a8348f1a42",
+        "name": "logo panneau",
+        "width": "2",
+        "height": "2",
+        "order": 2,
+        "category": "image",
+        "file": "icone panneau.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f5334d26d001d9c",
+        "type": "ui_media",
+        "z": "bd0e39b0e5b0cc70",
+        "group": "faba16dc1215cec9",
+        "name": "logo velo",
+        "width": "2",
+        "height": "2",
+        "order": 1,
+        "category": "image",
+        "file": "velo 2.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 120,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b7a9e6e43b67922f",
+        "type": "ui_media",
+        "z": "bd0e39b0e5b0cc70",
+        "group": "f8e408a8348f1a42",
+        "name": "logo graph",
+        "width": "2",
+        "height": "2",
+        "order": 2,
+        "category": "image",
+        "file": "graphmagnifier_118081.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 310,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9e4b01efd523034",
+        "type": "ui_media",
+        "z": "bd0e39b0e5b0cc70",
+        "group": "faba16dc1215cec9",
+        "name": "logo graph",
+        "width": "2",
+        "height": "2",
+        "order": 2,
+        "category": "image",
+        "file": "graphmagnifier_118081.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 330,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "c4c4532a802c05c1",
         "type": "mqtt in",
         "z": "13de37cb61fc3ad2",
@@ -3600,6 +4461,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 370,
         "y": 80,
         "wires": [
@@ -3655,6 +4517,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 190,
         "y": 280,
         "wires": [
@@ -3676,6 +4539,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 140,
         "y": 740,
         "wires": [
@@ -3771,6 +4635,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 170,
         "y": 440,
         "wires": [
@@ -4263,6 +5128,7 @@
         "randomUnits": "seconds",
         "drop": true,
         "allowrate": false,
+        "outputs": 1,
         "x": 360,
         "y": 380,
         "wires": [
@@ -4357,6 +5223,347 @@
         "wires": []
     },
     {
+        "id": "a17fbaf85af5ef8f",
+        "type": "ui_gauge",
+        "z": "13de37cb61fc3ad2",
+        "name": "puissance inst",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "P instantanée",
+        "label": "W",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "420",
+        "colors": [
+            "#ff8000",
+            "#0080ff",
+            "#00ff40"
+        ],
+        "seg1": "80",
+        "seg2": "250",
+        "x": 840,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "068f269bdddf486e",
+        "type": "cronplus",
+        "z": "13de37cb61fc3ad2",
+        "d": true,
+        "name": "hourly",
+        "outputField": "payload",
+        "timeZone": "",
+        "storeName": "",
+        "commandResponseMsgOutput": "output1",
+        "defaultLocation": "",
+        "defaultLocationType": "default",
+        "outputs": 1,
+        "options": [
+            {
+                "name": "schedule1",
+                "topic": "topic1",
+                "payloadType": "str",
+                "payload": "go",
+                "expressionType": "cron",
+                "expression": "0 0 * * * ? *",
+                "location": "",
+                "offset": "0",
+                "solarType": "all",
+                "solarEvents": "sunrise,sunset"
+            }
+        ],
+        "x": 390,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d4459e823cb14ac9",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 15,
+        "width": "6",
+        "height": 1,
+        "name": "C02 total (gr)",
+        "label": "<font size={{ 4}} > C02 total   </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
+        "layout": "row-spread",
+        "x": 520,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "f1da2eb1f88ad75b",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 13,
+        "width": "6",
+        "height": 1,
+        "name": "CO2 aujourdhui (gr)",
+        "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
+        "layout": "row-spread",
+        "x": 520,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "a16e346b09970fa8",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 14,
+        "width": "6",
+        "height": 1,
+        "name": "CO2 hier (gr)",
+        "label": "<font size={{ 4}} > CO2 hier </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
+        "layout": "row-spread",
+        "x": 500,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "cf9c4d119bc356cb",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 12,
+        "width": "6",
+        "height": 1,
+        "name": "C02 instantané (gr/h)",
+        "label": "<font size={{ 4}} > C02 instantané  </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr/h\"}}</font> ",
+        "layout": "row-spread",
+        "x": 543.75,
+        "y": 907.5,
+        "wires": []
+    },
+    {
+        "id": "594904ea64858ed6",
+        "type": "inject",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-5",
+        "payloadType": "num",
+        "x": 260,
+        "y": 920,
+        "wires": [
+            [
+                "cf9c4d119bc356cb"
+            ]
+        ]
+    },
+    {
+        "id": "93610dac4cf543f5",
+        "type": "inject",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-9134",
+        "payloadType": "num",
+        "x": 250,
+        "y": 960,
+        "wires": [
+            [
+                "d4459e823cb14ac9"
+            ]
+        ]
+    },
+    {
+        "id": "4ef2470aa39bd369",
+        "type": "inject",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-5",
+        "payloadType": "num",
+        "x": 250,
+        "y": 1000,
+        "wires": [
+            [
+                "f1da2eb1f88ad75b"
+            ]
+        ]
+    },
+    {
+        "id": "2127b82dd8c8d510",
+        "type": "inject",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-7",
+        "payloadType": "num",
+        "x": 270,
+        "y": 1060,
+        "wires": [
+            [
+                "a16e346b09970fa8"
+            ]
+        ]
+    },
+    {
+        "id": "59039a96a726413b",
+        "type": "delay",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "141dc589c8a5923a"
+            ]
+        ]
+    },
+    {
+        "id": "141dc589c8a5923a",
+        "type": "function",
+        "z": "13de37cb61fc3ad2",
+        "name": "maj day, month,year",
+        "func": "\n\n// \nvar query = \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\";\"\"\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 420,
+        "wires": [
+            [
+                "e76810157b2f3d7c"
+            ]
+        ]
+    },
+    {
+        "id": "e76810157b2f3d7c",
+        "type": "mysql",
+        "z": "13de37cb61fc3ad2",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 920,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1bb73e704c412c23",
+        "type": "ui_media",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "name": "",
+        "width": "2",
+        "height": "2",
+        "order": 2,
+        "category": "image",
+        "file": "icone panneau.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 230,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3cd4429080ba3b2d",
+        "type": "mqtt in",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "topic": "stat/tasmota_179AB0/POWER",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "c4ad40011fadd485",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "18535c72dc2f85b9",
         "type": "mqtt in",
         "z": "a21c4b8426a30f7f",
@@ -4368,6 +5575,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 180,
         "y": 340,
         "wires": [
@@ -4423,6 +5631,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 190,
         "y": 260,
         "wires": [
@@ -4504,7 +5713,6 @@
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
-        "topicType": "str",
         "style": "",
         "onvalue": "ON",
         "onvalueType": "str",
@@ -4514,7 +5722,6 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "animate": true,
         "x": 670,
         "y": 120,
         "wires": [
@@ -4588,6 +5795,7 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 180,
         "y": 420,
         "wires": [
@@ -5156,6 +6364,339 @@
         ]
     },
     {
+        "id": "f5d0f579d220ae99",
+        "type": "ui_gauge",
+        "z": "a21c4b8426a30f7f",
+        "name": "puissance inst",
+        "group": "1b256139bc926903",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "P instantanée",
+        "label": "W",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "120",
+        "colors": [
+            "#ff8000",
+            "#0080ff",
+            "#00ff40"
+        ],
+        "seg1": "5",
+        "seg2": "90",
+        "x": 1003,
+        "y": 644,
+        "wires": []
+    },
+    {
+        "id": "772f27aafec01181",
+        "type": "mysql",
+        "z": "a21c4b8426a30f7f",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone",
+        "x": 760,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "016e8ec9b9e593e3",
+        "type": "function",
+        "z": "a21c4b8426a30f7f",
+        "name": " querry Tasmota ",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmotaconsomateur (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 580,
+        "wires": [
+            [
+                "772f27aafec01181"
+            ]
+        ]
+    },
+    {
+        "id": "eecd0d82adf8583b",
+        "type": "delay",
+        "z": "a21c4b8426a30f7f",
+        "name": "1 fois par heure",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "016e8ec9b9e593e3"
+            ]
+        ]
+    },
+    {
+        "id": "861d2b287b052532",
+        "type": "delay",
+        "z": "a21c4b8426a30f7f",
+        "name": "1 fois par jour",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "day",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 360,
+        "y": 640,
+        "wires": [
+            [
+                "dc25a376ab1273ec"
+            ]
+        ]
+    },
+    {
+        "id": "dc25a376ab1273ec",
+        "type": "function",
+        "z": "a21c4b8426a30f7f",
+        "name": " querry Tasmota ",
+        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota_conso_month (Time,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" , \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 640,
+        "wires": [
+            [
+                "772f27aafec01181"
+            ]
+        ]
+    },
+    {
+        "id": "c812295e81b0d22e",
+        "type": "ui_text",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "order": 15,
+        "width": "6",
+        "height": 1,
+        "name": "C02 total (gr)",
+        "label": "<font size={{ 4}} > C02 total   </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
+        "layout": "row-spread",
+        "x": 1160,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "a2c9e4dbfc45b102",
+        "type": "ui_text",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "order": 13,
+        "width": "6",
+        "height": 1,
+        "name": "CO2 aujourdhui (gr)",
+        "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
+        "layout": "row-spread",
+        "x": 1160,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "17e1f43e844cade2",
+        "type": "ui_text",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "order": 14,
+        "width": "6",
+        "height": 1,
+        "name": "CO2 hier (gr)",
+        "label": "<font size={{ 4}} > CO2 hier </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
+        "layout": "row-spread",
+        "x": 1140,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "bf0f47e7be43db75",
+        "type": "ui_text",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "order": 12,
+        "width": "6",
+        "height": 1,
+        "name": "C02 instantané (gr/h)",
+        "label": "<font size={{ 4}} > C02 instantané  </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr/h\"}}</font> ",
+        "layout": "row-spread",
+        "x": 1183.75,
+        "y": 727.5,
+        "wires": []
+    },
+    {
+        "id": "adac39789039bbe9",
+        "type": "inject",
+        "z": "a21c4b8426a30f7f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 890,
+        "y": 720,
+        "wires": [
+            [
+                "bf0f47e7be43db75"
+            ]
+        ]
+    },
+    {
+        "id": "6a6a4fa1b379dfbe",
+        "type": "inject",
+        "z": "a21c4b8426a30f7f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "600",
+        "payloadType": "num",
+        "x": 880,
+        "y": 760,
+        "wires": [
+            [
+                "c812295e81b0d22e"
+            ]
+        ]
+    },
+    {
+        "id": "96d6a63bb0a59b79",
+        "type": "inject",
+        "z": "a21c4b8426a30f7f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "x": 880,
+        "y": 800,
+        "wires": [
+            [
+                "a2c9e4dbfc45b102"
+            ]
+        ]
+    },
+    {
+        "id": "98e24689ca1e7fa4",
+        "type": "inject",
+        "z": "a21c4b8426a30f7f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 900,
+        "y": 860,
+        "wires": [
+            [
+                "17e1f43e844cade2"
+            ]
+        ]
+    },
+    {
+        "id": "ae97a4d3dc433689",
+        "type": "ui_media",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "name": "",
+        "width": "2",
+        "height": "2",
+        "order": 1,
+        "category": "image",
+        "file": "velo 2.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 150,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "17ce6d249432505f",
         "type": "mysql",
         "z": "761b5806c43a83e0",
@@ -5525,29 +7066,6 @@
         ]
     },
     {
-        "id": "1bb73e704c412c23",
-        "type": "ui_media",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "name": "",
-        "width": "2",
-        "height": "2",
-        "order": 2,
-        "category": "image",
-        "file": "icone panneau.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 230,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "b787f32585919542",
         "type": "http request",
         "z": "d931280a91eab542",
@@ -5559,856 +7077,16 @@
         "tls": "",
         "persist": false,
         "proxy": "",
+        "insecureHTTPParser": false,
         "authType": "bearer",
+        "senderr": false,
+        "headers": [],
         "x": 340,
         "y": 280,
         "wires": [
             [
                 "93e5a01ec27daaf0",
                 "e24d57b159397cb1"
-            ]
-        ]
-    },
-    {
-        "id": "ae97a4d3dc433689",
-        "type": "ui_media",
-        "z": "a21c4b8426a30f7f",
-        "group": "1b256139bc926903",
-        "name": "",
-        "width": "2",
-        "height": "2",
-        "order": 1,
-        "category": "image",
-        "file": "velo 2.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 150,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ac51ce4e725ca59a",
-        "type": "ui_media",
-        "z": "d931280a91eab542",
-        "group": "016964b9b18bce81",
-        "name": "",
-        "width": "2",
-        "height": "2",
-        "order": 1,
-        "category": "image",
-        "file": "pylo.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 130,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a17fbaf85af5ef8f",
-        "type": "ui_gauge",
-        "z": "13de37cb61fc3ad2",
-        "name": "puissance inst",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 3,
-        "width": "2",
-        "height": "2",
-        "gtype": "gage",
-        "title": "P instantanée",
-        "label": "W",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "420",
-        "colors": [
-            "#ff8000",
-            "#0080ff",
-            "#00ff40"
-        ],
-        "seg1": "80",
-        "seg2": "250",
-        "x": 840,
-        "y": 860,
-        "wires": []
-    },
-    {
-        "id": "f5d0f579d220ae99",
-        "type": "ui_gauge",
-        "z": "a21c4b8426a30f7f",
-        "name": "puissance inst",
-        "group": "1b256139bc926903",
-        "order": 2,
-        "width": "2",
-        "height": "2",
-        "gtype": "gage",
-        "title": "P instantanée",
-        "label": "W",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "120",
-        "colors": [
-            "#ff8000",
-            "#0080ff",
-            "#00ff40"
-        ],
-        "seg1": "5",
-        "seg2": "90",
-        "x": 1003,
-        "y": 644,
-        "wires": []
-    },
-    {
-        "id": "88561731123f1da8",
-        "type": "file in",
-        "z": "ddd0105b04875be6",
-        "name": "",
-        "filename": "mb://freebox-server.local/disque dur sur freebox-server.local/Téléchargements/creppcarbone",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 330,
-        "y": 20,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c00041db67beb73f",
-        "type": "mysql",
-        "z": "bd0e39b0e5b0cc70",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 500,
-        "y": 300,
-        "wires": [
-            [
-                "15756baa45607ed7",
-                "d0051e55e8074334"
-            ]
-        ]
-    },
-    {
-        "id": "58fbaa6a32b1881f",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "d": true,
-        "name": "prepareHtml",
-        "func": "var temp = {};\nvar html = \"<table width='100%'><tr><td width='75%'>Date</td><td width='25%'>CO2</td></tr>\";\nfor(var i in msg.payload)\n{\n    temp = msg.payload[i];\n    html += \"<tr><td>\"+temp.Time+\"</td><td>\"+temp.energytoday+\"</td></tr>\";\n}\nhtml += \"</table>\";\nmsg.payload = html;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 530,
-        "y": 80,
-        "wires": [
-            [
-                "219145b338150570"
-            ]
-        ]
-    },
-    {
-        "id": "219145b338150570",
-        "type": "ui_template",
-        "z": "bd0e39b0e5b0cc70",
-        "d": true,
-        "group": "f8e408a8348f1a42",
-        "name": "result C02",
-        "order": 9,
-        "width": "0",
-        "height": "0",
-        "format": "<div ng-bind-html=\"msg.payload\"></div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 690,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "068f269bdddf486e",
-        "type": "cronplus",
-        "z": "13de37cb61fc3ad2",
-        "d": true,
-        "name": "hourly",
-        "outputField": "payload",
-        "timeZone": "",
-        "storeName": "",
-        "commandResponseMsgOutput": "output1",
-        "defaultLocation": "",
-        "defaultLocationType": "default",
-        "outputs": 1,
-        "options": [
-            {
-                "name": "schedule1",
-                "topic": "topic1",
-                "payloadType": "str",
-                "payload": "go",
-                "expressionType": "cron",
-                "expression": "0 0 * * * ? *",
-                "location": "",
-                "offset": "0",
-                "solarType": "all",
-                "solarEvents": "sunrise,sunset"
-            }
-        ],
-        "x": 390,
-        "y": 340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "772f27aafec01181",
-        "type": "mysql",
-        "z": "a21c4b8426a30f7f",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 760,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "016e8ec9b9e593e3",
-        "type": "function",
-        "z": "a21c4b8426a30f7f",
-        "name": " querry Tasmota ",
-        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmotaconsomateur (Time,activepower,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" ,\" + P8 + \", \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 560,
-        "y": 580,
-        "wires": [
-            [
-                "772f27aafec01181"
-            ]
-        ]
-    },
-    {
-        "id": "eecd0d82adf8583b",
-        "type": "delay",
-        "z": "a21c4b8426a30f7f",
-        "name": "1 fois par heure",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "hour",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "allowrate": false,
-        "x": 380,
-        "y": 500,
-        "wires": [
-            [
-                "016e8ec9b9e593e3"
-            ]
-        ]
-    },
-    {
-        "id": "15756baa45607ed7",
-        "type": "debug",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 690,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "3d255eb038993c2e",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "d": true,
-        "name": "prepare chart bar",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar work_interval = flow.get(\"interval_conso\");\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 710,
-        "y": 300,
-        "wires": [
-            [
-                "42530c38a83b58c6",
-                "78f5d865954c1ab9"
-            ]
-        ]
-    },
-    {
-        "id": "42530c38a83b58c6",
-        "type": "ui_chart",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "faba16dc1215cec9",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "energie  chargeur KWh",
-        "chartType": "bar",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": true,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 920,
-        "y": 300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c9e8079736c375f5",
-        "type": "ui_button",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "faba16dc1215cec9",
-        "order": 6,
-        "width": "1",
-        "height": "1",
-        "passthru": false,
-        "label": ">>",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
-        "topicType": "str",
-        "x": 130,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bd3e40a27889ddfd",
-        "type": "ui_button",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "faba16dc1215cec9",
-        "order": 5,
-        "width": "1",
-        "height": "1",
-        "passthru": false,
-        "label": "<<",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
-        "topicType": "str",
-        "x": 130,
-        "y": 200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f6ddcdb4b90156bb",
-        "type": "ui_multistate_switch",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "faba16dc1215cec9",
-        "order": 4,
-        "width": 0,
-        "height": 1,
-        "label": "",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "day",
-                "value": "DAY",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "month",
-                "value": "MONTH",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "year",
-                "value": "YEAR",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "",
-        "x": 80,
-        "y": 300,
-        "wires": [
-            [
-                "fd74b9a5e9629bb1"
-            ]
-        ]
-    },
-    {
-        "id": "a1c9c9e44111a070",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "consomateur",
-        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\n\n\n\nvar interval  =flow.get(\"interval_conso\");\n// intervale d echelle du graphique jour,mois ou annee\n\nvar work_pile = flow.get(\"pile_conso\");\n// decallage de la periode observée +1 ou -1\n\n//topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" \"+interval+\") AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" \"+interval+\");\";\n\n\nif (interval==\"DAY\")\n //topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();\"\n {topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL 0 DAY) AND DATE_SUB(CURDATE(), INTERVAL 0 DAY);\"}\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_conso_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_conso_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 330,
-        "y": 300,
-        "wires": [
-            [
-                "c00041db67beb73f",
-                "b1b1a892753ec670"
-            ]
-        ]
-    },
-    {
-        "id": "b1b1a892753ec670",
-        "type": "debug",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 490,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "861d2b287b052532",
-        "type": "delay",
-        "z": "a21c4b8426a30f7f",
-        "name": "1 fois par jour",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "day",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "allowrate": false,
-        "x": 360,
-        "y": 640,
-        "wires": [
-            [
-                "dc25a376ab1273ec"
-            ]
-        ]
-    },
-    {
-        "id": "dc25a376ab1273ec",
-        "type": "function",
-        "z": "a21c4b8426a30f7f",
-        "name": " querry Tasmota ",
-        "func": "var P1 = msg.payload.Time.split(\"T\")[0];\nvar P11 = P1.split(\"-\")[0];\nvar P2 = P1.split(\"-\")[1];\nvar P3 = P1.split(\"-\")[2];\nvar P12 = msg.payload.Time.split(\"T\")[1];\nvar P4 = P12.split(\":\")[0];\nvar P5 = P12.split(\":\")[1];\nvar P7 = P12.split(\":\")[2];\nvar P8 = msg.payload.ENERGY.Power;\nvar P9 = msg.payload.ENERGY.Today;\nvar P10 =msg.payload.ENERGY.Total;\nvar P13 =msg.payload.ENERGY.Yesterday;\n//\n var P6 = P11 + P2 + P3+P4+P5+P7;\n// \n// \nvar query = \"INSERT INTO Tasmota_conso_month (Time,energytoday,energytotal,energyyesterday) VALUES (\" + P6 + \" , \" + P9 + \", \" + P10 + \",\" + P13 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\nvar query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 560,
-        "y": 640,
-        "wires": [
-            [
-                "772f27aafec01181"
-            ]
-        ]
-    },
-    {
-        "id": "fd74b9a5e9629bb1",
-        "type": "change",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "interval_conso",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "pile_conso",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 260,
-        "y": 240,
-        "wires": [
-            [
-                "a1c9c9e44111a070"
-            ]
-        ]
-    },
-    {
-        "id": "78f5d865954c1ab9",
-        "type": "debug",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 910,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "119fae5e21bb55aa",
-        "type": "ui_chart",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "f8e408a8348f1a42",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "label": "energie panneau KWh",
-        "chartType": "bar",
-        "legend": "true",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": true,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 1000,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2008708e2c1b7a40",
-        "type": "ui_multistate_switch",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "f8e408a8348f1a42",
-        "order": 6,
-        "width": 0,
-        "height": 1,
-        "label": "",
-        "stateField": "payload",
-        "enableField": "enable",
-        "passthroughField": "passthrough",
-        "inputMsgField": "inputmsg",
-        "rounded": false,
-        "useThemeColors": true,
-        "hideSelectedLabel": false,
-        "multilineLabel": false,
-        "passThrough": "never",
-        "inputMsg": "all",
-        "userInput": "enabled_show",
-        "options": [
-            {
-                "label": "day",
-                "value": "DAY",
-                "valueType": "str",
-                "color": "#009933"
-            },
-            {
-                "label": "month",
-                "value": "MONTH",
-                "valueType": "str",
-                "color": "#999999"
-            },
-            {
-                "label": "year",
-                "value": "YEAR",
-                "valueType": "str",
-                "color": "#ff6666"
-            }
-        ],
-        "topic": "",
-        "x": 100,
-        "y": 480,
-        "wires": [
-            [
-                "69d6bf89ee282848"
-            ]
-        ]
-    },
-    {
-        "id": "a18dcc0f2baa7bee",
-        "type": "ui_button",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "f8e408a8348f1a42",
-        "order": 8,
-        "width": "1",
-        "height": "1",
-        "passthru": false,
-        "label": ">>",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
-        "topicType": "str",
-        "x": 70,
-        "y": 360,
-        "wires": [
-            [
-                "628f84447b2544b0"
-            ]
-        ]
-    },
-    {
-        "id": "561c9262f517b0e8",
-        "type": "ui_button",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "group": "f8e408a8348f1a42",
-        "order": 7,
-        "width": "1",
-        "height": "1",
-        "passthru": false,
-        "label": "<<",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
-        "topicType": "str",
-        "x": 70,
-        "y": 400,
-        "wires": [
-            [
-                "0613ca847400880b"
-            ]
-        ]
-    },
-    {
-        "id": "53c3bdbde118dacc",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "panneau",
-        "func": "\nvar topic ='toto';\nf =0;\nd = 1;\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n// {topic=\"SELECT DISTINCT energytoday,Time FROM tasmota WHERE DATE(tempsreception)BETWEEN DATE_SUB(CURDATE(),INTERVAL \"+f+\" DAY) AND DATE_SUB(CURDATE(), INTERVAL \"+f+\" DAY);\"}\n//{topic=\"SELECT DISTINCT energytoday,Time FROM tasmota_panneau_day WHERE jour =DAY(CURDATE()) +\"+ work_pile +\"  ORDER BY heure ASC;\"}\n{topic =\"SELECT DISTINCT energytoday,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\n\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,joursN FROM tasmota_panneau_month WHERE mois = 10   ORDER BY jour ASC;\"}\n{topic=\"SELECT DISTINCT energytoday,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 340,
-        "y": 440,
-        "wires": [
-            [
-                "f8139817cddba33a"
-            ]
-        ]
-    },
-    {
-        "id": "5a806665b9f42d9a",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "prepare chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n\n// decallage de la periode observée\n//var day =d.getDate();\n//var month = d.getMonth();\n//var year =d.getYear();\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\nvar d =new Date();\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.heure + \"h\";\n  //jdate =\"hello\";\n// jdate = temp.JourN+\"/\"+temp.mois+\"/\"+temp.an;\n  \n}\n//if (typeof jdate == 'undefined') {\n//    jdate= [\"good\"];\n//}\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 440,
-        "wires": [
-            [
-                "119fae5e21bb55aa"
-            ]
-        ]
-    },
-    {
-        "id": "f8139817cddba33a",
-        "type": "mysql",
-        "z": "bd0e39b0e5b0cc70",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 500,
-        "y": 440,
-        "wires": [
-            [
-                "5a806665b9f42d9a",
-                "ca451c59b8419f27"
-            ]
-        ]
-    },
-    {
-        "id": "69d6bf89ee282848",
-        "type": "change",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "interval_panneau",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "pile_panneau",
-                "pt": "flow",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 300,
-        "y": 480,
-        "wires": [
-            [
-                "53c3bdbde118dacc"
-            ]
-        ]
-    },
-    {
-        "id": "628f84447b2544b0",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "plus pile_panneau",
-        "func": "var work_delta = flow.get(\"pile_panneau\");\nwork_delta = work_delta +1;\nflow.set(\"pile_panneau\",work_delta)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 250,
-        "y": 360,
-        "wires": [
-            [
-                "53c3bdbde118dacc"
-            ]
-        ]
-    },
-    {
-        "id": "0613ca847400880b",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "moins pile_panneau",
-        "func": "var work_delta = flow.get(\"pile_panneau\");\nwork_delta = work_delta -1;\nflow.set(\"pile_panneau\",work_delta)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 240,
-        "y": 400,
-        "wires": [
-            [
-                "53c3bdbde118dacc"
             ]
         ]
     },
@@ -6742,6 +7420,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
+        "outputs": 1,
         "x": 180,
         "y": 380,
         "wires": [
@@ -6766,6 +7445,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
+        "outputs": 1,
         "x": 280,
         "y": 460,
         "wires": [
@@ -6790,6 +7470,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
+        "outputs": 1,
         "x": 240,
         "y": 660,
         "wires": [
@@ -6916,523 +7597,6 @@
         "y": 940,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "c812295e81b0d22e",
-        "type": "ui_text",
-        "z": "a21c4b8426a30f7f",
-        "group": "1b256139bc926903",
-        "order": 15,
-        "width": "6",
-        "height": 1,
-        "name": "C02 total (gr)",
-        "label": "<font size={{ 4}} > C02 total   </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 1160,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "a2c9e4dbfc45b102",
-        "type": "ui_text",
-        "z": "a21c4b8426a30f7f",
-        "group": "1b256139bc926903",
-        "order": 13,
-        "width": "6",
-        "height": 1,
-        "name": "CO2 aujourdhui (gr)",
-        "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 1160,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "17e1f43e844cade2",
-        "type": "ui_text",
-        "z": "a21c4b8426a30f7f",
-        "group": "1b256139bc926903",
-        "order": 14,
-        "width": "6",
-        "height": 1,
-        "name": "CO2 hier (gr)",
-        "label": "<font size={{ 4}} > CO2 hier </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 1140,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "bf0f47e7be43db75",
-        "type": "ui_text",
-        "z": "a21c4b8426a30f7f",
-        "group": "1b256139bc926903",
-        "order": 12,
-        "width": "6",
-        "height": 1,
-        "name": "C02 instantané (gr/h)",
-        "label": "<font size={{ 4}} > C02 instantané  </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr/h\"}}</font> ",
-        "layout": "row-spread",
-        "x": 1183.75,
-        "y": 727.5,
-        "wires": []
-    },
-    {
-        "id": "d4459e823cb14ac9",
-        "type": "ui_text",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 15,
-        "width": "6",
-        "height": 1,
-        "name": "C02 total (gr)",
-        "label": "<font size={{ 4}} > C02 total   </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 520,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "f1da2eb1f88ad75b",
-        "type": "ui_text",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 13,
-        "width": "6",
-        "height": 1,
-        "name": "CO2 aujourdhui (gr)",
-        "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 520,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "a16e346b09970fa8",
-        "type": "ui_text",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 14,
-        "width": "6",
-        "height": 1,
-        "name": "CO2 hier (gr)",
-        "label": "<font size={{ 4}} > CO2 hier </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 500,
-        "y": 1080,
-        "wires": []
-    },
-    {
-        "id": "cf9c4d119bc356cb",
-        "type": "ui_text",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 12,
-        "width": "6",
-        "height": 1,
-        "name": "C02 instantané (gr/h)",
-        "label": "<font size={{ 4}} > C02 instantané  </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr/h\"}}</font> ",
-        "layout": "row-spread",
-        "x": 543.75,
-        "y": 907.5,
-        "wires": []
-    },
-    {
-        "id": "594904ea64858ed6",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-5",
-        "payloadType": "num",
-        "x": 260,
-        "y": 920,
-        "wires": [
-            [
-                "cf9c4d119bc356cb"
-            ]
-        ]
-    },
-    {
-        "id": "93610dac4cf543f5",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-9134",
-        "payloadType": "num",
-        "x": 250,
-        "y": 960,
-        "wires": [
-            [
-                "d4459e823cb14ac9"
-            ]
-        ]
-    },
-    {
-        "id": "4ef2470aa39bd369",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-5",
-        "payloadType": "num",
-        "x": 250,
-        "y": 1000,
-        "wires": [
-            [
-                "f1da2eb1f88ad75b"
-            ]
-        ]
-    },
-    {
-        "id": "2127b82dd8c8d510",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-7",
-        "payloadType": "num",
-        "x": 270,
-        "y": 1060,
-        "wires": [
-            [
-                "a16e346b09970fa8"
-            ]
-        ]
-    },
-    {
-        "id": "adac39789039bbe9",
-        "type": "inject",
-        "z": "a21c4b8426a30f7f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 890,
-        "y": 720,
-        "wires": [
-            [
-                "bf0f47e7be43db75"
-            ]
-        ]
-    },
-    {
-        "id": "6a6a4fa1b379dfbe",
-        "type": "inject",
-        "z": "a21c4b8426a30f7f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "600",
-        "payloadType": "num",
-        "x": 880,
-        "y": 760,
-        "wires": [
-            [
-                "c812295e81b0d22e"
-            ]
-        ]
-    },
-    {
-        "id": "96d6a63bb0a59b79",
-        "type": "inject",
-        "z": "a21c4b8426a30f7f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "2",
-        "payloadType": "num",
-        "x": 880,
-        "y": 800,
-        "wires": [
-            [
-                "a2c9e4dbfc45b102"
-            ]
-        ]
-    },
-    {
-        "id": "98e24689ca1e7fa4",
-        "type": "inject",
-        "z": "a21c4b8426a30f7f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "0",
-        "payloadType": "num",
-        "x": 900,
-        "y": 860,
-        "wires": [
-            [
-                "17e1f43e844cade2"
-            ]
-        ]
-    },
-    {
-        "id": "2bd1dc98dcbd6c2d",
-        "type": "ui_media",
-        "z": "bd0e39b0e5b0cc70",
-        "group": "f8e408a8348f1a42",
-        "name": "logo panneau",
-        "width": "2",
-        "height": "2",
-        "order": 2,
-        "category": "image",
-        "file": "icone panneau.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 140,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2f5334d26d001d9c",
-        "type": "ui_media",
-        "z": "bd0e39b0e5b0cc70",
-        "group": "faba16dc1215cec9",
-        "name": "logo velo",
-        "width": "2",
-        "height": "2",
-        "order": 1,
-        "category": "image",
-        "file": "velo 2.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 120,
-        "y": 20,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b7a9e6e43b67922f",
-        "type": "ui_media",
-        "z": "bd0e39b0e5b0cc70",
-        "group": "f8e408a8348f1a42",
-        "name": "logo graph",
-        "width": "2",
-        "height": "2",
-        "order": 2,
-        "category": "image",
-        "file": "graphmagnifier_118081.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 310,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b9e4b01efd523034",
-        "type": "ui_media",
-        "z": "bd0e39b0e5b0cc70",
-        "group": "faba16dc1215cec9",
-        "name": "logo graph",
-        "width": "2",
-        "height": "2",
-        "order": 2,
-        "category": "image",
-        "file": "graphmagnifier_118081.png",
-        "layout": "adjust",
-        "showcontrols": true,
-        "loop": true,
-        "onstart": false,
-        "scope": "local",
-        "tooltip": "",
-        "x": 330,
-        "y": 20,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "320f75c7e4d750f6",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "plus pile_conso",
-        "func": "var work_delta = flow.get(\"pile_conso\");\nwork_delta = work_delta +1;\nflow.set(\"pile_conso\",work_delta)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 160,
-        "wires": [
-            [
-                "a1c9c9e44111a070"
-            ]
-        ]
-    },
-    {
-        "id": "cf6d4a234e1afb43",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "moins pile_conso",
-        "func": "var work_delta = flow.get(\"pile_conso\");\nwork_delta = work_delta -1;\nflow.set(\"pile_conso\",work_delta)\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 290,
-        "y": 200,
-        "wires": [
-            [
-                "a1c9c9e44111a070"
-            ]
-        ]
-    },
-    {
-        "id": "d0051e55e8074334",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "prepare chart bar conso",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate ='coucou';\nvar jserie =\"hy\";\nvar work_interval2 = flow.get(\"interval_conso\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.Time.getHours() + \"h\";\n  jdate =temp.Time.getDate()+\" / \"+temp.Time.getMonth()+\" / \"+temp.Time.getFullYear()\n  \n}\n\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 710,
-        "y": 340,
-        "wires": [
-            [
-                "42530c38a83b58c6"
-            ]
         ]
     },
     {
@@ -7849,6 +8013,7 @@
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
+        "outputs": 1,
         "x": 280,
         "y": 540,
         "wires": [
@@ -7951,156 +8116,26 @@
         ]
     },
     {
-        "id": "59039a96a726413b",
-        "type": "delay",
-        "z": "13de37cb61fc3ad2",
+        "id": "ac51ce4e725ca59a",
+        "type": "ui_media",
+        "z": "d931280a91eab542",
+        "group": "016964b9b18bce81",
         "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "x": 520,
-        "y": 420,
-        "wires": [
-            [
-                "141dc589c8a5923a"
-            ]
-        ]
-    },
-    {
-        "id": "141dc589c8a5923a",
-        "type": "function",
-        "z": "13de37cb61fc3ad2",
-        "name": "maj day, month,year",
-        "func": "\n\n// \nvar query = \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\";\"\"\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 700,
-        "y": 420,
-        "wires": [
-            [
-                "e76810157b2f3d7c"
-            ]
-        ]
-    },
-    {
-        "id": "e76810157b2f3d7c",
-        "type": "mysql",
-        "z": "13de37cb61fc3ad2",
-        "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 920,
-        "y": 420,
+        "width": "2",
+        "height": "2",
+        "order": 1,
+        "category": "image",
+        "file": "pylo.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 130,
+        "y": 220,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "828834256292691e",
-        "type": "inject",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 310,
-        "y": 580,
-        "wires": [
-            [
-                "640f512e0b7efe21"
-            ]
-        ]
-    },
-    {
-        "id": "640f512e0b7efe21",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "func": "var d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n//d=d+work_pile;\n// decallage de la periode observée\n\nd.setDate(d.getDate()+ work_pile);\n\n\n\n//var day =d.getDate().toString();\n//var month = d.getMonth().toString();\n//var year =d.getYear().toString();\n//var result =day +\"/\"+month+ \"/\"+ year;\nmsg.payload  = d.toDateString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 580,
-        "wires": [
-            [
-                "516927bb07c88626"
-            ]
-        ]
-    },
-    {
-        "id": "516927bb07c88626",
-        "type": "debug",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 680,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "eefc360e998552f4",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 510,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ca451c59b8419f27",
-        "type": "debug",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "panneauday",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "payload",
-        "statusType": "auto",
-        "x": 720,
-        "y": 500,
-        "wires": []
     }
 ]
