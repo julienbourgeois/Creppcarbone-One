@@ -5449,7 +5449,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "maj day, month,year",
-        "func": "\n\n// \nvar query = \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\";\"\"\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
+        "func": "\n\n// \nvar query = \n\n    \"UPDATE tasmota SET heure = HOUR(Time);\"+\n\"UPDATE tasmota SET JOURSJ = DAY(Time);\"+\n\"UPDATE tasmota SET mois = MONTH(Time);\"+\n\"UPDATE tasmota SET an = YEAR(Time);\"+\n\"UPDATE tasmota  SET jour = DATE(Time); \"+\n    \n\"REPLACE INTO tasmota_panneau_day (Time, tempsreception, energyyesterday, energytoday, energytotal, heure, JourN, mois, an, jour)  SELECT  Time, tempsreception, energyyesterday, energytoday, MAX(energytotal), heure, JOURSJ, mois, an, jour FROM`tasmota`\" +\n\"GROUP BY horointerval;\"+\n\n\"REPLACE INTO tasmota_panneau_month (Time, tempsreception, energyyesterday, energytoday, energytotal, jour, an, mois, JoursN) \"+\n\" Select Time, tempsreception, energyyesterday, MAX(energytoday), energytotal, jour, an, mois, JourN FROM`tasmota_panneau_day`\" +\n\"GROUP BY Date(Time);\" +\n\n    \"UPDATE tasmota_panneau_month SET joursJ = jour;\"+\n\n   \n\n\"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\";\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
