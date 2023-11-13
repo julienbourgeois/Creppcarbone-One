@@ -2646,7 +2646,7 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 610,
+        "x": 580,
         "y": 40,
         "wires": [
             [
@@ -5282,22 +5282,6 @@
         ]
     },
     {
-        "id": "d4459e823cb14ac9",
-        "type": "ui_text",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 15,
-        "width": "6",
-        "height": 1,
-        "name": "C02 total (gr)",
-        "label": "<font size={{ 4}} > C02 total   </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 520,
-        "y": 960,
-        "wires": []
-    },
-    {
         "id": "f1da2eb1f88ad75b",
         "type": "ui_text",
         "z": "13de37cb61fc3ad2",
@@ -5372,36 +5356,6 @@
         "wires": [
             [
                 "cf9c4d119bc356cb"
-            ]
-        ]
-    },
-    {
-        "id": "93610dac4cf543f5",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-9134",
-        "payloadType": "num",
-        "x": 250,
-        "y": 960,
-        "wires": [
-            [
-                "d4459e823cb14ac9"
             ]
         ]
     },

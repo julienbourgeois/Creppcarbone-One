@@ -7077,7 +7077,10 @@
         "tls": "",
         "persist": false,
         "proxy": "",
+        "insecureHTTPParser": false,
         "authType": "bearer",
+        "senderr": false,
+        "headers": [],
         "x": 340,
         "y": 280,
         "wires": [
