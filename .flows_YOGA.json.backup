@@ -2630,12 +2630,6 @@
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
     },
     {
-        "id": "e0e7ea5c.056af8",
-        "type": "persist-store",
-        "filename": "~/store.json",
-        "interval": "60"
-    },
-    {
         "id": "d83a67fcb7073cd7",
         "type": "file in",
         "z": "ddd0105b04875be6",
@@ -3691,7 +3685,7 @@
         "order": 2,
         "width": 0,
         "height": 0,
-        "label": "energie  chargeur KWh",
+        "label": "{{msg.topic}}",
         "chartType": "bar",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -3719,7 +3713,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1480,
+        "x": 1430,
         "y": 320,
         "wires": [
             []
@@ -3907,7 +3901,7 @@
         "order": 5,
         "width": 0,
         "height": 0,
-        "label": "energie panneau KWh",
+        "label": "{{msg.topic}}",
         "chartType": "bar",
         "legend": "true",
         "xformat": "HH:mm:ss",
@@ -3935,7 +3929,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1480,
+        "x": 1430,
         "y": 440,
         "wires": [
             []
@@ -4054,7 +4048,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "panneau",
-        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (msg.payload==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4960,8 +4954,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 420,
-        "y": 260,
+        "x": 440,
+        "y": 240,
         "wires": []
     },
     {
@@ -5542,7 +5536,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 380,
-        "y": 480,
+        "y": 500,
         "wires": [
             [
                 "59039a96a726413b"
