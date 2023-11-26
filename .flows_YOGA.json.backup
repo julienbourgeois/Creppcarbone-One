@@ -4067,7 +4067,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.eurotoday;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5276,8 +5276,8 @@
         "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
         "layout": "row-spread",
-        "x": 740,
-        "y": 1000,
+        "x": 780,
+        "y": 1120,
         "wires": []
     },
     {
@@ -5292,8 +5292,8 @@
         "label": "<font size={{ 4}} > CO2 hier </font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
         "layout": "row-spread",
-        "x": 740,
-        "y": 1060,
+        "x": 980,
+        "y": 1040,
         "wires": []
     },
     {
@@ -5425,7 +5425,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
+        "x": 180,
         "y": 920,
         "wires": [
             [
@@ -5438,14 +5438,14 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "  C pour panneau",
-        "func": "\nvar topic ='calculcarbone';\n\n//var interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\n//var work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\ntopic =\"SELECT DISTINCT C2par_KWH FROM electricity_maps \"+\n\"WHERE zone like '%EU' ORDER BY time DESC LIMIT 1;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='calculcarbone';\n\n//var interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\n//var work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\ntopic =\"SELECT DISTINCT C2today FROM tasmota_panneau_month \"+\n    \"WHERE jour  = CURDATE()-1 ; \"\n\n \n// intervale d echelle du graphique;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 920,
+        "x": 220,
+        "y": 1040,
         "wires": [
             [
                 "3277742ee7410cca"
@@ -5458,11 +5458,12 @@
         "z": "13de37cb61fc3ad2",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 55",
-        "x": 430,
-        "y": 920,
+        "x": 410,
+        "y": 1040,
         "wires": [
             [
-                "6a6084cd07985bc0"
+                "46ef4743e35599f7",
+                "afa8d9a16f504af7"
             ]
         ]
     },
@@ -5470,8 +5471,8 @@
         "id": "6a6084cd07985bc0",
         "type": "debug",
         "z": "13de37cb61fc3ad2",
-        "name": "debug 68",
-        "active": false,
+        "name": "C2 hier",
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -5479,8 +5480,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 460,
-        "y": 1000,
+        "x": 780,
+        "y": 1040,
         "wires": []
     },
     {
@@ -5488,9 +5489,9 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "calcul C2now",
-        "func": "var tauxC2now = global.get(\"C2inst\");\n// puissance carbone\n\nvar C2now =tauxC2now*msg.payload;\nmsg.payload =C2now/1000.toFixed(1);\nreturn msg;",
+        "func": "var tauxC2now = global.get(\"C2inst\");\n// puissance carbone\n\nvar C2now =tauxC2now*msg.payload;\nmsg.payload =-(C2now/1000).toFixed(1);\nreturn msg;",
         "outputs": 1,
-        "noerr": 2,
+        "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -5509,7 +5510,7 @@
         "type": "debug",
         "z": "13de37cb61fc3ad2",
         "name": "debug 69",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -5535,14 +5536,14 @@
         "label": "gr par heure",
         "format": "{{value}}",
         "min": 0,
-        "max": "420",
+        "max": "-60",
         "colors": [
             "#ff8000",
             "#0080ff",
             "#00ff40"
         ],
-        "seg1": "80",
-        "seg2": "250",
+        "seg1": "-20",
+        "seg2": "-30",
         "x": 1380,
         "y": 960,
         "wires": []
@@ -5561,6 +5562,42 @@
         "layout": "row-spread",
         "x": 1340,
         "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "46ef4743e35599f7",
+        "type": "function",
+        "z": "13de37cb61fc3ad2",
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2today;\n}\n\nmsg.payload = data[0];\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 1020,
+        "wires": [
+            [
+                "6a6084cd07985bc0",
+                "a16e346b09970fa8"
+            ]
+        ]
+    },
+    {
+        "id": "afa8d9a16f504af7",
+        "type": "debug",
+        "z": "13de37cb61fc3ad2",
+        "name": "debug 70",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 1120,
         "wires": []
     },
     {
