@@ -3896,7 +3896,7 @@
         "id": "119fae5e21bb55aa",
         "type": "ui_chart",
         "z": "bd0e39b0e5b0cc70",
-        "name": "",
+        "name": "chart panneau",
         "group": "f8e408a8348f1a42",
         "order": 5,
         "width": 0,
@@ -3929,7 +3929,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1430,
+        "x": 1460,
         "y": 440,
         "wires": [
             []
@@ -4048,13 +4048,13 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "panneau",
-        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
+        "x": 640,
         "y": 440,
         "wires": [
             [
@@ -4067,7 +4067,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  dataeuro[j] = temp.eurotoday;\n  labels[j] =temp.joursN ;\n}}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  labels[k] =temp.mois ;\n  \n}}\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.eurotoday;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4077,7 +4077,8 @@
         "y": 440,
         "wires": [
             [
-                "119fae5e21bb55aa"
+                "119fae5e21bb55aa",
+                "618f665868be4a3e"
             ]
         ]
     },
@@ -4086,8 +4087,8 @@
         "type": "mysql",
         "z": "bd0e39b0e5b0cc70",
         "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 840,
+        "name": "creppcarbone 44",
+        "x": 830,
         "y": 440,
         "wires": [
             [
@@ -4445,6 +4446,22 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "618f665868be4a3e",
+        "type": "debug",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "debug 67",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 520,
+        "wires": []
     },
     {
         "id": "c4c4532a802c05c1",
@@ -4833,6 +4850,7 @@
         "id": "74b6cbfe7c7f8378",
         "type": "ui_text",
         "z": "13de37cb61fc3ad2",
+        "d": true,
         "group": "af6e9ca4e8ef71ea",
         "order": 11,
         "width": "6",
@@ -4841,7 +4859,7 @@
         "label": "<font size={{ 4}} > Energie totale  </font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"Kwh\"}}</font> ",
         "layout": "row-spread",
-        "x": 1180,
+        "x": 1280,
         "y": 580,
         "wires": []
     },
@@ -4963,8 +4981,8 @@
         "type": "mysql",
         "z": "13de37cb61fc3ad2",
         "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 780,
+        "name": "creppcarbone 31",
+        "x": 790,
         "y": 360,
         "wires": [
             []
@@ -5446,7 +5464,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "maj day, month,year",
-        "func": "\n\n// \nvar query = \n\n    \"UPDATE tasmota SET heure = HOUR(Time);\"+\n\"UPDATE tasmota SET JOURSJ = DAY(Time);\"+\n\"UPDATE tasmota SET mois = MONTH(Time);\"+\n\"UPDATE tasmota SET an = YEAR(Time);\"+\n\"UPDATE tasmota  SET jour = DATE(Time); \"+\n    \n\"REPLACE INTO tasmota_panneau_day (Time, tempsreception, energyyesterday, energytoday, energytotal, heure, JourN, mois, an, jour)  SELECT  Time, tempsreception, energyyesterday, energytoday, MAX(energytotal), heure, JOURSJ, mois, an, jour FROM`tasmota`\" +\n\"GROUP BY horointerval;\"+\n\n\"REPLACE INTO tasmota_panneau_month (Time, tempsreception, energyyesterday, energytoday, energytotal, jour, an, mois, JoursN) \"+\n\" Select Time, tempsreception, energyyesterday, MAX(energytoday), energytotal, jour, an, mois, JourN FROM`tasmota_panneau_day`\" +\n\"GROUP BY Date(Time);\" +\n\n    \"UPDATE tasmota_panneau_month SET joursJ = jour;\"+\n\n   \n\n\"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\"+\n\n\"UPDATE tasmota_panneau_day  SET eurotoday = energytoday * 0.22 ; \" +\n    \"UPDATE tasmota_panneau_month  SET eurotoday = energytoday * 0.22 ; \" +\n    \"UPDATE tasmota_panneau_year  SET eurotoday = energytoday * 0.22 ; \" ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
+        "func": "\n\n// \nvar query = \n\n    \"UPDATE tasmota SET heure = HOUR(Time);\"+\n\"UPDATE tasmota SET JOURSJ = DAY(Time);\"+\n\"UPDATE tasmota SET mois = MONTH(Time);\"+\n\"UPDATE tasmota SET an = YEAR(Time);\"+\n\"UPDATE tasmota  SET jour = DATE(Time); \"+\n    \n\"REPLACE INTO tasmota_panneau_day (Time, tempsreception, energyyesterday, energytoday, energytotal, heure, JourN, mois, an, jour)  SELECT  Time, tempsreception, energyyesterday, energytoday, MAX(energytotal), heure, JOURSJ, mois, an, jour FROM`tasmota`\" +\n\"GROUP BY horointerval;\"+\n\n    \"UPDATE tasmota_panneau_day \" +\n    \"INNER JOIN delta2 \" +\n    \"ON(tasmota_panneau_day.jour = delta2.jour AND tasmota_panneau_day.heure = delta2.heure) \" +\n    \"SET tasmota_panneau_day.energymoins1 = delta2.energymoins1 ;\"+\n\n    \"UPDATE tasmota_panneau_day \"+\n\"INNER JOIN electricity_maps \"+\n\"ON (tasmota_panneau_day.jour = electricity_maps.jour AND tasmota_panneau_day.heure = electricity_maps.heure) \"+\n\"SET tasmota_panneau_day.C2today = (tasmota_panneau_day.energytoday - tasmota_panneau_day.energymoins1) * electricity_maps.C2par_KWH \"+\n\" WHERE electricity_maps.zone LIKE'%EU' ; \" +\n\n    \"UPDATE tasmota_panneau_day SET C2today = 0 WHERE C2today <0 ;\" +\n\n\"REPLACE INTO tasmota_panneau_month (Time, tempsreception, energyyesterday, energytoday, energytotal, jour, an, mois, JoursN) \"+\n\" Select Time, tempsreception, energyyesterday, MAX(energytoday), energytotal, jour, an, mois, JourN FROM`tasmota_panneau_day`\" +\n\"GROUP BY Date(Time);\" +\n\n\n\n  /*  \"UPDATE tasmota_panneau_month \n  INNER JOIN tasmota_panneau_day \n  ON tasmota_panneau_month.jour = tasmota_panneau_day.jour \n  SET tasmota_panneau_month.C2today = \"+\n\" Select  SUM(C2today) FROM`tasmota_panneau_day` GROUP BY jour  ;\" +\n*/\n    \"UPDATE tasmota_panneau_month INNER JOIN sommec2today \"+\n\"ON(tasmota_panneau_month.JoursN = sommec2today.JourN AND tasmota_panneau_month.mois = sommec2today.mois) \"+\n\"SET tasmota_panneau_month.C2today = sommec2today.tC2today ; \" +\n\n\n\n/*\"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an)\"+\n\"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an FROM `tasmota_panneau_month`\"+\n\"GROUP BY mois;\"+\n*/\n    \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an,C2today)\" +\n    \"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an,SUM(C2today) FROM `tasmota_panneau_month`\" +\n    \"GROUP BY mois;\" +\n\n\"UPDATE tasmota_panneau_day  SET eurotoday = energytoday * 0.22 ; \" +\n    \"UPDATE tasmota_panneau_month  SET eurotoday = energytoday * 0.22 ; \" +\n    \"UPDATE tasmota_panneau_year  SET eurotoday = energytoday * 0.22 ; \" ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5465,8 +5483,8 @@
         "type": "mysql",
         "z": "13de37cb61fc3ad2",
         "mydb": "43d8c011dfdc997f",
-        "name": "creppcarbone",
-        "x": 920,
+        "name": "creppcarbone 32",
+        "x": 930,
         "y": 420,
         "wires": [
             []
@@ -5945,6 +5963,7 @@
         "id": "6de237760465eeeb",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
         "order": 11,
         "width": "6",
@@ -5953,7 +5972,7 @@
         "label": "<font size={{ 4}} > Energie totale  </font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"Kwh\"}}</font> ",
         "layout": "row-spread",
-        "x": 1540,
+        "x": 1640,
         "y": 380,
         "wires": []
     },
@@ -6473,6 +6492,7 @@
         "id": "c812295e81b0d22e",
         "type": "ui_text",
         "z": "a21c4b8426a30f7f",
+        "d": true,
         "group": "1b256139bc926903",
         "order": 15,
         "width": "6",
@@ -7524,7 +7544,7 @@
         "type": "debug",
         "z": "d931280a91eab542",
         "name": "sortie mysql",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -7965,7 +7985,7 @@
         "type": "debug",
         "z": "d931280a91eab542",
         "name": "gauge",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -8007,7 +8027,7 @@
         "type": "debug",
         "z": "d931280a91eab542",
         "name": "graph",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
