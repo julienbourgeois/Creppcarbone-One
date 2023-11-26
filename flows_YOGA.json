@@ -4249,7 +4249,7 @@
         "type": "debug",
         "z": "bd0e39b0e5b0cc70",
         "name": "panneauday",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -4452,7 +4452,7 @@
         "type": "debug",
         "z": "bd0e39b0e5b0cc70",
         "name": "debug 67",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -4554,8 +4554,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 140,
-        "y": 740,
+        "x": 420,
+        "y": 20,
         "wires": [
             [
                 "786b2c4355db1c7d"
@@ -4575,8 +4575,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 370,
-        "y": 740,
+        "x": 630,
+        "y": 20,
         "wires": []
     },
     {
@@ -4650,8 +4650,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
-        "y": 440,
+        "x": 130,
+        "y": 380,
         "wires": [
             [
                 "0d515014d753535d",
@@ -4705,7 +4705,8 @@
                 "82f90504532f7cfb",
                 "e37a9137ae70d6fd",
                 "41ae7b7bbb215bf5",
-                "a17fbaf85af5ef8f"
+                "a17fbaf85af5ef8f",
+                "f93cc79a8277ff35"
             ],
             [
                 "2dbad1d9cd1c4dad"
@@ -4842,8 +4843,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 970,
-        "y": 760,
+        "x": 1170,
+        "y": 820,
         "wires": []
     },
     {
@@ -4918,7 +4919,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
+        "x": 630,
         "y": 280,
         "wires": [
             [
@@ -4939,8 +4940,8 @@
         "label": "Etat",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 750,
-        "y": 300,
+        "x": 790,
+        "y": 280,
         "wires": []
     },
     {
@@ -4973,7 +4974,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 440,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -4982,8 +4983,8 @@
         "z": "13de37cb61fc3ad2",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 31",
-        "x": 790,
-        "y": 360,
+        "x": 770,
+        "y": 340,
         "wires": [
             []
         ]
@@ -4999,8 +5000,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 360,
+        "x": 560,
+        "y": 340,
         "wires": [
             [
                 "e8fd93fa7a68f788"
@@ -5144,7 +5145,7 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 360,
+        "x": 380,
         "y": 380,
         "wires": [
             [
@@ -5233,8 +5234,8 @@
         "label": "<font size={{ 4}} > Energie hier</font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"KWh\"}}</font> ",
         "layout": "row-spread",
-        "x": 1190,
-        "y": 920,
+        "x": 850,
+        "y": 820,
         "wires": []
     },
     {
@@ -5259,42 +5260,9 @@
         ],
         "seg1": "80",
         "seg2": "250",
-        "x": 840,
-        "y": 860,
+        "x": 1240,
+        "y": 900,
         "wires": []
-    },
-    {
-        "id": "068f269bdddf486e",
-        "type": "cronplus",
-        "z": "13de37cb61fc3ad2",
-        "d": true,
-        "name": "hourly",
-        "outputField": "payload",
-        "timeZone": "",
-        "storeName": "",
-        "commandResponseMsgOutput": "output1",
-        "defaultLocation": "",
-        "defaultLocationType": "default",
-        "outputs": 1,
-        "options": [
-            {
-                "name": "schedule1",
-                "topic": "topic1",
-                "payloadType": "str",
-                "payload": "go",
-                "expressionType": "cron",
-                "expression": "0 0 * * * ? *",
-                "location": "",
-                "offset": "0",
-                "solarType": "all",
-                "solarEvents": "sunrise,sunset"
-            }
-        ],
-        "x": 390,
-        "y": 340,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "f1da2eb1f88ad75b",
@@ -5308,7 +5276,7 @@
         "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
         "layout": "row-spread",
-        "x": 480,
+        "x": 740,
         "y": 1000,
         "wires": []
     },
@@ -5324,115 +5292,9 @@
         "label": "<font size={{ 4}} > CO2 hier </font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
         "layout": "row-spread",
-        "x": 460,
+        "x": 740,
         "y": 1060,
         "wires": []
-    },
-    {
-        "id": "cf9c4d119bc356cb",
-        "type": "ui_text",
-        "z": "13de37cb61fc3ad2",
-        "group": "af6e9ca4e8ef71ea",
-        "order": 12,
-        "width": "6",
-        "height": 1,
-        "name": "C02 instantané (gr/h)",
-        "label": "<font size={{ 4}} > C02 instantané  </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr/h\"}}</font> ",
-        "layout": "row-spread",
-        "x": 460,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "594904ea64858ed6",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-5",
-        "payloadType": "num",
-        "x": 260,
-        "y": 920,
-        "wires": [
-            [
-                "cf9c4d119bc356cb"
-            ]
-        ]
-    },
-    {
-        "id": "4ef2470aa39bd369",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-5",
-        "payloadType": "num",
-        "x": 250,
-        "y": 1000,
-        "wires": [
-            [
-                "f1da2eb1f88ad75b"
-            ]
-        ]
-    },
-    {
-        "id": "2127b82dd8c8d510",
-        "type": "inject",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "-7",
-        "payloadType": "num",
-        "x": 270,
-        "y": 1060,
-        "wires": [
-            [
-                "a16e346b09970fa8"
-            ]
-        ]
     },
     {
         "id": "59039a96a726413b",
@@ -5507,26 +5369,7 @@
         "onstart": false,
         "scope": "local",
         "tooltip": "",
-        "x": 230,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3cd4429080ba3b2d",
-        "type": "mqtt in",
-        "z": "13de37cb61fc3ad2",
-        "name": "",
-        "topic": "stat/tasmota_179AB0/POWER",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "c4ad40011fadd485",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 400,
+        "x": 110,
         "y": 40,
         "wires": [
             []
@@ -5560,6 +5403,165 @@
                 "59039a96a726413b"
             ]
         ]
+    },
+    {
+        "id": "b880d28f4c660ee6",
+        "type": "inject",
+        "z": "13de37cb61fc3ad2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 920,
+        "wires": [
+            [
+                "32bb9b0b93445c20"
+            ]
+        ]
+    },
+    {
+        "id": "32bb9b0b93445c20",
+        "type": "function",
+        "z": "13de37cb61fc3ad2",
+        "name": "  C pour panneau",
+        "func": "\nvar topic ='calculcarbone';\n\n//var interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\n//var work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\ntopic =\"SELECT DISTINCT C2par_KWH FROM electricity_maps \"+\n\"WHERE zone like '%EU' ORDER BY time DESC LIMIT 1;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 920,
+        "wires": [
+            [
+                "3277742ee7410cca"
+            ]
+        ]
+    },
+    {
+        "id": "3277742ee7410cca",
+        "type": "mysql",
+        "z": "13de37cb61fc3ad2",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 55",
+        "x": 430,
+        "y": 920,
+        "wires": [
+            [
+                "6a6084cd07985bc0"
+            ]
+        ]
+    },
+    {
+        "id": "6a6084cd07985bc0",
+        "type": "debug",
+        "z": "13de37cb61fc3ad2",
+        "name": "debug 68",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 460,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "f93cc79a8277ff35",
+        "type": "function",
+        "z": "13de37cb61fc3ad2",
+        "name": "calcul C2now",
+        "func": "var tauxC2now = global.get(\"C2inst\");\n// puissance carbone\n\nvar C2now =tauxC2now*msg.payload;\nmsg.payload =(C2now/1000).toFixed(1);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 960,
+        "wires": [
+            [
+                "1d0cf7ea137ea637",
+                "fe9cf30390fbbebd",
+                "cb920eeed7f271ee"
+            ]
+        ]
+    },
+    {
+        "id": "1d0cf7ea137ea637",
+        "type": "debug",
+        "z": "13de37cb61fc3ad2",
+        "name": "debug 69",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "cb920eeed7f271ee",
+        "type": "ui_gauge",
+        "z": "13de37cb61fc3ad2",
+        "name": "CO2  inst",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "gtype": "gage",
+        "title": "CO2 instantanée",
+        "label": "gr par heure",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "420",
+        "colors": [
+            "#ff8000",
+            "#0080ff",
+            "#00ff40"
+        ],
+        "seg1": "80",
+        "seg2": "250",
+        "x": 1380,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "fe9cf30390fbbebd",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 5,
+        "width": "6",
+        "height": 1,
+        "name": "CO2  instantané (gr/heure)",
+        "label": "<font size={{ 4}} > CO2 instantanée </font>",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr par h\"}}</font> ",
+        "layout": "row-spread",
+        "x": 1340,
+        "y": 1020,
+        "wires": []
     },
     {
         "id": "18535c72dc2f85b9",
@@ -7604,7 +7606,7 @@
         "type": "function",
         "z": "d931280a91eab542",
         "name": "electriccityC2_emission fr",
-        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%FR' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\n\n\n\n\n\n\n\n var topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%FR' ORDER BY time DESC LIMIT 1;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -7623,7 +7625,7 @@
         "type": "function",
         "z": "d931280a91eab542",
         "name": "electriccityC2_emission DE",
-        "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%DE' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\n\n\n\n\n\n\n\n var topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%DE' ORDER BY time DESC LIMIT 1;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -7843,7 +7845,8 @@
         "wires": [
             [
                 "b40bdc562d5e3ca7",
-                "f2559638a3853e96"
+                "f2559638a3853e96",
+                "06e236b632acbe3c"
             ]
         ]
     },
@@ -7869,7 +7872,7 @@
         ],
         "seg1": "100",
         "seg2": "200",
-        "x": 1100,
+        "x": 1210,
         "y": 880,
         "wires": []
     },
@@ -7988,13 +7991,13 @@
         "active": false,
         "tosidebar": true,
         "console": false,
-        "tostatus": false,
+        "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "",
+        "statusVal": "payload",
         "statusType": "auto",
-        "x": 1120,
-        "y": 820,
+        "x": 1070,
+        "y": 880,
         "wires": []
     },
     {
@@ -8134,6 +8137,31 @@
         "tooltip": "",
         "x": 130,
         "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06e236b632acbe3c",
+        "type": "change",
+        "z": "d931280a91eab542",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "C2inst",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 800,
         "wires": [
             []
         ]
