@@ -42,6 +42,14 @@
         "info": "recuperer les taux de CO2"
     },
     {
+        "id": "2966e896630d93ec",
+        "type": "tab",
+        "label": "maison",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "89761449a9ab2711",
         "type": "ui_group",
         "d": true,
@@ -182,10 +190,10 @@
     {
         "id": "b9734cc8775ed8a5",
         "type": "serial-port",
-        "serialport": "COM4",
-        "serialbaud": "115200",
-        "databits": "8",
-        "parity": "none",
+        "serialport": "COM3",
+        "serialbaud": "9600",
+        "databits": "7",
+        "parity": "even",
         "stopbits": "1",
         "waitfor": "",
         "dtr": "none",
@@ -2628,6 +2636,16 @@
         "actionButton-color": "#434343",
         "actionButton-flashColor": "#f2f2f2",
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
+    },
+    {
+        "id": "7b665b89099d3536",
+        "type": "ui_group",
+        "name": "maison",
+        "tab": "988df4f2cc6c55bd",
+        "order": 9,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
         "id": "d83a67fcb7073cd7",
@@ -8235,6 +8253,193 @@
         "reg": false,
         "x": 1110,
         "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "86efc9642556d3c7",
+        "type": "mqtt in",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "topic": "Pinst",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "c4ad40011fadd485",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "ed4af23eda125eb7",
+                "c6c235ea6fd0516d",
+                "e6385ded24f08bba"
+            ]
+        ]
+    },
+    {
+        "id": "ed4af23eda125eb7",
+        "type": "debug",
+        "z": "2966e896630d93ec",
+        "name": "debug 70",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 380,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c6c235ea6fd0516d",
+        "type": "ui_text_input",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "label": "watt apparents",
+        "tooltip": "",
+        "group": "7b665b89099d3536",
+        "order": 0,
+        "width": "2",
+        "height": "2",
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 560,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff3fc06ee2a855ad",
+        "type": "ui_media",
+        "z": "2966e896630d93ec",
+        "group": "7b665b89099d3536",
+        "name": "",
+        "width": "1",
+        "height": "1",
+        "order": 1,
+        "category": "image",
+        "file": "link2.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e6385ded24f08bba",
+        "type": "ui_chart",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "group": "7b665b89099d3536",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 710,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "71de3cbcbce37c31",
+        "type": "mqtt in",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "topic": "Etot",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "c4ad40011fadd485",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "bab203dc64288e3c",
+                "f917a005e7014c40"
+            ]
+        ]
+    },
+    {
+        "id": "bab203dc64288e3c",
+        "type": "debug",
+        "z": "2966e896630d93ec",
+        "name": "debug 71",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 360,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f917a005e7014c40",
+        "type": "ui_text_input",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "label": "kwh total",
+        "tooltip": "",
+        "group": "7b665b89099d3536",
+        "order": 0,
+        "width": "2",
+        "height": "2",
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 540,
+        "y": 240,
         "wires": [
             []
         ]
