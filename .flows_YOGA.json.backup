@@ -21,6 +21,14 @@
         "info": ""
     },
     {
+        "id": "b846123779a22d9d",
+        "type": "tab",
+        "label": "graphique maison",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "2966e896630d93ec",
         "type": "tab",
         "label": "maison",
@@ -2604,7 +2612,7 @@
         "order": 9,
         "disp": true,
         "width": "6",
-        "collapse": false
+        "collapse": true
     },
     {
         "id": "36ed94917875ebb9",
@@ -2646,6 +2654,16 @@
         "actionButton-color": "#434343",
         "actionButton-flashColor": "#f2f2f2",
         "actionButton-CSS": "#button {\nwidth: calc(100% - 10px);\nheight: calc(100% - 10px);\nmargin: 5px;\ntransition: background-color 0.1s ease;\n}"
+    },
+    {
+        "id": "ceaa16c0a3c87e75",
+        "type": "ui_group",
+        "name": "graph maison",
+        "tab": "988df4f2cc6c55bd",
+        "order": 10,
+        "disp": true,
+        "width": "6",
+        "collapse": true
     },
     {
         "id": "d83a67fcb7073cd7",
@@ -5235,30 +5253,11 @@
         ]
     },
     {
-        "id": "53c3bdbde118dacc",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "panneau",
-        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 640,
-        "y": 440,
-        "wires": [
-            [
-                "f8139817cddba33a"
-            ]
-        ]
-    },
-    {
         "id": "5a806665b9f42d9a",
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5314,11 +5313,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
+        "x": 360,
         "y": 520,
         "wires": [
             [
-                "53c3bdbde118dacc"
+                "494f73ce89c010e1"
             ]
         ]
     },
@@ -5337,7 +5336,7 @@
         "y": 440,
         "wires": [
             [
-                "53c3bdbde118dacc"
+                "494f73ce89c010e1"
             ]
         ]
     },
@@ -5356,7 +5355,7 @@
         "y": 480,
         "wires": [
             [
-                "53c3bdbde118dacc"
+                "494f73ce89c010e1"
             ]
         ]
     },
@@ -5415,24 +5414,6 @@
             [
                 "42530c38a83b58c6"
             ]
-        ]
-    },
-    {
-        "id": "640f512e0b7efe21",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "d": true,
-        "name": "",
-        "func": "var d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n//d=d+work_pile;\n// decallage de la periode observée\n\nd.setDate(d.getDate()+ work_pile);\n\n\n\n//var day =d.getDate().toString();\n//var month = d.getMonth().toString();\n//var year =d.getYear().toString();\n//var result =day +\"/\"+month+ \"/\"+ year;\nmsg.payload  = d.toDateString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 660,
-        "y": 540,
-        "wires": [
-            []
         ]
     },
     {
@@ -5617,7 +5598,7 @@
         "y": 580,
         "wires": [
             [
-                "53c3bdbde118dacc"
+                "494f73ce89c010e1"
             ]
         ]
     },
@@ -5653,6 +5634,510 @@
         "x": 1340,
         "y": 520,
         "wires": []
+    },
+    {
+        "id": "f0f2ee8897e36822",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "panneau",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{\n    topic = \"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{\n    topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,CASE mois WHEN 1 THEN 'janvier' \" +\n    \" WHEN 2 THEN 'fevrier' WHEN 3 THEN 'mars' WHEN 4 THEN 'avril' WHEN 5 THEN 'mai' WHEN 6 'juin WHEN 7 'juillet' \" +\n    \" WHEN 8 THEN 'aout' WHEN 9 THEN 'septembre' WHEN 10 THEN 'octobre' WHEN 11 THEN 'novembre' ELSE 'decembre' \" +\n\" END ,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "494f73ce89c010e1",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "panneau old",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{\n    topic = \"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN, mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 580,
+        "wires": [
+            [
+                "f8139817cddba33a"
+            ]
+        ]
+    },
+    {
+        "id": "bea56da3f92336dd",
+        "type": "ui_chart",
+        "z": "b846123779a22d9d",
+        "name": "chart panneau",
+        "group": "ceaa16c0a3c87e75",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "{{msg.topic}}",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1480,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa87e67455116a9e",
+        "type": "ui_multistate_switch",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "group": "ceaa16c0a3c87e75",
+        "order": 6,
+        "width": 0,
+        "height": 1,
+        "label": "",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "day",
+                "value": "DAY",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "month",
+                "value": "MONTH",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "year",
+                "value": "YEAR",
+                "valueType": "str",
+                "color": "#ff6666"
+            },
+            {
+                "label": "full year",
+                "value": "FULL",
+                "valueType": "str",
+                "color": "#009999"
+            }
+        ],
+        "topic": "",
+        "x": 120,
+        "y": 340,
+        "wires": [
+            [
+                "c6a9bc890c2436a7"
+            ]
+        ]
+    },
+    {
+        "id": "e74a505a59bf9551",
+        "type": "ui_button",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "group": "ceaa16c0a3c87e75",
+        "order": 8,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": ">>",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "x": 90,
+        "y": 240,
+        "wires": [
+            [
+                "d419e620b0c0b2f5"
+            ]
+        ]
+    },
+    {
+        "id": "6962d19559afce10",
+        "type": "ui_button",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "group": "ceaa16c0a3c87e75",
+        "order": 7,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "label": "<<",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT DISTINCT energytoday,Time FROM tasmotaconsomateur WHERE DATE(tempsreception)=CURDATE();",
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "f300f7d3c42ec602"
+            ]
+        ]
+    },
+    {
+        "id": "f7978f812d07733d",
+        "type": "function",
+        "z": "b846123779a22d9d",
+        "name": "maison",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_maison\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_maison\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT Etot,Etotdelta,heure FROM linky_day_delta \"+\n\"WHERE jour = DAY(CURDATE() +\"+ work_pile + \" ) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 240,
+        "wires": [
+            [
+                "8dc02dd876cc6585"
+            ]
+        ]
+    },
+    {
+        "id": "f23ab49edc4bb834",
+        "type": "function",
+        "z": "b846123779a22d9d",
+        "name": "prep chart bar maison",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_maison\");\nvar work_valeur = flow.get(\"valeur_maison\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_maison\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.Etotdelta;\n  dataeuro[i] = temp.Etotdelta;\n  dataC3[i] = temp.Etot;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 260,
+        "wires": [
+            [
+                "bea56da3f92336dd",
+                "08843b6756fd5dbb"
+            ]
+        ]
+    },
+    {
+        "id": "8dc02dd876cc6585",
+        "type": "mysql",
+        "z": "b846123779a22d9d",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 44",
+        "x": 830,
+        "y": 240,
+        "wires": [
+            [
+                "4e11226ab6bef737",
+                "f23ab49edc4bb834"
+            ]
+        ]
+    },
+    {
+        "id": "c6a9bc890c2436a7",
+        "type": "change",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "interval_maison",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "pile_maison",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "f7978f812d07733d"
+            ]
+        ]
+    },
+    {
+        "id": "d419e620b0c0b2f5",
+        "type": "function",
+        "z": "b846123779a22d9d",
+        "name": "plus pile_maison",
+        "func": "var work_delta = flow.get(\"pile_maison\");\nwork_delta = work_delta +1;\nflow.set(\"pile_maison\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "f7978f812d07733d"
+            ]
+        ]
+    },
+    {
+        "id": "f300f7d3c42ec602",
+        "type": "function",
+        "z": "b846123779a22d9d",
+        "name": "moins pile_maison",
+        "func": "var work_delta = flow.get(\"pile_maison\");\nwork_delta = work_delta -1;\nflow.set(\"pile_maison\",work_delta)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "f7978f812d07733d"
+            ]
+        ]
+    },
+    {
+        "id": "1a781417eb03b745",
+        "type": "function",
+        "z": "b846123779a22d9d",
+        "d": true,
+        "name": "",
+        "func": "var d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n//d=d+work_pile;\n// decallage de la periode observée\n\nd.setDate(d.getDate()+ work_pile);\n\n\n\n//var day =d.getDate().toString();\n//var month = d.getMonth().toString();\n//var year =d.getYear().toString();\n//var result =day +\"/\"+month+ \"/\"+ year;\nmsg.payload  = d.toDateString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e11226ab6bef737",
+        "type": "debug",
+        "z": "b846123779a22d9d",
+        "name": "linkyday",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "1027ded7a0059dae",
+        "type": "ui_multistate_switch",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "group": "ceaa16c0a3c87e75",
+        "order": 6,
+        "width": 0,
+        "height": 1,
+        "label": "",
+        "stateField": "payload",
+        "enableField": "enable",
+        "passthroughField": "passthrough",
+        "inputMsgField": "inputmsg",
+        "rounded": false,
+        "useThemeColors": true,
+        "hideSelectedLabel": false,
+        "multilineLabel": false,
+        "passThrough": "never",
+        "inputMsg": "all",
+        "userInput": "enabled_show",
+        "options": [
+            {
+                "label": "KWH",
+                "value": "KWH",
+                "valueType": "str",
+                "color": "#009933"
+            },
+            {
+                "label": "CO2",
+                "value": "CO2",
+                "valueType": "str",
+                "color": "#999999"
+            },
+            {
+                "label": "€",
+                "value": "€",
+                "valueType": "str",
+                "color": "#ff6666"
+            }
+        ],
+        "topic": "",
+        "x": 120,
+        "y": 400,
+        "wires": [
+            [
+                "3e8e6166302ddc91"
+            ]
+        ]
+    },
+    {
+        "id": "3e8e6166302ddc91",
+        "type": "change",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "valeur_maison",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 400,
+        "wires": [
+            [
+                "f7978f812d07733d"
+            ]
+        ]
+    },
+    {
+        "id": "80d35891b8285875",
+        "type": "function",
+        "z": "b846123779a22d9d",
+        "name": "prep chart bar panneau",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n\n// decallage de la periode observée\n//var day =d.getDate();\n//var month = d.getMonth();\n//var year =d.getYear();\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\nvar d =new Date();\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.heure + \"h\";\n  //jdate =\"hello\";\n// jdate = temp.JourN+\"/\"+temp.mois+\"/\"+temp.an;\n  \n}\n//if (typeof jdate == 'undefined') {\n//    jdate= [\"good\"];\n//}\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1590,
+        "y": 354,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08843b6756fd5dbb",
+        "type": "debug",
+        "z": "b846123779a22d9d",
+        "name": "debug 73",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "debc0c6b2c7746f5",
+        "type": "ui_media",
+        "z": "b846123779a22d9d",
+        "group": "ceaa16c0a3c87e75",
+        "name": "logo graph",
+        "width": "1",
+        "height": "1",
+        "order": 2,
+        "category": "image",
+        "file": "graphmagnifier_118081.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2722ca86a215df5",
+        "type": "ui_media",
+        "z": "b846123779a22d9d",
+        "group": "ceaa16c0a3c87e75",
+        "name": "logo linky",
+        "width": "1",
+        "height": "1",
+        "order": 2,
+        "category": "image",
+        "file": "link2.png",
+        "layout": "adjust",
+        "showcontrols": true,
+        "loop": true,
+        "onstart": false,
+        "scope": "local",
+        "tooltip": "",
+        "x": 100,
+        "y": 60,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "86efc9642556d3c7",
@@ -5702,7 +6187,7 @@
         "label": "watt apparents",
         "tooltip": "",
         "group": "7b665b89099d3536",
-        "order": 5,
+        "order": 7,
         "width": "2",
         "height": "2",
         "passthru": true,
@@ -5744,7 +6229,7 @@
         "z": "2966e896630d93ec",
         "name": "",
         "group": "7b665b89099d3536",
-        "order": 3,
+        "order": 5,
         "width": 0,
         "height": 0,
         "label": "watts",
@@ -5776,7 +6261,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "x": 790,
-        "y": 180,
+        "y": 160,
         "wires": [
             []
         ]
@@ -5822,27 +6307,6 @@
         "wires": []
     },
     {
-        "id": "f917a005e7014c40",
-        "type": "ui_text_input",
-        "z": "2966e896630d93ec",
-        "name": "",
-        "label": "kwh total",
-        "tooltip": "",
-        "group": "7b665b89099d3536",
-        "order": 6,
-        "width": "3",
-        "height": "2",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 760,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "7c1c259645bf90d5",
         "type": "delay",
         "z": "2966e896630d93ec",
@@ -5863,7 +6327,9 @@
         "y": 380,
         "wires": [
             [
-                "9afb3cf11b9edc09"
+                "9afb3cf11b9edc09",
+                "70c63849afcee132",
+                "fb7542c7239f2615"
             ]
         ]
     },
@@ -5884,7 +6350,7 @@
         "type": "function",
         "z": "2966e896630d93ec",
         "name": " querry Linky",
-        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n\n\"INSERT INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n\n\"REPLACE INTO Linky_day (Etot,   heure, date)  SELECT  Max(Etot), heure, date FROM`Linky`\" +\n    \"GROUP BY horointerval;\" ;\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\n//msg.topic = query;\n//return msg;\n\n\n\n\n",
+        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n\n\"INSERT IGNORE INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\"UPDATE Linky SET an = YEAR(Time); \" +\n\"UPDATE Linky SET mois = MONTH(Time); \" +\n\"UPDATE Linky SET jour = DAY(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n\n\"REPLACE INTO Linky_day (Etot,   heure, date, jour, mois, an)  SELECT  Max(Etot), heure, date, jour, mois, an  FROM`Linky`\" +\n    \"GROUP BY horointerval; \"+ \n\n\"REPLACE INTO linky_day_delta(Etot, an, jour, mois, date, heure, C2today, Etoteh)SELECT Etot, an, jour, mois, date, heure, C2today, LAG(Etot) OVER(ORDER BY Etot)FROM linky_day ; \" +\n\"UPDATE linky_day_delta SET Etotdelta =Etot-Etoteh;\" ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\n//msg.topic = query;\n//return msg;\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5947,8 +6413,8 @@
         "y": 240,
         "wires": [
             [
-                "f917a005e7014c40",
-                "9ca81da86dbb33f1"
+                "9ca81da86dbb33f1",
+                "7046785ee170b1c0"
             ]
         ]
     },
@@ -5975,7 +6441,7 @@
         "z": "2966e896630d93ec",
         "name": "",
         "group": "7b665b89099d3536",
-        "order": 4,
+        "order": 6,
         "width": 0,
         "height": 0,
         "label": "Wh",
@@ -6006,8 +6472,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 710,
-        "y": 300,
+        "x": 930,
+        "y": 240,
         "wires": [
             []
         ]
@@ -6037,6 +6503,233 @@
         "x": 810,
         "y": 100,
         "wires": []
+    },
+    {
+        "id": "f008886a8e29bde2",
+        "type": "inject",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "9afb3cf11b9edc09"
+            ]
+        ]
+    },
+    {
+        "id": "70c63849afcee132",
+        "type": "function",
+        "z": "2966e896630d93ec",
+        "name": "querry KWH aujourdhui maison",
+        "func": "\nvar topic ='toto';\n\n\n\n\n\n{ topic =\"SELECT (MAX(Etot)- MIN(Etot))/1000 AS WH ,date FROM `linky` WHERE date = CURRENT_DATE\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 500,
+        "wires": [
+            [
+                "12f249450273912a"
+            ]
+        ]
+    },
+    {
+        "id": "12f249450273912a",
+        "type": "mysql",
+        "z": "2966e896630d93ec",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 34",
+        "x": 810,
+        "y": 480,
+        "wires": [
+            [
+                "1186bab972dfbc7f",
+                "65d654478fc55010"
+            ]
+        ]
+    },
+    {
+        "id": "1186bab972dfbc7f",
+        "type": "debug",
+        "z": "2966e896630d93ec",
+        "name": "debug 74",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "c2c3cde3e928e9e7",
+        "type": "inject",
+        "z": "2966e896630d93ec",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "65d654478fc55010",
+        "type": "function",
+        "z": "2966e896630d93ec",
+        "name": "prep chart bar maison",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\n\n\n\n\n\n  temp = msg.payload[0];\n   jdate = temp.WH;\n  \n\n\n\n\n\nmsg.payload = jdate;\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 420,
+        "wires": [
+            [
+                "d77b697b4774922c"
+            ]
+        ]
+    },
+    {
+        "id": "fb7542c7239f2615",
+        "type": "function",
+        "z": "2966e896630d93ec",
+        "name": "querry KWH hier maison",
+        "func": "\nvar topic ='toto';\n\n\n\n\n\n{ topic =\"SELECT (MAX(Etot)- MIN(Etot))/1000 AS WH ,date FROM `linky` WHERE date = CURRENT_DATE -1\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 580,
+        "wires": [
+            [
+                "b16ed025b1453062"
+            ]
+        ]
+    },
+    {
+        "id": "b16ed025b1453062",
+        "type": "mysql",
+        "z": "2966e896630d93ec",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 34",
+        "x": 810,
+        "y": 600,
+        "wires": [
+            [
+                "f454e8a5e863523a"
+            ]
+        ]
+    },
+    {
+        "id": "f454e8a5e863523a",
+        "type": "function",
+        "z": "2966e896630d93ec",
+        "name": "prep chart bar maison",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\n\n\n\n\n\n  temp = msg.payload[0];\n   jdate = temp.WH;\n  \n\n\n\n\n\nmsg.payload = jdate;\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 560,
+        "wires": [
+            [
+                "29d6df26a131885a"
+            ]
+        ]
+    },
+    {
+        "id": "d77b697b4774922c",
+        "type": "ui_text",
+        "z": "2966e896630d93ec",
+        "group": "7b665b89099d3536",
+        "order": 3,
+        "width": "3",
+        "height": "1",
+        "name": "",
+        "label": " Aujourhui",
+        "format": "{{msg.payload}} {{\"KWh\"}}",
+        "layout": "row-spread",
+        "x": 1180,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "29d6df26a131885a",
+        "type": "ui_text",
+        "z": "2966e896630d93ec",
+        "group": "7b665b89099d3536",
+        "order": 4,
+        "width": "3",
+        "height": "1",
+        "name": "",
+        "label": "Hier",
+        "format": "{{msg.payload}} {{\"KWh\"}}",
+        "layout": "row-spread",
+        "x": 1070,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "7046785ee170b1c0",
+        "type": "function",
+        "z": "2966e896630d93ec",
+        "name": "function 23",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 220,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "18535c72dc2f85b9",
