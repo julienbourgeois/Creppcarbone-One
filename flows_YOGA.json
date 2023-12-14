@@ -5257,7 +5257,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar datad=[];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   \n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n \n datad[0]=0;\n var l = msg.payload.length;\n\n  for (let  pas= 1;pas < l; pas++)   {\n     \n    datad[pas] = data[pas]-data[pas-1] ;\n  }\n  data[0] = 0;\n  var l = msg.payload.length;\n\n  for (let pas = 1; pas < l; pas++) {\n\n    data[pas] = datad[pas] ;\n  }\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5603,23 +5603,6 @@
         ]
     },
     {
-        "id": "8b76f61cd118ec18",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n\n// decallage de la periode observée\n//var day =d.getDate();\n//var month = d.getMonth();\n//var year =d.getYear();\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\nvar d =new Date();\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.heure + \"h\";\n  //jdate =\"hello\";\n// jdate = temp.JourN+\"/\"+temp.mois+\"/\"+temp.an;\n  \n}\n//if (typeof jdate == 'undefined') {\n//    jdate= [\"good\"];\n//}\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1570,
-        "y": 534,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "618f665868be4a3e",
         "type": "debug",
         "z": "bd0e39b0e5b0cc70",
@@ -5669,6 +5652,23 @@
             [
                 "f8139817cddba33a"
             ]
+        ]
+    },
+    {
+        "id": "1328689d54c62329",
+        "type": "function",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "prep chart bar panneau old",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1638.5714111328125,
+        "y": 587.1428833007812,
+        "wires": [
+            []
         ]
     },
     {
