@@ -182,25 +182,6 @@
         "hidden": false
     },
     {
-        "id": "b9734cc8775ed8a5",
-        "type": "serial-port",
-        "serialport": "COM3",
-        "serialbaud": "9600",
-        "databits": "7",
-        "parity": "even",
-        "stopbits": "1",
-        "waitfor": "",
-        "dtr": "none",
-        "rts": "none",
-        "cts": "none",
-        "dsr": "none",
-        "newline": "\\n",
-        "bin": "false",
-        "out": "char",
-        "addchar": "",
-        "responsetimeout": "10000"
-    },
-    {
         "id": "403af71565be25d0",
         "type": "mui_base",
         "theme": {
@@ -3726,7 +3707,7 @@
         "type": "function",
         "z": "b846123779a22d9d",
         "name": "maison",
-        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_maison\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_maison\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT Etot,Etotdelta,heure FROM linky_day_delta \"+\n\"WHERE jour = DAY(CURDATE() +\"+ work_pile + \" ) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_maison\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_maison\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT Etot,Etotdelta,heure FROM linky_day_delta \"+\n\"WHERE jour = DAY(CURDATE() +\"+ work_pile + \" ) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,jour,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n{ topic = \"SELECT DISTINCT energytoday,jour,mois FROM linky_month WHERE mois = MONTH(CURDATE()) +\" + work_pile + \"  ORDER BY jour ASC;\" }\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3745,7 +3726,7 @@
         "type": "function",
         "z": "b846123779a22d9d",
         "name": "prep chart bar maison",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_maison\");\nvar work_valeur = flow.get(\"valeur_maison\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_maison\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.Etotdelta;\n  dataeuro[i] = temp.Etotdelta;\n  dataC3[i] = temp.Etot;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_maison\");\nvar work_valeur = flow.get(\"valeur_maison\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_maison\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.Etotdelta;\n  dataeuro[i] = temp.Etotdelta;\n  dataC3[i] = temp.Etot;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   //dataC3[j] = temp.C2today;\n  labels[j] =temp.jour ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3852,7 +3833,7 @@
         "type": "debug",
         "z": "b846123779a22d9d",
         "name": "linkyday",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -3861,7 +3842,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1020,
-        "y": 240,
+        "y": 260,
         "wires": []
     },
     {
@@ -4043,28 +4024,6 @@
         "wires": []
     },
     {
-        "id": "c6c235ea6fd0516d",
-        "type": "ui_text_input",
-        "z": "2966e896630d93ec",
-        "d": true,
-        "name": "",
-        "label": "watt apparents",
-        "tooltip": "",
-        "group": "7b665b89099d3536",
-        "order": 7,
-        "width": "2",
-        "height": "2",
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "",
-        "x": 620,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ff3fc06ee2a855ad",
         "type": "ui_media",
         "z": "2966e896630d93ec",
@@ -4214,7 +4173,7 @@
         "type": "function",
         "z": "2966e896630d93ec",
         "name": " querry Linky",
-        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n\n\"INSERT IGNORE INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\"UPDATE Linky SET an = YEAR(Time); \" +\n\"UPDATE Linky SET mois = MONTH(Time); \" +\n\"UPDATE Linky SET jour = DAY(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n\n\"REPLACE INTO Linky_day (Etot,   heure, date, jour, mois, an)  SELECT  Max(Etot), heure, date, jour, mois, an  FROM`Linky`\" +\n    \"GROUP BY horointerval; \"+ \n\n\"REPLACE INTO linky_day_delta(Etot, an, jour, mois, date, heure, C2today, Etoteh)SELECT Etot, an, jour, mois, date, heure, C2today, LAG(Etot) OVER(ORDER BY Etot)FROM linky_day ; \" +\n\"UPDATE linky_day_delta SET Etotdelta =Etot-Etoteh;\" ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n//var P1 = msg.payload.Time;\n\n\n//P1 = Time: \"2023-06-18T07:58:02\"\";\n//var P2 = msg.payload.ENERGY;\n//var P3 = msg.payload[\"KSI (GWh)\"];\n//var query = \"INSERT INTO tasmota (ENERGY) VALUES (\" + P2 + \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \", \" +P2+ \")\";\n//var query = \"INSERT INTO tasmota (Time) VALUES (\" + P1 + \")\";\n//var query = \"INSERT INTO tasmota (Time,ENERGY) VALUES (\" + P1 + \", \" + P2 + \")\";\n//msg.topic = query;\n//return msg;\n\n\n\n\n",
+        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n\n\"INSERT IGNORE INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\"UPDATE Linky SET an = YEAR(Time); \" +\n\"UPDATE Linky SET mois = MONTH(Time); \" +\n\"UPDATE Linky SET jour = DAY(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n\n\"REPLACE INTO Linky_day (Etot,   heure, date, jour, mois, an)  SELECT  Max(Etot), heure, date, jour, mois, an  FROM`Linky`\" +\n    \"GROUP BY horointerval; \"+ \n\n\"REPLACE INTO linky_day_delta(Etot, an, jour, mois, date, heure, C2today, Etoteh)SELECT Etot, an, jour, mois, date, heure, C2today, LAG(Etot) OVER(ORDER BY Etot)FROM linky_day ; \" +\n//\" UPDATE linky_day_delta SET Etotdelta =(Etot-Etoteh) ;\" +\n\n\n\"UPDATE linky_day_delta SET Etotdelta = CASE\" +\n\n\" WHEN Etoteh >0 THEN (Etot-Etoteh)  \" +\n\" ELSE 0\" +\n\" END ; \" +\n\n\n\n\"REPLACE INTO linky_month(energytoday, an, jour,mois)SELECT SUM(Etotdelta), an, jour, mois FROM linky_day_delta GROUP BY jour,mois,an ; \" +\n    \"REPLACE INTO linky_year(energytoday, an, mois)SELECT SUM(energytoday), an, mois FROM linky_month GROUP BY mois,an ;  \";\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4249,7 +4208,6 @@
         "y": 160,
         "wires": [
             [
-                "c6c235ea6fd0516d",
                 "e6385ded24f08bba",
                 "4bd9979253397a7f",
                 "49ed0ac36e740c41"
@@ -4369,35 +4327,6 @@
         "wires": []
     },
     {
-        "id": "f008886a8e29bde2",
-        "type": "inject",
-        "z": "2966e896630d93ec",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 440,
-        "wires": [
-            [
-                "9afb3cf11b9edc09"
-            ]
-        ]
-    },
-    {
         "id": "70c63849afcee132",
         "type": "function",
         "z": "2966e896630d93ec",
@@ -4436,7 +4365,7 @@
         "type": "debug",
         "z": "2966e896630d93ec",
         "name": "debug 74",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -4472,7 +4401,10 @@
         "x": 160,
         "y": 520,
         "wires": [
-            []
+            [
+                "70c63849afcee132",
+                "fb7542c7239f2615"
+            ]
         ]
     },
     {
@@ -4590,7 +4522,7 @@
         "finalize": "",
         "libs": [],
         "x": 770,
-        "y": 220,
+        "y": 240,
         "wires": [
             []
         ]
