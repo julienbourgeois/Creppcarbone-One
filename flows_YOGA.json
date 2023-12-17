@@ -5138,7 +5138,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1460,
+        "x": 1640,
         "y": 440,
         "wires": [
             []
@@ -5614,26 +5614,9 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1340,
-        "y": 520,
+        "x": 1440,
+        "y": 440,
         "wires": []
-    },
-    {
-        "id": "f0f2ee8897e36822",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "panneau",
-        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{\n    topic = \"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{\n    topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,CASE mois WHEN 1 THEN 'janvier' \" +\n    \" WHEN 2 THEN 'fevrier' WHEN 3 THEN 'mars' WHEN 4 THEN 'avril' WHEN 5 THEN 'mai' WHEN 6 'juin WHEN 7 'juillet' \" +\n    \" WHEN 8 THEN 'aout' WHEN 9 THEN 'septembre' WHEN 10 THEN 'octobre' WHEN 11 THEN 'novembre' ELSE 'decembre' \" +\n\" END ,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1040,
-        "y": 640,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "494f73ce89c010e1",
@@ -5646,29 +5629,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
-        "y": 580,
+        "x": 610,
+        "y": 440,
         "wires": [
             [
                 "f8139817cddba33a"
             ]
-        ]
-    },
-    {
-        "id": "1328689d54c62329",
-        "type": "function",
-        "z": "bd0e39b0e5b0cc70",
-        "name": "prep chart bar panneau old",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1638.5714111328125,
-        "y": 587.1428833007812,
-        "wires": [
-            []
         ]
     },
     {
@@ -5708,8 +5674,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1480,
-        "y": 260,
+        "x": 1620,
+        "y": 240,
         "wires": [
             []
         ]
@@ -5853,7 +5819,7 @@
         "finalize": "",
         "libs": [],
         "x": 1240,
-        "y": 260,
+        "y": 240,
         "wires": [
             [
                 "bea56da3f92336dd",
@@ -5949,24 +5915,6 @@
         ]
     },
     {
-        "id": "1a781417eb03b745",
-        "type": "function",
-        "z": "b846123779a22d9d",
-        "d": true,
-        "name": "",
-        "func": "var d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n//d=d+work_pile;\n// decallage de la periode observée\n\nd.setDate(d.getDate()+ work_pile);\n\n\n\n//var day =d.getDate().toString();\n//var month = d.getMonth().toString();\n//var year =d.getYear().toString();\n//var result =day +\"/\"+month+ \"/\"+ year;\nmsg.payload  = d.toDateString();\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 680,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "4e11226ab6bef737",
         "type": "debug",
         "z": "b846123779a22d9d",
@@ -5980,7 +5928,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1020,
-        "y": 260,
+        "y": 240,
         "wires": []
     },
     {
@@ -6061,23 +6009,6 @@
         ]
     },
     {
-        "id": "80d35891b8285875",
-        "type": "function",
-        "z": "b846123779a22d9d",
-        "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n\n// decallage de la periode observée\n//var day =d.getDate();\n//var month = d.getMonth();\n//var year =d.getYear();\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\nvar d =new Date();\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n  labels[i] =temp.heure + \"h\";\n  //jdate =\"hello\";\n// jdate = temp.JourN+\"/\"+temp.mois+\"/\"+temp.an;\n  \n}\n//if (typeof jdate == 'undefined') {\n//    jdate= [\"good\"];\n//}\nvar chart = [{\n  // \"series\": [\"Energy today\"],\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n}\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jserie =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n  labels[j] =temp.joursN ;\n  \n  \n}\n\nvar chartd = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chartd;\n}\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jserie =temp.an ;\n   data[k] = temp.energytoday;\n  labels[k] =temp.mois ;\n  \n  \n}\n\nvar charte = [{\n   \"series\": [jserie],\n //  \"series\": [series],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = charte;\n}\n\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1590,
-        "y": 354,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "08843b6756fd5dbb",
         "type": "debug",
         "z": "b846123779a22d9d",
@@ -6089,8 +6020,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1360,
-        "y": 340,
+        "x": 1420,
+        "y": 240,
         "wires": []
     },
     {
@@ -6339,8 +6270,8 @@
         "z": "2966e896630d93ec",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 33",
-        "x": 750,
-        "y": 380,
+        "x": 730,
+        "y": 340,
         "wires": [
             []
         ]
@@ -6357,7 +6288,7 @@
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 380,
+        "y": 340,
         "wires": [
             [
                 "275e21bf457a629f"
@@ -6580,7 +6511,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1020,
+        "x": 980,
         "y": 480,
         "wires": []
     },
@@ -6622,8 +6553,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 420,
+        "x": 1180,
+        "y": 480,
         "wires": [
             [
                 "d77b697b4774922c"
@@ -6674,8 +6605,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 560,
+        "x": 1100,
+        "y": 600,
         "wires": [
             [
                 "29d6df26a131885a"
@@ -6694,8 +6625,8 @@
         "label": " Aujourhui",
         "format": "{{msg.payload}} {{\"KWh\"}}",
         "layout": "row-spread",
-        "x": 1180,
-        "y": 360,
+        "x": 1360,
+        "y": 480,
         "wires": []
     },
     {
@@ -6710,8 +6641,8 @@
         "label": "Hier",
         "format": "{{msg.payload}} {{\"KWh\"}}",
         "layout": "row-spread",
-        "x": 1070,
-        "y": 680,
+        "x": 1290,
+        "y": 600,
         "wires": []
     },
     {
