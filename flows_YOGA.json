@@ -154,155 +154,6 @@
         }
     },
     {
-        "id": "ec161e1aa15af52f",
-        "type": "serial-port",
-        "serialport": "Port_#0003.Hub_#0001",
-        "serialbaud": "115200",
-        "databits": "8",
-        "parity": "none",
-        "stopbits": "1",
-        "waitfor": "",
-        "dtr": "none",
-        "rts": "none",
-        "cts": "none",
-        "dsr": "none",
-        "newline": "\\n",
-        "bin": "false",
-        "out": "char",
-        "addchar": "",
-        "responsetimeout": "10000"
-    },
-    {
-        "id": "bbfb72a5104d29b7",
-        "type": "ui_tab",
-        "name": "reseau",
-        "icon": "dashboard",
-        "order": 2,
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "403af71565be25d0",
-        "type": "mui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#ff8040",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "m-base-color": {
-                    "default": "#0094CE",
-                    "value": "#ff8040",
-                    "edited": true
-                },
-                "m-page-titlebar-backgroundColor": {
-                    "value": "#ff8040",
-                    "edited": false
-                },
-                "m-page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "m-page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "m-group-textColor": {
-                    "value": "#ffb38c",
-                    "edited": false
-                },
-                "m-group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "m-group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "m-widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "m-widget-backgroundColor": {
-                    "value": "#ff8040",
-                    "edited": false
-                },
-                "m-widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "8babd83e4bcc8364",
-        "type": "mqtt-broker",
-        "name": "debian",
-        "broker": "192.168.1.20",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
         "id": "43d8c011dfdc997f",
         "type": "MySQLdatabase",
         "name": "",
@@ -311,14 +162,6 @@
         "db": "creppcarbone",
         "tz": "",
         "charset": "UTF8"
-    },
-    {
-        "id": "6cf82e37.9a1db",
-        "type": "MySQLdatabase",
-        "host": "127.0.0.1",
-        "port": "3306",
-        "db": "sys",
-        "tz": ""
     },
     {
         "id": "c4ad40011fadd485",
@@ -365,14 +208,6 @@
         "order": 7,
         "disabled": false,
         "hidden": false
-    },
-    {
-        "id": "bbe0894839b359da",
-        "type": "json2mysql-server",
-        "host": "localhost",
-        "database": "creppcarbone",
-        "user": "jul",
-        "password": "jul"
     },
     {
         "id": "b4c867ea06f5361b",
@@ -1474,16 +1309,6 @@
         "collapse": true
     },
     {
-        "id": "2606e140c9d98a7a",
-        "type": "ui_group",
-        "name": "saisie appareil consommateur",
-        "tab": "988df4f2cc6c55bd",
-        "order": 7,
-        "disp": true,
-        "width": "6",
-        "collapse": true
-    },
-    {
         "id": "016964b9b18bce81",
         "type": "ui_group",
         "name": "electric city",
@@ -1497,12 +1322,6 @@
         "id": "6739328cae73abc5",
         "type": "chronos-config",
         "name": "one",
-        "sunPositions": []
-    },
-    {
-        "id": "e98bbc0d7820536c",
-        "type": "chronos-config",
-        "name": "gg",
         "sunPositions": []
     },
     {
@@ -3171,7 +2990,7 @@
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
         "name": "prep chart bar panneau",
-        "func": "var temp = {};\nvar data = [];\nvar datad=[];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   \n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n \n datad[0]=0;\n var l = msg.payload.length;\n\n  for (let  pas= 1;pas < l; pas++)   {\n     \n    datad[pas] = data[pas]-data[pas-1] ;\n  }\n  data[0] = 0;\n  var l = msg.payload.length;\n\n  for (let pas = 1; pas < l; pas++) {\n\n    data[pas] = datad[pas] ;\n  }\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar datad=[];\nvar labels =[];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   \n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n \n datad[0]=0;\n var l = msg.payload.length;\n\n  for (let  pas= 1;pas < l; pas++)   {\n     \n    datad[pas] = data[pas]-data[pas-1] ;\n  }\n  data[0] = 0;\n  var l = msg.payload.length;\n\n  for (let pas = 1; pas < l; pas++) {\n\n    data[pas] = datad[pas] ;\n  }\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n //jdate =temp.mois +\"eme mois\";\n jdate = month[temp.mois - 1];\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.C2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3552,10 +3371,39 @@
         ]
     },
     {
+        "id": "e3ae99b83dd37019",
+        "type": "inject",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 400,
+        "wires": [
+            [
+                "494f73ce89c010e1"
+            ]
+        ]
+    },
+    {
         "id": "bea56da3f92336dd",
         "type": "ui_chart",
         "z": "b846123779a22d9d",
-        "name": "chart panneau",
+        "name": "chart maison",
         "group": "ceaa16c0a3c87e75",
         "order": 5,
         "width": 0,
@@ -3588,7 +3436,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1620,
+        "x": 1610,
         "y": 240,
         "wires": [
             []
@@ -3707,7 +3555,7 @@
         "type": "function",
         "z": "b846123779a22d9d",
         "name": "maison",
-        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_maison\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_maison\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT Etot,Etotdelta,heure FROM linky_day_delta \"+\n\"WHERE jour = DAY(CURDATE() +\"+ work_pile + \" ) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,jour,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n{ topic = \"SELECT DISTINCT energytoday,jour,mois FROM linky_month WHERE mois = MONTH(CURDATE()) +\" + work_pile + \"  ORDER BY jour ASC;\" }\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_maison\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_maison\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT Etot,Etotdelta,heure FROM linky_day_delta \"+\n\"WHERE jour = DAY(CURDATE() +\"+ work_pile + \" ) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n//{topic=\"SELECT DISTINCT energytoday,eurotoday ,c2today,jour,mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n{ topic = \"SELECT DISTINCT energytoday,jour,mois FROM linky_month WHERE mois = MONTH(CURDATE()) +\" + work_pile + \"  ORDER BY jour ASC;\" }\n\nif (interval ==\"YEAR\"  )\n// {topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n{topic=\"SELECT DISTINCT energytoday, mois,an FROM linky_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3726,7 +3574,7 @@
         "type": "function",
         "z": "b846123779a22d9d",
         "name": "prep chart bar maison",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_maison\");\nvar work_valeur = flow.get(\"valeur_maison\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_maison\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.Etotdelta;\n  dataeuro[i] = temp.Etotdelta;\n  dataC3[i] = temp.Etot;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n jdate =temp.mois +\"eme mois\";\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   //dataC3[j] = temp.C2today;\n  labels[j] =temp.jour ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  labels[k] =temp.mois ;\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar month = ['jan', 'fev', 'mars', 'avr', 'mai', 'juin', 'juil', 'aou', 'sept', 'oct', 'nov', 'dec']\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_maison\");\nvar work_valeur = flow.get(\"valeur_maison\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_maison\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.Etotdelta/1000;\n  dataeuro[i] = temp.Etotdelta;\n  dataC3[i] = temp.Etot;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n //jdate =temp.mois +\"eme mois\";\n  jdate = month[temp.mois - 1];\n   data[j] = temp.energytoday/1000;\n   dataeuro[j] = temp.eurotoday;\n   //dataC3[j] = temp.C2today;\n  labels[j] =temp.jour ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday/1000;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  // labels[k] =temp.mois ;\n  labels[k] = month[temp.mois - 1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3833,7 +3681,7 @@
         "type": "debug",
         "z": "b846123779a22d9d",
         "name": "linkyday",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -3842,7 +3690,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 1020,
-        "y": 260,
+        "y": 240,
         "wires": []
     },
     {
@@ -3930,9 +3778,10 @@
         "active": false,
         "tosidebar": true,
         "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
         "statusType": "auto",
         "x": 1420,
         "y": 240,
@@ -3982,6 +3831,35 @@
         "y": 60,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e686408edb27e8d9",
+        "type": "inject",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "f7978f812d07733d"
+            ]
         ]
     },
     {
