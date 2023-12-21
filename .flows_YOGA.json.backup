@@ -1977,7 +1977,7 @@
         "name": "Energie aujourdhui (kWh)",
         "label": "<font size={{4}} > Aujourdhui</font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"KWh\"}}</font> ",
-        "layout": "row-spread",
+        "layout": "col-center",
         "x": 1210,
         "y": 760,
         "wires": []
@@ -2131,7 +2131,7 @@
         "name": "Energie hier(kWh)",
         "label": "<font size={{ 4}} > Hier</font>",
         "format": "<font size={{ 4}} >{{msg.payload}} {{\"KWh\"}}</font> ",
-        "layout": "row-spread",
+        "layout": "col-center",
         "x": 850,
         "y": 820,
         "wires": []
@@ -2171,10 +2171,10 @@
         "width": "3",
         "height": 1,
         "name": "CO2 aujourdhui (gr)",
-        "label": "<font size={{ 4}} > CO2 aujourdhui </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 980,
+        "label": "",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr C02\"}}</font> ",
+        "layout": "col-center",
+        "x": 1140,
         "y": 1100,
         "wires": []
     },
@@ -2187,11 +2187,11 @@
         "width": "3",
         "height": 1,
         "name": "CO2 hier (gr)",
-        "label": "<font size={{ 4}} > CO2 hier </font>",
-        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr\"}}</font> ",
-        "layout": "row-spread",
-        "x": 980,
-        "y": 1040,
+        "label": "",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"gr C02\"}}</font> ",
+        "layout": "col-center",
+        "x": 970,
+        "y": 1020,
         "wires": []
     },
     {
@@ -2224,7 +2224,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "maj day, month,year",
-        "func": "\n\n// \nvar query = \n//1 maj horointerval dans tasmota\n    \"UPDATE tasmota SET heure = HOUR(Time);\"+\n\"UPDATE tasmota SET JOURSJ = DAY(Time);\"+\n\"UPDATE tasmota SET mois = MONTH(Time);\"+\n\"UPDATE tasmota SET an = YEAR(Time);\"+\n\"UPDATE tasmota  SET jour = DATE(Time); \"+\n   \" UPDATE tasmota SET horointerval = an * 1000000 + mois * 10000 + JOURSJ * 100 + heure; \"+\n  //2  maj day depuis tasmota\n\"REPLACE INTO tasmota_panneau_day (Time, tempsreception, energyyesterday, energytoday, energytotal, heure, JourN, mois, an, jour)  SELECT  Time, tempsreception, energyyesterday, energytoday, MAX(energytotal), heure, JOURSJ, mois, an, jour FROM`tasmota`\" +\n\"GROUP BY horointerval;\"+\n  \n//3 maj day carbone depuis electriccity et maj euros \n\n \"UPDATE tasmota_panneau_day \"+\n\"LEFT JOIN electricity_maps \"+\n\"ON (tasmota_panneau_day.jour = electricity_maps.jour AND tasmota_panneau_day.heure = electricity_maps.heure) \"+\n\"SET tasmota_panneau_day.C2today =   electricity_maps.C2par_KWH \"+\n\" WHERE electricity_maps.zone LIKE'%EU' ; \" +\n\n    \"UPDATE tasmota_panneau_day  SET eurotoday = energytoday * 0.24 ; \" +\n    \n  // maj day delta depuis day  et calcul du C2 produit \n    \" REPLACE INTO tasmota_panneau_day_delta (energytoday, energyyesterday, heure, JourN, mois, an, jour, C2today, energymoins1, heuremoins1) \"+\n    \" SELECT energytoday, energyyesterday, heure, JourN, mois, an, jour, C2today, LAG(energytoday) OVER(ORDER BY jour, heure), LAG(heure) OVER(ORDER BY jour, heure)FROM tasmota_panneau_day ;\" +\n//\n   \"UPDATE tasmota_panneau_day_delta SET C2produit = \"+\n     \"  CASE \"+\n\" WHEN (heuremoins1 > 22) THEN energytoday * 1000 * C2today \" +\n\" ELSE (energytoday - energymoins1) * 1000 * C2today \" +\n\" END  ; \" +\n\n\n//4 maj month depuis day delta\n\"REPLACE INTO tasmota_panneau_month (Time, tempsreception, energyyesterday, energytoday, energytotal, jour, an, mois, JoursN,c2today) \"+\n\" Select Time, tempsreception, energyyesterday, MAX(energytoday), energytotal, jour, an, mois, JourN,SUM(C2produit) FROM`tasmota_panneau_day_delta`\" +\n\"GROUP BY Date(Time);\" +\n\n\n//5\n\n\n    \"UPDATE tasmota_panneau_month  SET eurotoday = energytoday * 0.24 ; \" +\n//6\n    \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an,C2today,eurotoday)\" +\n    \"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an,SUM(C2today),SUM(eurotoday) FROM `tasmota_panneau_month`\" +\n    \"GROUP BY mois;\" +\n  \n\n//7\n\"REPLACE INTO tasmota_panneau_full(an, energytoday, C2today, eurotoday) \"+\n\"Select an, SUM(energytoday), SUM(C2today), SUM(eurotoday) FROM`tasmota_panneau_year` \" +\n\"GROUP BY an; \"  ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
+        "func": "\n\n// \nvar query = \n//1 maj horointerval dans tasmota\n    \"UPDATE tasmota SET heure = HOUR(Time);\"+\n\"UPDATE tasmota SET JOURSJ = DAY(Time);\"+\n\"UPDATE tasmota SET mois = MONTH(Time);\"+\n\"UPDATE tasmota SET an = YEAR(Time);\"+\n\"UPDATE tasmota  SET jour = DATE(Time); \"+\n   \" UPDATE tasmota SET horointerval = an * 1000000 + mois * 10000 + JOURSJ * 100 + heure; \"+\n  //2  maj day depuis tasmota\n\"REPLACE INTO tasmota_panneau_day (Time, tempsreception, energyyesterday, energytoday, energytotal, heure, JourN, mois, an, jour)  SELECT  Time, tempsreception, energyyesterday, energytoday, MAX(energytotal), heure, JOURSJ, mois, an, jour FROM`tasmota`\" +\n\"GROUP BY horointerval;\"+\n  \n//3 maj day carbone depuis electriccity et maj euros \n\n \"UPDATE tasmota_panneau_day \"+\n\"LEFT JOIN electricity_maps \"+\n\"ON (tasmota_panneau_day.jour = electricity_maps.jour AND tasmota_panneau_day.heure = electricity_maps.heure) \"+\n\"SET tasmota_panneau_day.C2today =   electricity_maps.C2par_KWH \"+\n\" WHERE electricity_maps.zone LIKE'%EU' ; \" +\n\n    \"UPDATE tasmota_panneau_day  SET eurotoday = energytoday * 0.24 ; \" +\n    \n  // maj day delta depuis day  et calcul du C2 produit \n    \" REPLACE INTO tasmota_panneau_day_delta (energytoday, energyyesterday, heure, JourN, mois, an, jour, C2today, energymoins1, heuremoins1) \"+\n    \" SELECT energytoday, energyyesterday, heure, JourN, mois, an, jour, C2today, LAG(energytoday) OVER(ORDER BY jour, heure), LAG(heure) OVER(ORDER BY jour, heure)FROM tasmota_panneau_day ;\" +\n//\n   \"UPDATE tasmota_panneau_day_delta SET C2produit = \"+\n     \"  CASE \"+\n\" WHEN (heuremoins1 > 22) THEN energytoday * 1000 * C2today \" +\n\" ELSE (energytoday - energymoins1) * 1000 * C2today \" +\n\" END  ; \" +\n\n\n//4 maj month depuis day delta\n\"REPLACE INTO tasmota_panneau_month (Time, tempsreception, energyyesterday, energytoday, energytotal, jour, an, mois, JoursN,c2today) \"+\n\" Select Time, tempsreception, energyyesterday, MAX(energytoday), energytotal, jour, an, mois, JourN,SUM(C2produit) FROM`tasmota_panneau_day_delta`\" +\n\"GROUP BY an,mois,JourN;\" +\n\n\n//5\n\n\n    \"UPDATE tasmota_panneau_month  SET eurotoday = energytoday * 0.24 ; \" +\n//6 maj year depuis month\n    \"REPLACE INTO tasmota_panneau_year (Time,tempsreception,energyyesterday,energytoday,energytotal,mois,an,C2today,eurotoday)\" +\n    \"Select Time,tempsreception,energyyesterday,SUM(energytoday),energytotal,mois,an,SUM(C2today),SUM(eurotoday) FROM `tasmota_panneau_month`\" +\n    \"GROUP BY mois;\" +\n  \n\n//7\n\"REPLACE INTO tasmota_panneau_full(an, energytoday, C2today, eurotoday) \"+\n\"Select an, SUM(energytoday), SUM(C2today), SUM(eurotoday) FROM`tasmota_panneau_year` \" +\n\"GROUP BY an; \"  ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2337,7 +2337,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "  C pour pan hier",
-        "func": "\nvar topic ='calculcarbone';\n\n//var interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\n//var work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\ntopic =\"SELECT DISTINCT C2today FROM tasmota_panneau_month \"+\n    \"WHERE jour  = CURDATE()-1 ; \"\n\n \n// intervale d echelle du graphique;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='calculcarbone';\n\n//var interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\n//var work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\ntopic =\"SELECT DISTINCT C2today,eurotoday FROM tasmota_panneau_month \"+\n    \"WHERE jour  = CURDATE()-1 ; \"\n\n \n// intervale d echelle du graphique;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2379,7 +2379,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 800,
-        "y": 1040,
+        "y": 980,
         "wires": []
     },
     {
@@ -2468,8 +2468,8 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "prepare chart bar",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2today;\n}\n\nmsg.payload = data[0];\n\n\nreturn msg;\n",
-        "outputs": 1,
+        "func": "var temp = {};\nvar data = [];\nvar dataeuro =[];\nvar labels =[];\nvar h =0;\nvar msg2 ={payload:\"no info\"}\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2today/1000;\n   dataeuro[i] = temp.eurotoday;\n}\n\nmsg.payload = data[0];\nmsg2.payload = dataeuro[0];\n\nreturn [msg,msg2];\n",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
@@ -2480,6 +2480,9 @@
             [
                 "6a6084cd07985bc0",
                 "a16e346b09970fa8"
+            ],
+            [
+                "6035b2c1ff35d51b"
             ]
         ]
     },
@@ -2488,7 +2491,7 @@
         "type": "function",
         "z": "13de37cb61fc3ad2",
         "name": "  C pour panneau",
-        "func": "\nvar topic ='calculcarbone';\n\n//var interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\n//var work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\ntopic =\"SELECT DISTINCT C2today FROM tasmota_panneau_month \"+\n    \"WHERE jour  = CURDATE() ; \"\n\n \n// intervale d echelle du graphique;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "func": "\nvar topic ='calculcarbone';\n\n\n\ntopic =\"SELECT DISTINCT C2today, eurotoday FROM tasmota_panneau_month \"+\n    \"WHERE jour  = CURDATE() ; \"\n\n \n// intervale d echelle du graphique;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2512,7 +2515,7 @@
         "y": 1100,
         "wires": [
             [
-                "9f7861babe7deb20"
+                "ceef7579e2369a90"
             ]
         ]
     },
@@ -2520,17 +2523,19 @@
         "id": "9f7861babe7deb20",
         "type": "function",
         "z": "13de37cb61fc3ad2",
-        "name": "prepare chart bar",
-        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2today;\n}\n\nmsg.payload = data[0];\n\n\nreturn msg;\n",
+        "d": true,
+        "name": "prepare chart bar old",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2today/1000;\n}\n\nmsg.payload = data[0];\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 610,
-        "y": 1100,
+        "x": 760,
+        "y": 1220,
         "wires": [
             [
+                "37acd4bfd7febf21",
                 "f1da2eb1f88ad75b"
             ]
         ]
@@ -2552,6 +2557,104 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "37acd4bfd7febf21",
+        "type": "debug",
+        "z": "13de37cb61fc3ad2",
+        "name": "C2 today",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 920,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "8f424c4bbd8e08cb",
+        "type": "delay",
+        "z": "13de37cb61fc3ad2",
+        "name": "1 fois par heure",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 145,
+        "y": 1188,
+        "wires": [
+            [
+                "32bb9b0b93445c20",
+                "bf7f784f1712629f"
+            ]
+        ]
+    },
+    {
+        "id": "6035b2c1ff35d51b",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 17,
+        "width": "3",
+        "height": 1,
+        "name": "euro hier (€)",
+        "label": "",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"€\"}}</font> ",
+        "layout": "col-center",
+        "x": 970,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "ceef7579e2369a90",
+        "type": "function",
+        "z": "13de37cb61fc3ad2",
+        "name": "prepare chart bar",
+        "func": "var temp = {};\nvar data = [];\nvar dataeuro =[];\nvar labels =[];\nvar h =0;\nvar msg2 ={payload:\"no info\"}\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2today/1000;\n   dataeuro[i] = temp.eurotoday;\n}\n\nmsg.payload = data[0];\nmsg2.payload = dataeuro[0];\n\nreturn [msg,msg2];\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 1100,
+        "wires": [
+            [
+                "37acd4bfd7febf21",
+                "f1da2eb1f88ad75b"
+            ],
+            [
+                "af2efe57a7a47d1e"
+            ]
+        ]
+    },
+    {
+        "id": "af2efe57a7a47d1e",
+        "type": "ui_text",
+        "z": "13de37cb61fc3ad2",
+        "group": "af6e9ca4e8ef71ea",
+        "order": 17,
+        "width": "3",
+        "height": 1,
+        "name": "euro today (€)",
+        "label": "",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"€\"}}</font> ",
+        "layout": "col-center",
+        "x": 1020,
+        "y": 1160,
+        "wires": []
     },
     {
         "id": "c00041db67beb73f",
@@ -2879,7 +2982,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1520,
+        "x": 1600,
         "y": 440,
         "wires": [
             []
@@ -2997,14 +3100,14 @@
         "id": "5a806665b9f42d9a",
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
-        "name": "prep chart bar panneau",
+        "name": "prep chart panne",
         "func": "var temp = {};\nvar data = [];\nvar datad=[];\nvar labels =[];\nvar labels2 = [];\nvar labels3 = [];\nvar labels3 = [];\nvar labels4 = [];\nvar month = ['jan','fev','mars', 'avr','mai','juin','juil', 'aou','sept','oct','nov','dec']\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\nvar jdate2 =\"go\";\nvar jdate3 =\"helle\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_panneau\");\nvar work_valeur = flow.get(\"valeur_panneau\");\nvar work_interval2 = flow.get(\"interval_panneau\");\n\nd.setDate(d.getDate()+ work_pile);\n //decallage de la periode observée\n\n\n\n//var jserie =\"hy\";\n\n\n\nif (work_interval2 == \"DAY\")\n{\n\n  jdate = d.toDateString();\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.energytoday;\n   \n   dataeuro[i] = temp.eurotoday;\n   dataC3[i] = temp.C2today;\n  labels[i] =temp.heure + \"h\";\n}\n \n datad[0]=0;\n var l = msg.payload.length;\n\n  for (let  pas= 1;pas < l; pas++)   {\n     \n    datad[pas] = data[pas]-data[pas-1] ;\n  }\n  data[0] = 0;\n  var m = msg.payload.length;\ndataC3[0]=0;\n  for (let pas = 1; pas < m; pas++) {\n\n    data[pas] = datad[pas] ;\n    dataC3[pas]= dataC3[pas]*data[pas];\n  }\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n //jdate =temp.mois +\"eme mois\";\n jdate = month[temp.mois - 1];\n   data[j] = temp.energytoday;\n   dataeuro[j] = temp.eurotoday;\n   dataC3[j] = temp.c2today;\n  labels[j] =temp.joursN ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  //labels[k] =temp.mois ;\n  labels[k] = month[temp.mois -1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1150,
+        "x": 1250,
         "y": 440,
         "wires": [
             [
@@ -3019,7 +3122,7 @@
         "z": "bd0e39b0e5b0cc70",
         "mydb": "43d8c011dfdc997f",
         "name": "creppc 44",
-        "x": 760,
+        "x": 880,
         "y": 440,
         "wires": [
             [
@@ -3161,8 +3264,8 @@
         "id": "ca451c59b8419f27",
         "type": "debug",
         "z": "bd0e39b0e5b0cc70",
-        "name": "panneauday",
-        "active": true,
+        "name": "panneau",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -3170,7 +3273,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 930,
+        "x": 1020,
         "y": 440,
         "wires": []
     },
@@ -3352,7 +3455,7 @@
         "type": "debug",
         "z": "bd0e39b0e5b0cc70",
         "name": "debug 67",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": true,
@@ -3360,7 +3463,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1340,
+        "x": 1420,
         "y": 440,
         "wires": []
     },
@@ -3368,18 +3471,18 @@
         "id": "494f73ce89c010e1",
         "type": "function",
         "z": "bd0e39b0e5b0cc70",
-        "name": "panneau old",
+        "name": "panneau",
         "func": "\nvar topic ='toto';\n\nvar interval  =flow.get(\"interval_panneau\");\n// intervale d echelle du graphique\n\nvar work_pile = flow.get(\"pile_panneau\");\n// decallage de la periode observée\n\n\n\nif (interval==\"DAY\")\n{topic =\"SELECT DISTINCT energytoday,eurotoday ,C2today,heure FROM tasmota_panneau_day \"+\n\"WHERE jour = DATE_ADD(CURDATE(),INTERVAL +\"+ work_pile + \" DAY) ORDER BY heure ASC;\"}\n\n\nif (interval==\"MONTH\")\n{\n    topic = \"SELECT DISTINCT energytoday,eurotoday ,c2today,joursN, mois FROM tasmota_panneau_month WHERE mois = MONTH(CURDATE()) +\"+ work_pile +\"  ORDER BY jour ASC;\"}\n\nif (interval ==\"YEAR\"  )\n{topic=\"SELECT DISTINCT energytoday,eurotoday,C2today,mois,an FROM tasmota_panneau_year WHERE an = YEAR(CURDATE()) +\"+ work_pile +\"  ORDER BY mois ASC;\"}\n\nif (interval == \"FULL\")\n{ topic = \"SELECT DISTINCT energytoday,eurotoday,C2today,an FROM tasmota_panneau_full WHERE an = YEAR(CURDATE()) +\" + work_pile + \" ;\" }\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 610,
+        "x": 600,
         "y": 440,
         "wires": [
             [
-                "f8139817cddba33a"
+                "deb83a2ae009629b"
             ]
         ]
     },
@@ -3449,6 +3552,31 @@
         ]
     },
     {
+        "id": "deb83a2ae009629b",
+        "type": "delay",
+        "z": "bd0e39b0e5b0cc70",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 440,
+        "wires": [
+            [
+                "f8139817cddba33a"
+            ]
+        ]
+    },
+    {
         "id": "bea56da3f92336dd",
         "type": "ui_chart",
         "z": "b846123779a22d9d",
@@ -3485,7 +3613,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1610,
+        "x": 1750,
         "y": 240,
         "wires": [
             []
@@ -3614,7 +3742,7 @@
         "y": 240,
         "wires": [
             [
-                "8dc02dd876cc6585"
+                "923dd505a8520b14"
             ]
         ]
     },
@@ -3622,14 +3750,14 @@
         "id": "f23ab49edc4bb834",
         "type": "function",
         "z": "b846123779a22d9d",
-        "name": "prep chart bar maison",
+        "name": "prep chart  maison",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar month = ['jan', 'fev', 'mars', 'avr', 'mai', 'juin', 'juil', 'aou', 'sept', 'oct', 'nov', 'dec']\nvar dataC3 =[];\nvar jdate =\"try\";\n\nvar d =new Date();\nvar work_pile = flow.get(\"pile_maison\");\nvar work_valeur = flow.get(\"valeur_maison\");\nd.setDate(d.getDate()+ work_pile);\n// decallage de la periode observée\n\njdate =d.toDateString();;\n\nvar jserie =\"hy\";\n\nvar work_interval2 = flow.get(\"interval_maison\");\n\nif (work_interval2 == \"DAY\")\n{\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.Etotdelta/1000;\n  dataeuro[i] = temp.Etotdelta;\n  dataC3[i] = temp.Etot;\n  labels[i] =temp.heure + \"h\";\n}\n}\n\n\n\nif (work_interval2 == \"MONTH\")\n{\n\nfor (var j in msg.payload) {\n  temp = msg.payload[j];\n //jdate =temp.mois +\"eme mois\";\n  jdate = month[temp.mois - 1];\n   data[j] = temp.energytoday/1000;\n   dataeuro[j] = temp.eurotoday;\n   //dataC3[j] = temp.C2today;\n  labels[j] =temp.jour ;\n}\n}\n\n\n\nif (work_interval2 == \"YEAR\")\n{\n\nfor (var k in msg.payload) {\n  temp = msg.payload[k];\n jdate =temp.an ;\n   data[k] = temp.energytoday/1000;\n  dataeuro[k] = temp.eurotoday;\n  dataC3[k] = temp.C2today;\n  // labels[k] =temp.mois ;\n  labels[k] = month[temp.mois - 1];\n  \n}}\n\nif (work_interval2 == \"FULL\") {\n\n  for (var k in msg.payload) {\n    temp = msg.payload[k];\n    jdate = temp.an;\n    data[k] = temp.energytoday;\n    dataeuro[k] = temp.eurotoday;\n    dataC3[k] = temp.C2today;\n    labels[k] = temp.an;\n\n  }\n}\n\nif (work_valeur == \"KWH\")\n{\nvar charte = [{\n   \"series\": [jdate],\n    \"data\": [data],\n   \"labels\":labels\n}];\n}\nif (work_valeur == \"€\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataeuro],\n    \"labels\": labels\n  }];\n}\nif (work_valeur == \"CO2\") {\n  var charte = [{\n    \"series\": [jdate],\n    \"data\": [dataC3],\n    \"labels\": labels\n  }];\n}\nmsg.topic = work_valeur;\nmsg.payload = charte;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1240,
+        "x": 1410,
         "y": 240,
         "wires": [
             [
@@ -3644,7 +3772,7 @@
         "z": "b846123779a22d9d",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 44",
-        "x": 830,
+        "x": 1070,
         "y": 240,
         "wires": [
             [
@@ -3729,7 +3857,7 @@
         "id": "4e11226ab6bef737",
         "type": "debug",
         "z": "b846123779a22d9d",
-        "name": "linkyday",
+        "name": "linky",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -3738,7 +3866,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1020,
+        "x": 1230,
         "y": 240,
         "wires": []
     },
@@ -3823,7 +3951,7 @@
         "id": "08843b6756fd5dbb",
         "type": "debug",
         "z": "b846123779a22d9d",
-        "name": "debug 73",
+        "name": "d 73",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -3832,7 +3960,7 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 1420,
+        "x": 1570,
         "y": 240,
         "wires": []
     },
@@ -3912,6 +4040,31 @@
         ]
     },
     {
+        "id": "923dd505a8520b14",
+        "type": "delay",
+        "z": "b846123779a22d9d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 820,
+        "y": 240,
+        "wires": [
+            [
+                "8dc02dd876cc6585"
+            ]
+        ]
+    },
+    {
         "id": "86efc9642556d3c7",
         "type": "mqtt in",
         "z": "2966e896630d93ec",
@@ -3937,7 +4090,7 @@
         "id": "ed4af23eda125eb7",
         "type": "debug",
         "z": "2966e896630d93ec",
-        "name": "debug 70",
+        "name": "d 70",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -3946,8 +4099,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 340,
-        "y": 100,
+        "x": 350,
+        "y": 160,
         "wires": []
     },
     {
@@ -3955,7 +4108,7 @@
         "type": "ui_media",
         "z": "2966e896630d93ec",
         "group": "7b665b89099d3536",
-        "name": "",
+        "name": "linky",
         "width": "1",
         "height": "2",
         "order": 1,
@@ -4010,7 +4163,7 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 790,
+        "x": 1030,
         "y": 160,
         "wires": [
             []
@@ -4029,13 +4182,12 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 190,
-        "y": 240,
+        "x": 50,
+        "y": 360,
         "wires": [
             [
                 "bab203dc64288e3c",
-                "7c1c259645bf90d5",
-                "93cbf167c317be66"
+                "7c1c259645bf90d5"
             ]
         ]
     },
@@ -4043,7 +4195,7 @@
         "id": "bab203dc64288e3c",
         "type": "debug",
         "z": "2966e896630d93ec",
-        "name": "debug 71",
+        "name": "d 71",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -4052,8 +4204,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 360,
-        "y": 240,
+        "x": 170,
+        "y": 360,
         "wires": []
     },
     {
@@ -4074,7 +4226,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 330,
-        "y": 380,
+        "y": 360,
         "wires": [
             [
                 "9afb3cf11b9edc09",
@@ -4089,8 +4241,8 @@
         "z": "2966e896630d93ec",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 33",
-        "x": 730,
-        "y": 340,
+        "x": 930,
+        "y": 360,
         "wires": [
             []
         ]
@@ -4100,14 +4252,14 @@
         "type": "function",
         "z": "2966e896630d93ec",
         "name": " querry Linky",
-        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n\n\"INSERT IGNORE INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\"UPDATE Linky SET an = YEAR(Time); \" +\n\"UPDATE Linky SET mois = MONTH(Time); \" +\n\"UPDATE Linky SET jour = DAY(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n\n\"REPLACE INTO Linky_day (Etot,   heure, date, jour, mois, an)  SELECT  Max(Etot), heure, date, jour, mois, an  FROM`Linky`\" +\n    \"GROUP BY horointerval; \"+ \n\n\"REPLACE INTO linky_day_delta(Etot, an, jour, mois, date, heure, C2today, Etoteh)SELECT Etot, an, jour, mois, date, heure, C2today, LAG(Etot) OVER(ORDER BY Etot)FROM linky_day ; \" +\n//\" UPDATE linky_day_delta SET Etotdelta =(Etot-Etoteh) ;\" +\n\n\n\"UPDATE linky_day_delta SET Etotdelta = CASE\" +\n\n\" WHEN Etoteh >0 THEN (Etot-Etoteh)  \" +\n\" ELSE 0\" +\n\" END ; \" +\n\n\n\n\"REPLACE INTO linky_month(energytoday, an, jour,mois)SELECT SUM(Etotdelta), an, jour, mois FROM linky_day_delta GROUP BY jour,mois,an ; \" +\n    \"REPLACE INTO linky_year(energytoday, an, mois)SELECT SUM(energytoday), an, mois FROM linky_month GROUP BY mois,an ;  \";\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n\n\n",
+        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n//1\n\"INSERT IGNORE INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n  \"UPDATE Linky  SET date2 = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\"UPDATE Linky SET an = YEAR(Time); \" +\n\"UPDATE Linky SET mois = MONTH(Time); \" +\n\"UPDATE Linky SET jour = DAY(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n//2 \n\"REPLACE INTO Linky_day (Etot,   heure, date,date2, jour, mois, an)  SELECT  Max(Etot), heure, date,date2, jour, mois, an  FROM`Linky`\" +\n    \"GROUP BY horointerval; \"+ \n\n\n  \"UPDATE linky_day \" +\n  \"LEFT JOIN electricity_maps \" +\n  \"ON (linky_day.date2 = electricity_maps.jour AND linky_day.heure = electricity_maps.heure  ) \" +\n  \"SET linky_day.C2today =   electricity_maps.C2par_KWH \" +\n  \" WHERE electricity_maps.zone LIKE'%EU' ; \" +    \n\n  \"UPDATE linky_day  SET eurotot = Etot* 0.24 ; \" +\n\n  \" REPLACE INTO linky_day_delta (Etot,  date, heure, jour , mois, an,  C2today, Etotmoins1, heuremoins1,jourmoins1,moismoins1,anmoins1) \" +\n  \" SELECT Etot,  date, heure, jour, mois, an,  C2today, LAG(Etot) OVER(ORDER BY an,mois,jour, heure), LAG(heure) OVER(ORDER BY an,mois,jour, heure), LAG(jour) OVER(ORDER BY an,mois,jour, heure),LAG(mois) OVER(ORDER BY an,mois,jour, heure),LAG(an) OVER(ORDER BY an,mois,jour, heure) FROM linky_day ;\" +\n\n//\"REPLACE INTO linky_day_delta(Etot, an, jour, mois, date, heure, C2today, Etoteh)SELECT Etot, an, jour, mois, date, heure, C2today, LAG(Etot) OVER(ORDER BY Etot)FROM linky_day ; \" +\n //\" UPDATE linky_day_delta SET Eenergytoday =(Etot-Etotmoins1) ;\" +\n\n\n\"UPDATE linky_day_delta SET Etotdelta = CASE\" +\n\n\" WHEN Etotmoins1 >0 THEN (Etot-Etotmoins1)  \" +\n\" ELSE 0\" +\n\" END ; \" +\n\n  //\n  \"UPDATE linky_day_delta SET C2produit = \" +\n   \"Etotdelta * 1000 * C2today \" ;\n   \n\n\n\n//4\n\n\"REPLACE INTO linky_month(energytoday, an, jour,mois,eurotoday,c2today)SELECT SUM(Etotdelta), an, jour, mois,SUM(eurotoday),SUM(C2produit) FROM linky_day_delta GROUP BY an,mois,jour ; \" ;\n\n  //6 \n   \n  //  \"REPLACE INTO linky_year(energytoday, an, mois)SELECT SUM(energytoday), an, mois FROM linky_month GROUP BY mois,an ;  \"+\n// 7\n//\"REPLACE INTO linky_full(an, energytoday, C2today, eurotoday) \" +\n//  \"Select an, SUM(energytoday), SUM(C2today), SUM(eurotoday) FROM`linky_year` \" +\n//  \"GROUP BY an; \" ;\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 340,
+        "x": 610,
+        "y": 360,
         "wires": [
             [
                 "275e21bf457a629f"
@@ -4131,7 +4283,7 @@
         "drop": true,
         "allowrate": false,
         "outputs": 1,
-        "x": 420,
+        "x": 540,
         "y": 160,
         "wires": [
             [
@@ -4142,35 +4294,10 @@
         ]
     },
     {
-        "id": "93cbf167c317be66",
-        "type": "delay",
-        "z": "2966e896630d93ec",
-        "name": "1 fois par 10 s",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "10",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 540,
-        "y": 240,
-        "wires": [
-            [
-                "7046785ee170b1c0"
-            ]
-        ]
-    },
-    {
         "id": "4bd9979253397a7f",
         "type": "debug",
         "z": "2966e896630d93ec",
-        "name": "debug 72",
+        "name": "d 72",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -4179,8 +4306,8 @@
         "targetType": "msg",
         "statusVal": "payload",
         "statusType": "auto",
-        "x": 620,
-        "y": 100,
+        "x": 730,
+        "y": 160,
         "wires": []
     },
     {
@@ -4249,23 +4376,23 @@
         ],
         "seg1": "400",
         "seg2": "1100",
-        "x": 810,
-        "y": 100,
+        "x": 890,
+        "y": 160,
         "wires": []
     },
     {
         "id": "70c63849afcee132",
         "type": "function",
         "z": "2966e896630d93ec",
-        "name": "querry KWH aujourdhui maison",
+        "name": "querry KWH aujdh  maison",
         "func": "\nvar topic ='toto';\n\n\n\n\n\n{ topic =\"SELECT (MAX(Etot)- MIN(Etot))/1000 AS WH ,date FROM `linky` WHERE date = CURRENT_DATE\"}\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 500,
+        "x": 590,
+        "y": 480,
         "wires": [
             [
                 "12f249450273912a"
@@ -4338,14 +4465,14 @@
         "id": "65d654478fc55010",
         "type": "function",
         "z": "2966e896630d93ec",
-        "name": "prep chart bar maison",
+        "name": "prep   maison",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\n\n\n\n\n\n  temp = msg.payload[0];\n   jdate = temp.WH;\n  \n\n\n\n\n\nmsg.payload = jdate;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
+        "x": 1150,
         "y": 480,
         "wires": [
             [
@@ -4364,8 +4491,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 580,
+        "x": 590,
+        "y": 600,
         "wires": [
             [
                 "b16ed025b1453062"
@@ -4378,7 +4505,7 @@
         "z": "2966e896630d93ec",
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 34",
-        "x": 810,
+        "x": 830,
         "y": 600,
         "wires": [
             [
@@ -4390,14 +4517,14 @@
         "id": "f454e8a5e863523a",
         "type": "function",
         "z": "2966e896630d93ec",
-        "name": "prep chart bar maison",
+        "name": "prep   maison 2",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar dataeuro =[];\nvar dataC3 =[];\nvar jdate =\"try\";\n\n\n\n\n\n\n  temp = msg.payload[0];\n   jdate = temp.WH;\n  \n\n\n\n\n\nmsg.payload = jdate;\n\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1100,
+        "x": 1160,
         "y": 600,
         "wires": [
             [
@@ -4416,8 +4543,8 @@
         "name": "",
         "label": " Aujourhui",
         "format": "{{msg.payload}} {{\"KWh\"}}",
-        "layout": "row-spread",
-        "x": 1360,
+        "layout": "col-center",
+        "x": 1320,
         "y": 480,
         "wires": []
     },
@@ -4432,27 +4559,10 @@
         "name": "",
         "label": "Hier",
         "format": "{{msg.payload}} {{\"KWh\"}}",
-        "layout": "row-spread",
-        "x": 1290,
+        "layout": "col-center",
+        "x": 1330,
         "y": 600,
         "wires": []
-    },
-    {
-        "id": "7046785ee170b1c0",
-        "type": "function",
-        "z": "2966e896630d93ec",
-        "name": "function 23",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 770,
-        "y": 240,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "a79ba874ee568a6c",
@@ -4472,7 +4582,25 @@
         "scope": "local",
         "tooltip": "",
         "x": 300,
-        "y": 40,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "18357fe2f344e9e4",
+        "type": "function",
+        "z": "2966e896630d93ec",
+        "d": true,
+        "name": " querry Linky old",
+        "func": "var P1 = msg.payload\n\n// \n// \nvar query = \n//1\n\"INSERT IGNORE INTO Linky (Etot) VALUES (\" + P1  + \"); \"+\n\"UPDATE Linky  SET date = DATE(Time); \" +\n\"UPDATE Linky SET heure = HOUR(Time); \" +\n\"UPDATE Linky SET an = YEAR(Time); \" +\n\"UPDATE Linky SET mois = MONTH(Time); \" +\n\"UPDATE Linky SET jour = DAY(Time); \" +\n\" UPDATE Linky SET horointerval = date*100 + heure; \" +\n//2 \n\"REPLACE INTO Linky_day (Etot,   heure, date, jour, mois, an)  SELECT  Max(Etot), heure, date, jour, mois, an  FROM`Linky`\" +\n    \"GROUP BY horointerval; \"+ \n\n\n  \"UPDATE linky_day \" +\n  \"LEFT JOIN electricity_maps \" +\n  \"ON (linky_day.jour = electricity_maps.jour AND linky_day.heure = electricity_maps.heure) \" +\n  \"SET linky_day.C2today =   electricity_maps.C2par_KWH \" +\n  \" WHERE electricity_maps.zone LIKE'%EU' ; \" +    \n\n  \"UPDATE linky_day  SET eurotot = Etot* 0.24 ; \" +\n\n  \" REPLACE INTO linky_day_delta (Etot,   heure, jour , mois, an,  C2today, Etotmoins1, heuremoins1,jourmoins1,moismoins1,anmoins1) \" +\n  \" SELECT Etot,   heure, jour, mois, an,  C2today, LAG(Etot) OVER(ORDER BY an,mois,jour, heure), LAG(jour) OVER(ORDER BY an,mois,jour, heure),LAG(mois) OVER(ORDER BY an,mois,jour, heure),LAG(an) OVER(ORDER BY an,mois,jour, heure) FROM tasmota_panneau_day ;\" +\n\n//\"REPLACE INTO linky_day_delta(Etot, an, jour, mois, date, heure, C2today, Etoteh)SELECT Etot, an, jour, mois, date, heure, C2today, LAG(Etot) OVER(ORDER BY Etot)FROM linky_day ; \" +\n //\" UPDATE linky_day_delta SET Eenergytoday =(Etot-Etotmoins1) ;\" +\n\n\n\"UPDATE linky_day_delta SET Etotdelta = CASE\" +\n\n\" WHEN Etotmoins1 >0 THEN (Etot-Etotmoins1)  \" +\n\" ELSE 0\" +\n\" END ; \" +\n\n  //\n  \"UPDATE linky_day_delta SET C2produit = \" +\n   \"Etotdelta * 1000 * C2today \" +\n   \n\n\n\n//4\n\n\"REPLACE INTO linky_month(energytoday, an, jour,mois,eurotoday,c2today)SELECT SUM(Etotdelta), an, jour, mois,SUM(eurotday),SUM(C2produit) FROM linky_day_delta GROUP BY jour,mois,an ; \" +\n\n  //6 \n   \n    \"REPLACE INTO linky_year(energytoday, an, mois)SELECT SUM(energytoday), an, mois FROM linky_month GROUP BY mois,an ;  \"+\n// 7\n\"REPLACE INTO linky_full(an, energytoday, C2today, eurotoday) \" +\n  \"Select an, SUM(energytoday), SUM(C2today), SUM(eurotoday) FROM`linky_year` \" +\n  \"GROUP BY an; \";\n\nmsg.topic = query;\nreturn msg;\n\n\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 643,
+        "y": 297,
         "wires": [
             []
         ]
