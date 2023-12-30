@@ -6029,6 +6029,38 @@
         ]
     },
     {
+        "id": "53c171b8ebf75054",
+        "type": "ui_text",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "order": 19,
+        "width": "3",
+        "height": 1,
+        "name": "euro hier (€)",
+        "label": "",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"€\"}}</font> ",
+        "layout": "col-center",
+        "x": 1495,
+        "y": 828,
+        "wires": []
+    },
+    {
+        "id": "c7166f3d5c0b9f07",
+        "type": "ui_text",
+        "z": "a21c4b8426a30f7f",
+        "group": "1b256139bc926903",
+        "order": 18,
+        "width": "3",
+        "height": 1,
+        "name": "euro today (€)",
+        "label": "",
+        "format": "<font size={{ 4}} >{{msg.payload}} {{\"€\"}}</font> ",
+        "layout": "col-center",
+        "x": 1480,
+        "y": 880,
+        "wires": []
+    },
+    {
         "id": "4acee825ab57f244",
         "type": "inject",
         "z": "d931280a91eab542",
