@@ -1312,14 +1312,6 @@
         "collapse": true
     },
     {
-        "id": "957fd14a.a1277",
-        "type": "ui_tab",
-        "name": "bar-chart",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "faba16dc1215cec9",
         "type": "ui_group",
         "d": true,
@@ -6277,7 +6269,8 @@
                 "2ec20a3dca6d004c",
                 "6161544a1d92c129",
                 "512e74a7fdc30ecd",
-                "bed5678b0bf59b3b"
+                "bed5678b0bf59b3b",
+                "73c846d837f9a719"
             ]
         ]
     },
@@ -6588,6 +6581,7 @@
         "id": "3798ce7550d603d1",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 3,
@@ -6631,6 +6625,7 @@
         "id": "2ec20a3dca6d004c",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "electriccityC2_emission fr",
         "func": "\n\n\n\n\n\n\n\n var topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%FR' ORDER BY time DESC LIMIT 1;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
@@ -6650,6 +6645,7 @@
         "id": "6161544a1d92c129",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "electriccityC2_emission DE",
         "func": "\n\n\n\n\n\n\n\n var topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%DE' ORDER BY time DESC LIMIT 1;\"\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
@@ -6669,10 +6665,11 @@
         "id": "512e74a7fdc30ecd",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "electriccityC2_emission IT",
         "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%IT' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 2,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -6688,6 +6685,7 @@
         "id": "812694fccda0f031",
         "type": "mysql",
         "z": "d931280a91eab542",
+        "d": true,
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 5",
         "x": 660,
@@ -6702,6 +6700,7 @@
         "id": "1d1b09f527c4576d",
         "type": "mysql",
         "z": "d931280a91eab542",
+        "d": true,
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 5",
         "x": 680,
@@ -6716,6 +6715,7 @@
         "id": "257996a12725bcbd",
         "type": "mysql",
         "z": "d931280a91eab542",
+        "d": true,
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 5",
         "x": 700,
@@ -6730,6 +6730,7 @@
         "id": "38fcd0221552f95f",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 4,
@@ -6773,6 +6774,7 @@
         "id": "0814b3a765f5f2db",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 5,
@@ -6816,6 +6818,7 @@
         "id": "3ea50531c7f98453",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 6,
@@ -6887,7 +6890,7 @@
         "height": "2",
         "gtype": "gage",
         "title": "  EU",
-        "label": "geqCO2/KWH",
+        "label": " CO2 g/KWH",
         "format": "{{value}}",
         "min": 0,
         "max": "400",
@@ -6937,10 +6940,11 @@
         "id": "bed5678b0bf59b3b",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "electriccityC2_emission PL",
         "func": "\n\n\n\n\n\n\n\n {topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps WHERE zone like '%PL' ORDER BY time DESC LIMIT 1;\"}\n\n\n\n\nmsg.topic =topic.toString();\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 2,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -6956,6 +6960,7 @@
         "id": "16a4dcb747c8221f",
         "type": "mysql",
         "z": "d931280a91eab542",
+        "d": true,
         "mydb": "43d8c011dfdc997f",
         "name": "creppcarbone 5",
         "x": 720,
@@ -6970,6 +6975,7 @@
         "id": "a2a76306e160dff9",
         "type": "ui_chart",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "",
         "group": "016964b9b18bce81",
         "order": 6,
@@ -7072,6 +7078,7 @@
         "id": "da791e512d500128",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "prepare chart bar 2",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
         "outputs": 1,
@@ -7091,6 +7098,7 @@
         "id": "430c69d106e4ef63",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "prepare chart bar 2",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
         "outputs": 1,
@@ -7110,6 +7118,7 @@
         "id": "0907947ac5e91ff5",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "prepare chart bar 2",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
         "outputs": 1,
@@ -7129,6 +7138,7 @@
         "id": "31366052e69e1223",
         "type": "function",
         "z": "d931280a91eab542",
+        "d": true,
         "name": "prepare chart bar 2",
         "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
         "outputs": 1,
@@ -7190,6 +7200,101 @@
         "y": 800,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "73c846d837f9a719",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "electrictyC2_emission fr",
+        "func": "\n\n var topic=\"SELECT DISTINCT  C2par_KWH,time,zone FROM electricity_maps  ORDER BY time DESC LIMIT 5;\"\n\n\nmsg.topic =topic.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1000,
+        "wires": [
+            [
+                "e87d433e7238d089"
+            ]
+        ]
+    },
+    {
+        "id": "e87d433e7238d089",
+        "type": "mysql",
+        "z": "d931280a91eab542",
+        "mydb": "43d8c011dfdc997f",
+        "name": "creppcarbone 5",
+        "x": 660,
+        "y": 1000,
+        "wires": [
+            [
+                "31d88bbce545a0b2"
+            ]
+        ]
+    },
+    {
+        "id": "a27a2c2fcebd4bcf",
+        "type": "ui_chart",
+        "z": "d931280a91eab542",
+        "name": "",
+        "group": "016964b9b18bce81",
+        "order": 6,
+        "width": "6",
+        "height": "4",
+        "label": "facteur CO2 g/KWH",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1160,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31d88bbce545a0b2",
+        "type": "function",
+        "z": "d931280a91eab542",
+        "name": "prepare chart bar 22",
+        "func": "var temp = {};\nvar data = [];\nvar labels =[];\nvar h =0;\n\n\n\n\n\n\nfor (var i in msg.payload) {\n  temp = msg.payload[i];\n   data[i] = temp.C2par_KWH;\n  labels[i] =temp.zone;\n h = temp.time;\n h=h.getHours() +\"h\";\n\n  \n}\n\nvar chart = [{\n \n   \"series\": [h],\n    \"data\": [data],\n   \"labels\":labels\n}];\nmsg.payload = chart;\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 1000,
+        "wires": [
+            [
+                "a27a2c2fcebd4bcf"
+            ]
         ]
     }
 ]
