@@ -5,7 +5,7 @@
     "dependencies": {
         "@caitken-com/node-red-contrib-json2mysql": "1.0.5",
         "node-red-contrib-dashbored": "0.5.4",
-        "node-red-dashboard": "2.27.0",
+        "node-red-dashboard": "3.6.6",
         "node-red-node-mysql": "1.0.3"
     },
     "node-red": {
